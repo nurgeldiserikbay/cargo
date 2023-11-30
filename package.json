@@ -1,0 +1,38 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.3.67",
+    "@nuxt/devtools": "latest",
+    "@nuxt/image": "^1.1.0",
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/i18n": "^8.0.0-rc.5",
+    "@sidebase/nuxt-auth": "^0.6.2",
+    "@types/validator": "^13.11.7",
+    "@unocss/nuxt": "^0.57.7",
+    "nuxt": "^3.8.2",
+    "nuxt-svgo": "^3.6.0",
+    "sass": "^1.69.5",
+    "unocss-preset-theme": "^0.11.0",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.4.3"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "@vee-validate/zod": "^4.11.8",
+    "maska": "^2.1.10",
+    "pinia": "^2.1.7",
+    "validator": "^13.11.0",
+    "vee-validate": "^4.11.8"
+  }
+}
