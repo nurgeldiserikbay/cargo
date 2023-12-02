@@ -31,7 +31,7 @@ export default {
     phoneNumber: 'Номер телефона',
     password: 'Пароль',
     confirmPassword: 'Повтор пароля',
-    selectCity: 'выбрать населенный пункт',
+    selectCity: 'Выбрать населенный пункт',
     selectBranch: 'Выбрать филиал',
     trackCode: 'Трек код',
     description: 'Описание',
