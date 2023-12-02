@@ -15,6 +15,7 @@ function getFetch(config: { [key: string]: any, public: { [key: string]: any } }
   return async <DataT, ErrorT>(url: string | Request | Ref<string | Request> | (() => string | Request), options?: UseFetchOptions<DataT>): HttpFactoryResult<DataT, ErrorT> => {
     return await useFetch(url, {
       baseURL: config.public.apiBase,
+      server: false,
       headers: {
         'Authorization': token.value || ''
       },

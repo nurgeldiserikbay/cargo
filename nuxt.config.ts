@@ -48,6 +48,7 @@ export default defineNuxtConfig({
   //   },
   // },
   image: {
+    provider: 'ipx',
     dir: 'assets/img',
   },
   colorMode: {

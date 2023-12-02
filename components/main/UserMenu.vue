@@ -8,7 +8,7 @@
     <v-list>
       <v-list-item>
         <v-list-item-title>
-          <NuxtLinkLocale :to="'/user/settings'" class="text-(color1) hover:(text-(color1)) no-underline">
+          <NuxtLinkLocale :to="'/user/settings'" class="text-(color1) hover:(text-(color1)) no-underline text-center">
             {{ $t('pages.settings') }}</NuxtLinkLocale>
         </v-list-item-title>
       </v-list-item>

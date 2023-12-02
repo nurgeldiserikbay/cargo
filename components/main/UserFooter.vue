@@ -3,7 +3,7 @@
     <v-btn v-for="link in CONTENT.links" :key="link.to" value="recent" :href="localePath(link.to)">
       <v-icon :icon="`mdi mdi-${link.icon}`"></v-icon>
 
-      <span>{{ link.text }}</span>
+      <span>{{ $t(link.text) }}</span>
     </v-btn>
   </v-bottom-navigation>
 </template>
