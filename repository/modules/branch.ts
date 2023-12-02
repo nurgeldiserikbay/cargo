@@ -1,4 +1,4 @@
-import type { IBranch } from '~/types/branch'
+import type { IBranch, IBranchCreate } from '~/types/branch'
 
 import HttpFactory from '../factory'
 
@@ -11,7 +11,15 @@ export class BranchModule extends HttpFactory {
     return await this.GET<IBranch>(`/warehouses/${id}`)
   }
 
-  async createBranch(branch: IBranch) {
+  async createBranch(branch: IBranchCreate) {
     return await this.POST<IBranch>('/warehouses', branch)
+  }
+
+  async updateBranch(id: number, branch: IBranchCreate) {
+    return await this.PUT<IBranch>(`/warehouses/${id}`, branch)
+  }
+
+  async removeBranch(id: number) {
+    return await this.DELETE(`/warehouses/${id}`)
   }
 }

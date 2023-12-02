@@ -1,4 +1,4 @@
-import type { IProduct, IProductCreate, IProductOwner } from '~/types/product'
+import type { IProduct, IProductCreate, IProductHistory, IProductInfoList, IProductInfoSearch, IProductOwner } from '~/types/product'
 import HttpFactory from '../factory'
 
 export class ProductModule extends HttpFactory {
@@ -10,8 +10,16 @@ export class ProductModule extends HttpFactory {
     return await this.POST<IProduct>(`/products`, product)
   }
 
+  async getAllProducts(search: IProductInfoSearch) {
+    return await this.GET<IProductInfoList>('/products/search', { query: search })
+  }
+
   async getProduct(id: number) {
     return await this.GET<IProduct>(`/products/${id}`)
+  }
+
+  async getProductHistory(id: number) {
+    return await this.GET<IProductHistory[]>(`/products/${id}/histories`)
   }
 
   async updateProduct(id: number, product: IProductCreate) {
@@ -19,6 +27,6 @@ export class ProductModule extends HttpFactory {
   }
 
   async updateByTrackCode(trackCode: string) {
-    return await this.PUT<IProduct>(`/products/${trackCode}/manage`)
+    return await this.POST<IProduct>(`/products/${trackCode}/commit`)
   }
 }

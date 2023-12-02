@@ -3,6 +3,7 @@ export default {
   locale: 'en',
   langDir: 'langs',
   lazy: true,
+  strategy: 'prefix_except_default',
   locales: [
     {
       code: 'en',

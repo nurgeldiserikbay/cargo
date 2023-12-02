@@ -1,16 +1,23 @@
 import { createVuetify } from 'vuetify'
 import '@mdi/font/css/materialdesignicons.css'
-import { VAlert, VApp, VBottomNavigation, VBtn, VCard, VContainer, VDataIterator, VExpansionPanel, VExpansionPanels, VIcon, VList, VListItem, VListItemTitle, VMenu, VNavigationDrawer, VPagination, VProgressCircular, VSelect, VTab, VTabs, VTextField } from 'vuetify/lib/components/index.mjs'
+import 'vuetify/styles'
+import { VLayout, VAlert, VApp, VBottomNavigation, VBtn, VCard, VContainer, VDataIterator, VDivider, VExpansionPanel, VExpansionPanels, VIcon, VList, VListItem, VListItemTitle, VMenu, VNavigationDrawer, VPagination, VProgressCircular, VSelect, VTab, VTabs, VTextField, VTooltip, VAppBarNavIcon, VMain, VAppBar, VSpacer, VToolbarTitle, VCol, VRow, VTextarea, VCheckbox, VForm } from 'vuetify/lib/components/index.mjs'
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
+    theme: {
+      defaultTheme: 'light',
+    },
     icons: {
       defaultSet: 'mdi',
     },
     ssr: true,
     components: {
+      VLayout,
       VApp,
       VContainer,
+      VCol,
+      VRow,
       VBottomNavigation,
       VBtn,
       VIcon,
@@ -29,7 +36,17 @@ export default defineNuxtPlugin((app) => {
       VTab,
       VDataIterator,
       VPagination,
-      VNavigationDrawer
+      VNavigationDrawer,
+      VTooltip,
+      VDivider,
+      VAppBarNavIcon,
+      VToolbarTitle,
+      VSpacer,
+      VAppBar,
+      VMain,
+      VTextarea,
+      VCheckbox,
+      VForm
     },
   })
 

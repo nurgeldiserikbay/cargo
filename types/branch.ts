@@ -1,5 +1,9 @@
-export interface IBranch {
-  id: number;
+export interface IBranchCreate {
   name: string;
-  branch: string;
+  address: string;
+  locationId: number;
+}
+
+export interface IBranch extends IBranchCreate {
+  id: number;
 }

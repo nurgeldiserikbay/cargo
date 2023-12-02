@@ -14,14 +14,13 @@
         </div>
       </form>
     </v-card>
-    <v-card class="d-flex flex-col items-start w-full max-w-980p px-5 py-5 pb-6 mb-12 rounded-lg">
+    <v-card v-if="getFaq.length" class="d-flex flex-col items-start w-full max-w-980p px-5 py-5 pb-6 mb-12 rounded-lg">
       <div class="text-h3 mb-5 text-left">{{ $t('titles.faq') }}</div>
       <v-expansion-panels>
         <v-expansion-panel v-for="faq in getFaq" :key="faq.id" :title="faq.question" :text="faq.answer">
         </v-expansion-panel>
       </v-expansion-panels>
     </v-card>
-
   </v-container>
 </template>
 
@@ -34,7 +33,6 @@ const { $api } = useNuxtApp()
 const { t: $t } = useI18n()
 const { setLoading } = useLoading()
 const { setError, setSuccess } = useAllert()
-const { data } = useAuth()
 
 definePageMeta({
   layout: 'user-layout',
@@ -60,13 +58,11 @@ const getFaq = computed(() => CONTENT.faq)
 
 const submit = handleSubmit(async () => {
   try {
-    if (!data.value || !values.trackCode) return
+    if (!values.trackCode) return
     setLoading('global', true)
     const { status, error } = await $api.product.addProduct({
       trackCode: values.trackCode,
       description: values.description,
-      ownerId: data.value?.id,
-      warehouseId: data.value?.warehouseId
     })
     if (status.value === 'success') {
       setSuccess({

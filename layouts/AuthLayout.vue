@@ -1,7 +1,9 @@
 <template>
   <div class="auth-layout min-h-full d-flex flex-col">
     <MainHeader :is-auth="true" />
-    <slot></slot>
+    <NuxtErrorBoundary>
+      <slot></slot>
+    </NuxtErrorBoundary>
   </div>
 </template>
 

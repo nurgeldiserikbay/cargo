@@ -1,7 +1,7 @@
 <template>
   <v-menu :offset="10">
     <template v-slot:activator="{ props }">
-      <v-btn color="secondary" v-bind="props" :icon="true" :rounded="'true'" :size="'small'" :shadow="false">
+      <v-btn :color="color" v-bind="props" :icon="true" :rounded="'true'" :size="'small'" :shadow="false">
         <v-icon icon="mdi mdi-translate"></v-icon>
       </v-btn>
     </template>
@@ -19,6 +19,10 @@
 
 <script lang="ts" setup>
 import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
+
+defineProps<{
+  color?: string;
+}>()
 
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()

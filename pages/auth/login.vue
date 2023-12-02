@@ -38,7 +38,7 @@ definePageMeta({
 const schema = toTypedSchema(
   z.object({
     phoneNumber: z.string().refine((v) => validator.isMobilePhone(v)),
-    password: z.string().min(8),
+    password: z.string().min(4),
   })
 )
 

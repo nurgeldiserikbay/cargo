@@ -1,7 +1,10 @@
-import type { IBranch } from "./branch"
+export type LocationTypes = 'BORDER' | 'CHINA' | 'KZ'
 
-export interface ICity {
-  id: number;
+export interface ICityCreate {
   name: string;
-  warehouses: IBranch[]
+  type: LocationTypes;
+}
+
+export interface ICity extends ICityCreate {
+  id: number;
 }

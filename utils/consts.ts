@@ -1,5 +1,13 @@
 import type { TypeAlerts } from "~/types/common"
+import type { LocationTypes } from "~/types/location"
 import type { TypeRoles } from "~/types/users"
+
+
+export const LOCATION_TYPES: { [key in LocationTypes]: LocationTypes } = {
+  BORDER: 'BORDER',
+  CHINA: 'CHINA',
+  KZ: 'KZ',
+}
 
 export const CONTENT = {
   faq: [
@@ -64,18 +72,22 @@ export const CONTENT = {
   places: [
     {
       id: 0,
-      type: 'china',
-      icon: 'earth',
+      type: '',
+      icon: 'store-clock',
     },
     {
       id: 1,
-      type: 'border',
-      icon: '',
+      type: LOCATION_TYPES.CHINA,
+      icon: 'earth',
+    },
+    {
+      id: 2,
+      type: LOCATION_TYPES.BORDER,
       iconPath: 'kz-border'
     },
     {
       id: 3,
-      type: 'branch',
+      type: LOCATION_TYPES.KZ,
       icon: 'home-account',
     }
   ],
@@ -110,19 +122,19 @@ export const ADMIN_MENUS = [
     text: 'pages.personals',
     roles: [ROLES.ROLE_ADMIN]
   },
-  {
-    to: '/admin/products',
-    text: 'pages.products',
-    roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
-  },
-  {
-    to: '/admin/users',
-    text: 'pages.users',
-    roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
-  },
+  // {
+  //   to: '/admin/products',
+  //   text: 'pages.products',
+  //   roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
+  // },
+  // {
+  //   to: '/admin/users',
+  //   text: 'pages.users',
+  //   roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
+  // },
   {
     to: '/admin/checkProduct',
     text: 'pages.checkProduct',
-    roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
+    roles: [ROLES.ROLE_MANAGER]
   },
 ]

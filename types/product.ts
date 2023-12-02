@@ -1,3 +1,6 @@
+import type { IPageMeta, IPagination } from './common'
+import type { LocationTypes } from './location'
+
 export interface IProductOwner {
   firstName: string;
   lastName: string;
@@ -10,9 +13,9 @@ export interface IProductOwner {
 
 export interface IProductCreate {
   description?: string;
-  ownerId: number;
+  ownerId?: number;
   trackCode: string;
-  warehouseId: number;
+  warehouseId?: number;
 }
 
 export interface IProduct extends IProductCreate {
@@ -21,4 +24,25 @@ export interface IProduct extends IProductCreate {
   ownerId: number;
   trackCode: string;
   warehouseId: number;
+}
+
+export interface IProductInfo {
+  id: number;
+  trackCode: string;
+  description?: string;
+}
+
+export interface IProductInfoSearch extends IPagination {
+  locationType?: LocationTypes
+}
+
+export interface IProductInfoList extends IPageMeta {
+  content: IProductInfo[];
+}
+
+export interface IProductHistory {
+  createdDate: string;
+  id: number;
+  warehouseAddress: string;
+  warehouseName: string;
 }

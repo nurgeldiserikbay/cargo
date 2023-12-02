@@ -7,9 +7,7 @@ export const useLocationStore = defineStore('location', () => {
 
   const cities = ref<ICity[]>([])
 
-  const getCityBranches = computed(() => (id: number) => {
-    return cities.value.find((c) => c.id === id)?.warehouses || []
-  })
+  const getCityById = computed(() => (id: number) => cities.value.find((c) => c.id === id))
 
   async function fetchCities() {
     const result = await $api.location.getLocations()
@@ -22,6 +20,6 @@ export const useLocationStore = defineStore('location', () => {
   return {
     cities,
     fetchCities,
-    getCityBranches
+    getCityById
   }
 })

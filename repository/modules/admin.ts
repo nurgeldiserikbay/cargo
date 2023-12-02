@@ -1,8 +1,25 @@
-import type { IUserCreate } from '~/types/users'
+import type { UseFetchOptions } from 'nuxt/app'
+import type { IAdminUserCreate, IAdminUser } from '~/types/users'
 import HttpFactory from '../factory'
 
 export class AdminModule extends HttpFactory {
-  async createAdmin(userData: IUserCreate) {
-    return await this.POST<IUserCreate>('/admin/users', userData)
+  async createAdmin(userData: IAdminUserCreate) {
+    return await this.POST<IAdminUserCreate>('/admin/users', userData)
+  }
+
+  async updateAdmin(id: number, userData: IAdminUserCreate) {
+    return await this.PUT<IAdminUserCreate>(`/admin/users/${id}`, userData)
+  }
+
+  async removeAdmin(id: number) {
+    return await this.DELETE(`/admin/users/${id}`)
+  }
+
+  async lockAdmin(id: number, userData: IAdminUserCreate) {
+    return await this.PUT<IAdminUserCreate>(`/admin/users/${id}`, userData)
+  }
+
+  async getAdmins<DataT>(params?: UseFetchOptions<DataT>) {
+    return this.GET<IAdminUser[]>('/api/admin/users', params)
   }
 }

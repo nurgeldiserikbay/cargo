@@ -1,12 +1,13 @@
 <template>
   <v-select :model-value="modelValue" :label="$t('labels.selectBranch')" :items="branches" :clearable="true"
-    :item-value="'id'" :item-title="'name'" @update:modelValue="$emits('update:modelValue', $event)"></v-select>
+    :item-value="'id'" :item-title="'name'" :no-data-text="$t('messages.noData')" :loading="pending"
+    @update:modelValue="$emits('update:modelValue', $event)"></v-select>
 </template>
 
 <script lang="ts" setup>
-import { useLocationStore } from '~/store/location'
+import { useBranchStore } from '~/store/branch'
 
-const catalogStore = useLocationStore()
+const branchStore = useBranchStore()
 
 const $props = defineProps<{
   modelValue?: number;
@@ -15,11 +16,16 @@ const $props = defineProps<{
 
 const $emits = defineEmits(['update:modelValue'])
 
+const branches = computed(() => {
+  if (typeof $props.cityId === 'number') return branchStore.branches.filter((b) => b.locationId === $props.cityId)
+  return branchStore.branches
+})
+
 watch(() => $props.cityId, () => {
   $emits('update:modelValue', undefined)
 })
 
-const branches = computed(() => typeof $props.cityId === 'number' ? catalogStore.getCityBranches($props.cityId) : [])
+const { pending } = await branchStore.fetchBranches()
 </script>
 
 <style lang="scss" scoped></style>
