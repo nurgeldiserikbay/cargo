@@ -47,15 +47,9 @@ export default defineNuxtConfig({
   //     },
   //   },
   // },
-  image: {
-    provider: 'ipx',
-  },
   colorMode: {
     preference: 'light',
     classSuffix: '',
-  },
-  app: {
-    baseURL: '/'
   },
   i18n: i18n,
   auth: {
