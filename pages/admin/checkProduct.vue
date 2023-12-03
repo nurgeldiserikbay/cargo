@@ -4,7 +4,7 @@
       <v-col class="text-h4 text-center">{{ $t('titles.checkProduct') }}</v-col>
     </v-row>
     <v-form class="max-w-500px m-auto flex flex-col">
-      <v-text-field v-bind="trackCode" :label="$t('labels.trackCode')" :error-messages="errors.trackCode"
+      <v-text-field v-bind="trackCode" :label="$t('labels.trackCode')" :error-messages="zodI18n(errors.trackCode)"
         hide-details :clearable="true" :autofocus="true"></v-text-field>
       <v-checkbox v-model="autoFetch" :label="$t('labels.autoFetch')" color="indigo" value="indigo" hide-details
         class="mb-5 self-end"></v-checkbox>
@@ -65,7 +65,7 @@ async function fetchProduct() {
   try {
     if (!values.trackCode) return
     setLoading('global', true)
-    const { status, data, error } = await $api.product.updateByTrackCode(values.trackCode)
+    const { status, error } = await $api.product.updateByTrackCode(values.trackCode)
     if (status.value === 'success') {
       setSuccess({
         title: $t('messages.successProductRegistered')
@@ -81,10 +81,6 @@ async function fetchProduct() {
   finally {
     setLoading('global', false)
   }
-}
-
-function clearForm() {
-  handleReset()
 }
 </script>
 

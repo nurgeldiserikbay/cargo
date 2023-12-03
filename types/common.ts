@@ -1,7 +1,8 @@
 export interface ErrorT {
-  statusCode?: number
-  statusMessage?: string
-  message?: string
+  status?: number;
+  statusCode?: number;
+  statusMessage?: string;
+  message?: string;
 }
 
 export interface IAlertShort {

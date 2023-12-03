@@ -1,8 +1,8 @@
 <template>
   <v-menu :offset="10">
     <template v-slot:activator="{ props }">
-      <v-btn :color="color" v-bind="props" :icon="true" :rounded="'true'" :size="'small'" :shadow="false">
-        <v-icon icon="mdi mdi-translate"></v-icon>
+      <v-btn :color="color" v-bind="props" :size="'small'" :shadow="false">
+        <span>{{ locale }}</span>
       </v-btn>
     </template>
     <v-list>

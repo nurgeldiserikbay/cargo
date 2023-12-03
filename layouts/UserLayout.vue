@@ -1,9 +1,7 @@
 <template>
   <div class="user-layout min-h-full d-flex flex-col">
     <MainHeader />
-    <NuxtErrorBoundary>
-      <slot></slot>
-    </NuxtErrorBoundary>
+    <slot></slot>
     <UserFooter class="!md:hidden" />
   </div>
 </template>

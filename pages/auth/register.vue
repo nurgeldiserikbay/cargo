@@ -5,18 +5,20 @@
         <div class="text-2xl mb-4 capitalize lg:(text-3xl)">{{ $t('pages.register') }}</div>
         <form @submit.prevent="submit" class="w-full grid gap-x-2 gap-y-2 md:(grid-cols-2)">
           <v-text-field v-bind="firstName" :label="$t('labels.firstName')"
-            :error-messages="errors.firstName"></v-text-field>
-          <v-text-field v-bind="lastName" :label="$t('labels.lastName')" :error-messages="errors.lastName"></v-text-field>
-          <v-text-field v-bind="email" :label="$t('labels.email')" :error-messages="errors.email"></v-text-field>
-          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="errors.phoneNumber">
+            :error-messages="zodI18n(errors.firstName)"></v-text-field>
+          <v-text-field v-bind="lastName" :label="$t('labels.lastName')"
+            :error-messages="zodI18n(errors.lastName)"></v-text-field>
+          <v-text-field v-bind="email" :label="$t('labels.email')" :error-messages="zodI18n(errors.email)"></v-text-field>
+          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="zodI18n(errors.phoneNumber)">
           </MaskField>
-          <v-text-field v-bind="password" :label="$t('labels.password')" :error-messages="errors.password"></v-text-field>
+          <v-text-field v-bind="password" :label="$t('labels.password')"
+            :error-messages="zodI18n(errors.password)"></v-text-field>
           <v-text-field v-bind="confirmPassword" :label="$t('labels.confirmPassword')"
-            :error-messages="errors.confirmPassword"></v-text-field>
+            :error-messages="zodI18n(errors.confirmPassword)"></v-text-field>
           <SelectCity v-model="city" />
           <SelectBranch v-bind="warehouseId" :cityId="city" />
           <div class="d-flex justify-center md:(col-span-2)">
-            <v-btn class="me-4" variant="elevated" type="submit" :disabled="false" :loading="getLoading('register')">
+            <v-btn class="me-4" variant="elevated" type="submit" :disabled="false">
               {{ $t('commands.submit') }}
             </v-btn>
           </div>
@@ -39,7 +41,7 @@ const { $api } = useNuxtApp()
 const { t: $t } = useI18n()
 const localePath = useLocalePath()
 const router = useRouter()
-const { getLoading, setLoading } = useLoading()
+const { setLoading } = useLoading()
 const { setError, setSuccess } = useAllert()
 
 definePageMeta({
@@ -53,8 +55,8 @@ const schema = toTypedSchema(
     firstName: z.string().min(1).max(200),
     lastName: z.string().min(1).max(200),
     email: z.optional(z.string().email()),
-    password: z.string().min(8),
-    confirmPassword: z.string().min(8),
+    password: z.string().min(4),
+    confirmPassword: z.string().min(4),
     phoneNumber: z.string().refine((v) => validator.isMobilePhone(v)),
     warehouseId: z.number(),
   }).superRefine(({ confirmPassword, password }, ctx) => {
@@ -82,7 +84,7 @@ const city = ref()
 
 const submit = handleSubmit(async () => {
   try {
-    setLoading('register', true)
+    setLoading('global', true)
     const subData = rmObjFields(values, ['confirmPassword'])
     const { status, error } = await $api.auth.register(subData as IUserCreate)
     if (status.value === 'success') {
@@ -98,7 +100,7 @@ const submit = handleSubmit(async () => {
     }
   }
   finally {
-    setLoading('register', false)
+    setLoading('global', false)
   }
 }, () => { })
 

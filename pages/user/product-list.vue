@@ -5,7 +5,7 @@
       <v-btn v-for="place in CONTENT.places" :key="place.id" :rounded="'rounded-circle'" :icon="true" size="x-large"
         :active="place.type === currentType" @click="changeType(place.type)"
         :color="place.type === currentType ? 'teal-accent-2' : 'light-blue-lighten-2'">
-        <v-tooltip activator="parent" location="top">{{ $t(`places.${place.type}`) }}</v-tooltip>
+        <v-tooltip activator="parent" location="top">{{ place.type ? $t(`places.${place.type}`) : $t(`labels.shop`) }}</v-tooltip>
         <v-icon v-if="place.icon && !place.iconPath" :icon="`mdi mdi-${place.icon}`" size="x-large"
           color="white"></v-icon>
         <component v-if="!place.icon && place.iconPath" :is="`svgo-${place.iconPath}`"
@@ -15,7 +15,7 @@
     </div>
 
     <v-card class="w-full">
-      <v-data-iterator :items="productList" :loading="getLoading('productList')">
+      <v-data-iterator :items="productList">
         <template v-slot:default="{ items }">
           <template v-for="(item, i) in items" :key="i">
             <v-expansion-panels variant="accordion">
@@ -37,8 +37,7 @@
           <ListEmptyBanner></ListEmptyBanner>
         </template>
       </v-data-iterator>
-      <v-pagination v-if="pagesCount > 1" :model-value="curPage" :length="pagesCount" class="mt-4 mb-5"
-        :loading="getLoading('productList')" @update:model-value="changePage"></v-pagination>
+      <v-pagination v-if="pagesCount > 1" :model-value="curPage" :length="pagesCount" class="mt-4 mb-5" @update:model-value="changePage"></v-pagination>
     </v-card>
 
   </v-container>
@@ -58,7 +57,7 @@ const localePath = useLocalePath()
 const $router = useRouter()
 const $route = useRoute()
 const { $api } = useNuxtApp()
-const { setLoading, getLoading } = useLoading()
+const { setLoading } = useLoading()
 
 const currentType = computed(() => {
   return String($route.query.type || '')
@@ -79,7 +78,7 @@ watch(() => $route.query, () => {
 
 async function fetchList() {
   try {
-    setLoading('productList', true)
+    setLoading('global', true)
     const opt: IProductInfoSearch = {
       paged: true,
       pageNumber: curPage.value,
@@ -92,7 +91,7 @@ async function fetchList() {
     throw e
   }
   finally {
-    setLoading('productList', false)
+    setLoading('global', false)
   }
 }
 

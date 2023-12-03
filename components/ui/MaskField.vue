@@ -1,6 +1,6 @@
 <template>
-  <v-text-field :modelValue="mask.masked(modelValue || '')" :error-messages="errorMessages" label="Phone Number"
-    v-maska="{ mask: '7 (7##) ### ## ##' }" @update:model-value="update" @onBlur="$emits('blur')">
+  <v-text-field :modelValue="maskFunc.masked(modelValue || '')" :error-messages="errorMessages" label="Phone Number" :placeholder="mask"
+    @update:model-value="update" @onBlur="$emits('blur')">
   </v-text-field>
 </template>
 
@@ -12,15 +12,15 @@ const $props = withDefaults(defineProps<{
   errorMessages?: string,
   mask?: string
 }>(), {
-  mask: '+7(###)-###-##-##'
+  mask: '# (###) ### ## ##'
 })
 
 const $emits = defineEmits(['update:modelValue', 'blur'])
 
-const mask = new Mask({ mask: $props.modelValue, eager: true })
+const maskFunc = new Mask({ mask: $props.mask, eager: true })
 
 function update(value: string) {
-  $emits('update:modelValue', mask.unmasked(value))
+  $emits('update:modelValue', maskFunc.unmasked(value))
 }
 </script>
 

@@ -6,11 +6,11 @@
       </v-row>
       <v-row :align="'stretch'">
         <v-col cols="12" md="4" order="1">
-          <v-text-field v-bind="name" :label="$t('labels.branchName')" :error-messages="errors.name"
+          <v-text-field v-bind="name" :label="$t('labels.branchName')" :error-messages="zodI18n(errors.name)"
             hide-details></v-text-field>
         </v-col>
         <v-col cols="12" md="4" order="2">
-          <SelectCity v-bind="locationId" :label="$t('labels.city')" :error-messages="errors.locationId" />
+          <SelectCity v-bind="locationId" :label="$t('labels.city')" :error-messages="zodI18n(errors.locationId)" />
         </v-col>
         <v-col cols="12" md="4" order="4" order-md="3" class="flex justify-end gap-5">
           <v-btn variant="elevated" type="submit" color="secondary" size="x-large" @click.prevent="submit">
@@ -21,7 +21,7 @@
           </v-btn>
         </v-col>
         <v-col cols="12" md="8" order="3" order-md="4">
-          <v-textarea v-bind="address" :rows="1" :label="$t('labels.branchAddress')" :error-messages="errors.name"></v-textarea>
+          <v-textarea v-bind="address" :rows="1" :label="$t('labels.branchAddress')" :error-messages="zodI18n(errors.name)"></v-textarea>
         </v-col>
       </v-row>
     </v-container>
@@ -45,7 +45,7 @@ const { setError, setSuccess } = useAllert()
 
 const schema = toTypedSchema(
   z.object({
-    name: z.string().min(1).max(250),
+    name: z.string().min(1).max(500),
     address: z.string().min(1).max(500),
     locationId: z.number(),
   })
@@ -61,7 +61,6 @@ const locationId = defineComponentBinds('locationId')
 
 watch(() => $props.selectedBranch, () => {
   if (!$props.selectedBranch) return
-  console.log($props.selectedBranch)
   setValues($props.selectedBranch)
 })
 

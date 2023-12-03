@@ -7,17 +7,17 @@
       <v-row :align="'stretch'">
         <v-col cols="12" md="4">
           <v-text-field v-bind="firstName" :label="$t('labels.firstName')"
-            :error-messages="errors.firstName"></v-text-field>
+            :error-messages="zodI18n(errors.firstName)"></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field v-bind="lastName" :label="$t('labels.lastName')" :error-messages="errors.lastName"></v-text-field>
+          <v-text-field v-bind="lastName" :label="$t('labels.lastName')" :error-messages="zodI18n(errors.lastName)"></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
-          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="errors.phoneNumber">
+          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="zodI18n(errors.phoneNumber)">
           </MaskField>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field v-bind="password" :label="$t('labels.password')" :error-messages="errors.password"></v-text-field>
+          <v-text-field v-bind="password" :label="$t('labels.password')" :error-messages="zodI18n(errors.password)"></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
           <SelectCity v-model="city" />
@@ -58,7 +58,7 @@ const schema = toTypedSchema(
   z.object({
     firstName: z.string().min(1).max(200),
     lastName: z.string().min(1).max(200),
-    password: z.string().min(8),
+    password: z.string().min(4),
     phoneNumber: z.string().refine((v) => validator.isMobilePhone(v)),
     warehouseId: z.number(),
   })

@@ -4,9 +4,9 @@
       <form @submit.prevent="submit" class="w-full gap-x-3 gap-y-4 justify-center">
         <div class="text-h4 mb-7 text-center">{{ $t('titles.addProduct') }}</div>
         <v-text-field v-bind="trackCode" :label="$t('labels.trackCode')"
-          :error-messages="errors.trackCode"></v-text-field>
+          :error-messages="zodI18n(errors.trackCode)"></v-text-field>
         <v-text-field v-bind="description" :label="$t('labels.description')"
-          :error-messages="errors.description"></v-text-field>
+          :error-messages="zodI18n(errors.description)"></v-text-field>
         <div class="col-span-2 d-flex justify-center">
           <v-btn class="me-4" variant="elevated" type="submit">
             {{ $t('commands.submit') }}
@@ -59,7 +59,6 @@ const getFaq = computed(() => CONTENT.faq)
 const submit = handleSubmit(async () => {
   try {
     if (!values.trackCode) return
-    setLoading('global', true)
     const { status, error } = await $api.product.addProduct({
       trackCode: values.trackCode,
       description: values.description,

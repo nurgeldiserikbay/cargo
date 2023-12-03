@@ -4,12 +4,13 @@
       <v-card class="d-flex flex-col items-center w-full max-w-400px px-5 py-5 pb-6 mb-12 rounded-lg">
         <div class="text-2xl mb-4 capitalize lg:(text-3xl)">{{ $t('pages.login') }}</div>
         <form @submit.prevent="submit" class="w-full grid gap-x-3 gap-y-4">
-          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="errors.phoneNumber">
+          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="zodI18n(errors.phoneNumber)">
           </MaskField>
-          <v-text-field v-bind="password" :label="$t('labels.password')" :error-messages="errors.password"></v-text-field>
+          <v-text-field v-bind="password" :label="$t('labels.password')"
+            :error-messages="zodI18n(errors.password)"></v-text-field>
           <div class="d-flex justify-center">
-            <v-btn variant="elevated" type="submit" :disabled="status === 'loading'" :loading="status === 'loading'">
-              {{ $t('commands.submit') }}
+            <v-btn variant="elevated" type="submit">
+              {{ $t('pages.login') }}
             </v-btn>
           </div>
         </form>
@@ -28,6 +29,8 @@ import validator from 'validator'
 
 const { setError } = useAllert()
 const localePath = useLocalePath()
+const { setLoading } = useLoading()
+const { t: $t } = useI18n()
 
 definePageMeta({
   auth: false,
@@ -53,15 +56,18 @@ const { status, signIn } = useAuth()
 
 const submit = handleSubmit(async (values) => {
   try {
+    setLoading('global', true)
     await signIn(values, { callbackUrl: localePath('/') })
-
     if (status.value === 'unauthenticated') setError({ title: status.value || '' })
   } catch (e: any) {
-    if (e?.response?._data) {
-      setError({ title: e.response._data.error || '' })
-    }
+    setError({ title: $t('messages.loginError') })
   }
-}, () => { })
+  finally {
+    setLoading('global', false)
+  }
+}, (err) => {
+  console.log('errr', err)
+})
 </script>
 
 <style lang="scss" scoped></style>

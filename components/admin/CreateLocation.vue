@@ -6,13 +6,13 @@
       </v-row>
       <v-row :align="'stretch'">
         <v-col cols="12" md="4">
-          <v-text-field v-bind="name" :label="$t('labels.cityName')" :error-messages="errors.name"
+          <v-text-field v-bind="name" :label="$t('labels.cityName')" :error-messages="zodI18n(errors.name)"
             hide-details></v-text-field>
         </v-col>
 
         <v-col cols="12" md="4">
           <v-select v-bind="type" :label="$t('labels.cityType')" :items="getCityTypes"
-            :error-messages="errors.type"></v-select>
+            :error-messages="zodI18n(errors.type)"></v-select>
         </v-col>
 
         <v-col cols="12" md="4" class="flex center gap-5">
@@ -45,7 +45,7 @@ const { setError, setSuccess } = useAllert()
 
 const schema = toTypedSchema(
   z.object({
-    name: z.string().min(1).max(250),
+    name: z.string().min(1).max(500),
     type: z.enum([LOCATION_TYPES.BORDER, LOCATION_TYPES.CHINA, LOCATION_TYPES.KZ]),
   })
 )

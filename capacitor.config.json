@@ -1,0 +1,8 @@
+{
+  "appId": "com.tauekel.thelightcome",
+  "appName": "tauekel",
+  "webDir": ".output",
+  "server": {
+    "androidScheme": "https"
+  }
+}

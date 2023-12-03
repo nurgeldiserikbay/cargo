@@ -26,12 +26,7 @@
       </v-navigation-drawer>
 
       <v-main>
-        <NuxtErrorBoundary>
-          <slot></slot>
-          <template #error="{ error }">
-            <ErrorBlock :error="{ statusCode: error.statusCode }"></ErrorBlock>
-          </template>
-        </NuxtErrorBoundary>
+        <slot></slot>
       </v-main>
     </v-layout>
   </v-card>

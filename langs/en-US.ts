@@ -11,9 +11,9 @@ export default {
   pages: {
     login: 'Sign in',
     register: 'Sigh up',
-    user: 'Adding a product',
-    productList: 'List of my products',
-    info: 'Information about the branch',
+    user: 'Main',
+    productList: 'Products',
+    info: 'Branch',
     calculation: 'Calculator',
     locations: 'Localities',
     branchs: 'Branches',
@@ -46,6 +46,7 @@ export default {
     unlock: 'Unlock',
     lock: 'Block',
     autoFetch: 'Enable auto-registration',
+    shop: 'In the shop',
   },
   commands: {
     submit: 'Send',
@@ -54,10 +55,12 @@ export default {
     select: 'Choose',
     update: 'Update',
     goBack: 'Go back',
+    toMainPage: 'To main',
   },
   messages: {
     successRegister: 'You have registered successfully!',
-    successProductAdd: 'The locality has been successfully created',
+    successProductAdd: 'The product has been successfully added!',
+    successLocationCreate: 'The locality has been added successfully!',
     successLocationRemove: 'The locality has been successfully deleted',
     successBranchCreate: 'The branch has been successfully created',
     successBranchRemove: 'The branch was successfully deleted',
@@ -65,11 +68,25 @@ export default {
     successAdminRemove: 'The manager was successfully deleted',
     noData: 'No data available',
     someUnexceptableError: 'Oops... An unexpected error has occurred',
-    successProductRegistered: 'The product is registered'
+    successProductRegistered: 'The product is registered',
+    loginError: 'Login error',
+    pageNotFound: 'Page not found',
   },
   places: {
     CHINA: 'In China',
     BORDER: 'On the border',
     KZ: 'In Kazakhstan',
-  }
+  },
+  errors: {
+    'Required': 'This field is required',
+    'The passwords did not match': 'Passwords don\'t match',
+    'Invalid email': 'Invalid email',
+    'Invalid input': 'Invalid field format',
+    'String must contain at most 150 character(s)': 'The string must contain no more than 150 characters',
+    'String must contain at most 700 character(s)': 'The string must contain no more than 700 characters',
+    'String must contain at most 200 character(s)': 'The string must contain no more than 200 characters',
+    'String must contain at most 500 character(s)': 'The string must contain no more than 500 characters',
+    'String must contain at least 4 character(s)': 'The string must contain at least 4 characters',
+    'String must contain at least 10 character(s)': 'The string must contain at least 10 characters',
+  },
 }
