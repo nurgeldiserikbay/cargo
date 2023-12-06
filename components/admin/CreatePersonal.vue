@@ -23,7 +23,7 @@
           <SelectCity v-model="city" />
         </v-col>
         <v-col cols="12" md="4">
-          <SelectBranch v-bind="warehouseId" :cityId="city" />
+          <SelectBranch v-bind="warehouseId" :cityId="city" :errors="zodI18n(errors.warehouseId)" />
         </v-col>
         <v-col cols="12" md="4" class="flex center gap-5">
           <v-btn variant="elevated" type="submit" color="secondary" size="x-large" @click.prevent="submit">
@@ -106,9 +106,9 @@ const submit = handleSubmit(async () => {
       handleReset()
     }
     if (status.value === 'error') setError({ title: error.value?.message || '' })
-  } catch (e: any) {
-    if (e?.response?._data) {
-      setError({ title: e.response._data.error || '' })
+  } catch (error: any) {
+    if (error?.response?._data) {
+      setError({ title: error.response._data.error || '' })
     }
   }
   finally {

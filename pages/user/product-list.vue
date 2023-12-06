@@ -1,12 +1,12 @@
 <template>
   <v-container class="flex-grow-1 d-flex flex-col justify-start items-center">
     <div
-      class="w-full max-w-70vw flex justify-between items-center gap-x-4 mt-15 relative before:(content-[''] absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-2 bg-white rounded-lg) mb-12 px-8">
-      <v-btn v-for="place in CONTENT.places" :key="place.id" :rounded="'rounded-circle'" :icon="true" size="x-large"
+      class="w-full max-w-70vw flex justify-around items-center gap-x-4 mt-15 relative before:(content-[''] absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-2 bg-white rounded-lg) mb-12">
+      <v-btn v-for="place in CONTENT.places" :key="place.id" :rounded="'rounded-circle'" :icon="true" size="default"
         :active="place.type === currentType" @click="changeType(place.type)"
         :color="place.type === currentType ? 'teal-accent-2' : 'light-blue-lighten-2'">
         <v-tooltip activator="parent" location="top">{{ place.type ? $t(`places.${place.type}`) : $t(`labels.shop`) }}</v-tooltip>
-        <v-icon v-if="place.icon && !place.iconPath" :icon="`mdi mdi-${place.icon}`" size="x-large"
+        <v-icon v-if="place.icon && !place.iconPath" :icon="`mdi mdi-${place.icon}`" size="default"
           color="white"></v-icon>
         <component v-if="!place.icon && place.iconPath" :is="`svgo-${place.iconPath}`"
           class="block !w-15 !h-10 !fill-white !stroke-white">
@@ -87,7 +87,7 @@ async function fetchList() {
     if (currentType.value) opt['locationType'] = currentType.value as LocationTypes
     const { status, data } = await $api.product.getAllProducts(opt)
     if (status.value === 'success') productList.value = data.value?.content || []
-  } catch (e: any) {
+  } catch (error: any) {
     throw e
   }
   finally {

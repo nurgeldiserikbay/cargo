@@ -1,7 +1,7 @@
 import { createVuetify } from 'vuetify'
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-import { VLayout, VAlert, VApp, VBottomNavigation, VBtn, VCard, VContainer, VDataIterator, VDivider, VExpansionPanel, VExpansionPanels, VIcon, VList, VListItem, VListItemTitle, VMenu, VNavigationDrawer, VPagination, VProgressCircular, VSelect, VTab, VTabs, VTextField, VTooltip, VAppBarNavIcon, VMain, VAppBar, VSpacer, VToolbarTitle, VCol, VRow, VTextarea, VCheckbox, VForm } from 'vuetify/lib/components/index.mjs'
+import { VLayout, VAlert, VApp, VBottomNavigation, VBtn, VCard, VContainer, VDataIterator, VDivider, VExpansionPanel, VExpansionPanels, VIcon, VList, VListItem, VListItemTitle, VMenu, VNavigationDrawer, VPagination, VProgressCircular, VSelect, VTab, VTabs, VTextField, VTooltip, VAppBarNavIcon, VMain, VAppBar, VSpacer, VToolbarTitle, VCol, VRow, VTextarea, VCheckbox, VForm, VField } from 'vuetify/lib/components/index.mjs'
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
@@ -46,7 +46,8 @@ export default defineNuxtPlugin((app) => {
       VMain,
       VTextarea,
       VCheckbox,
-      VForm
+      VForm,
+      VField,
     },
   })
 

@@ -28,7 +28,7 @@
         <div class="flex justify-between items-center gap-8 gap-y-4 flex-wrap lg:flex-nowrap">
           <div class="flex-grow max-w-[380px]">
             <div class="text-h6 mb-4">{{ $t('labels.productMass') }}</div>
-            <v-text-field v-model="mass" :floating="true" :rules="[(v) => v < 0 ? $t('errors.OnlyPosNumbers') : true, (v) => v > 500 ? $t('error.maxMass', [500]) : true]" variant="solo" type="number" class="!text-lg" hide-spin-buttons>
+            <v-text-field v-model="mass" :floating="true" :rules="[(v) => v < 0 ? $t('errors.OnlyPosNumbers') : true, (v) => v > 500 ? $t('errors.maxMass', [500]) : true]" variant="solo" type="number" class="!text-lg" hide-spin-buttons>
               <template #prepend>
                 <v-icon icon="mdi mdi-weight-kilogram" color="black" size="x-large"></v-icon>
               </template>

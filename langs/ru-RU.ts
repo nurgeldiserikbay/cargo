@@ -69,7 +69,7 @@ export default {
     noData: 'Нет данных',
     someUnexceptableError: 'Упс... Возникла непредвиденная ошибка',
     successProductRegistered: 'Товар зарегистрирован',
-    loginError: 'Ошибка входа',
+    loginError: 'Вы ввели неверный пароль',
     pageNotFound: 'Страница не найдена',
   },
   places: {
@@ -88,5 +88,6 @@ export default {
     'String must contain at most 500 character(s)': 'Строка должна содержать не более 500 символов',
     'String must contain at least 4 character(s)': 'Строка должна содержать не менее 4 символов',
     'String must contain at least 10 character(s)': 'Строка должна содержать не менее 10 символов',
+    'maxMass': 'Указанное значение превышает максимальное допустимое значение',
   },
 }

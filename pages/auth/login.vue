@@ -6,7 +6,7 @@
         <form @submit.prevent="submit" class="w-full grid gap-x-3 gap-y-4">
           <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="zodI18n(errors.phoneNumber)">
           </MaskField>
-          <v-text-field v-bind="password" :label="$t('labels.password')"
+          <v-text-field v-bind="password" type="password" :label="$t('labels.password')"
             :error-messages="zodI18n(errors.password)"></v-text-field>
           <div class="d-flex justify-center">
             <v-btn variant="elevated" type="submit">
@@ -59,14 +59,12 @@ const submit = handleSubmit(async (values) => {
     setLoading('global', true)
     await signIn(values, { callbackUrl: localePath('/') })
     if (status.value === 'unauthenticated') setError({ title: status.value || '' })
-  } catch (e: any) {
-    setError({ title: $t('messages.loginError') })
+  } catch (error: any) {
+    if (error.status) setError({ title: $t('messages.loginError') })
   }
   finally {
     setLoading('global', false)
   }
-}, (err) => {
-  console.log('errr', err)
 })
 </script>
 

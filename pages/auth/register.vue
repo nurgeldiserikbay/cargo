@@ -3,20 +3,34 @@
     <div class="flex-grow-1 d-flex flex-col justify-center items-center pt-6">
       <v-card class="d-flex flex-col items-center w-full max-w-600px px-5 py-5 pb-6 mb-12 rounded-lg">
         <div class="text-2xl mb-4 capitalize lg:(text-3xl)">{{ $t('pages.register') }}</div>
-        <form @submit.prevent="submit" class="w-full grid gap-x-2 gap-y-2 md:(grid-cols-2)">
-          <v-text-field v-bind="firstName" :label="$t('labels.firstName')"
-            :error-messages="zodI18n(errors.firstName)"></v-text-field>
-          <v-text-field v-bind="lastName" :label="$t('labels.lastName')"
-            :error-messages="zodI18n(errors.lastName)"></v-text-field>
+        <form @submit.prevent="onSubmit" class="w-full grid gap-x-2 gap-y-2 md:(grid-cols-2)">
+          <v-text-field v-bind="firstName" :label="$t('labels.firstName')" :error-messages="zodI18n(errors.firstName)">
+            <template #append-inner>
+              <v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+            </template>
+          </v-text-field>
+          <v-text-field v-bind="lastName" :label="$t('labels.lastName')" :error-messages="zodI18n(errors.lastName)">
+            <template #append-inner>
+              <v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+            </template>
+          </v-text-field>
           <v-text-field v-bind="email" :label="$t('labels.email')" :error-messages="zodI18n(errors.email)"></v-text-field>
-          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :error-messages="zodI18n(errors.phoneNumber)">
-          </MaskField>
-          <v-text-field v-bind="password" :label="$t('labels.password')"
-            :error-messages="zodI18n(errors.password)"></v-text-field>
+          <MaskField v-bind="phoneNumber" :label="$t('labels.phoneNumber')" :required="true"
+            :error-messages="zodI18n(errors.phoneNumber)" />
+          <v-text-field v-bind="password" type="password" :label="$t('labels.password')"
+            :error-messages="zodI18n(errors.password)">
+            <template #append-inner>
+              <v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+            </template>
+          </v-text-field>
           <v-text-field v-bind="confirmPassword" :label="$t('labels.confirmPassword')"
-            :error-messages="zodI18n(errors.confirmPassword)"></v-text-field>
+            :error-messages="zodI18n(errors.confirmPassword)">
+            <template #append-inner>
+              <v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+            </template>
+          </v-text-field>
           <SelectCity v-model="city" />
-          <SelectBranch v-bind="warehouseId" :cityId="city" />
+          <SelectBranch v-bind="warehouseId" :cityId="city" :errors="zodI18n(errors.warehouseId)" />
           <div class="d-flex justify-center md:(col-span-2)">
             <v-btn class="me-4" variant="elevated" type="submit" :disabled="false">
               {{ $t('commands.submit') }}
@@ -69,7 +83,7 @@ const schema = toTypedSchema(
   })
 )
 
-const { errors, values, handleSubmit, defineComponentBinds } = useForm({
+const { errors, values, handleSubmit, defineComponentBinds, validate } = useForm({
   validationSchema: schema,
 })
 
@@ -81,6 +95,10 @@ const password = defineComponentBinds('password')
 const confirmPassword = defineComponentBinds('confirmPassword')
 const warehouseId = defineComponentBinds('warehouseId')
 const city = ref()
+
+function onSubmit() {
+  submit()
+}
 
 const submit = handleSubmit(async () => {
   try {
@@ -94,9 +112,9 @@ const submit = handleSubmit(async () => {
       })
     }
     if (status.value === 'error') setError({ title: error.value?.message || '' })
-  } catch (e: any) {
-    if (e?.response?._data) {
-      setError({ title: e.response._data.error || '' })
+  } catch (error: any) {
+    if (error?.response?._data) {
+      setError({ title: error.response._data.error || '' })
     }
   }
   finally {

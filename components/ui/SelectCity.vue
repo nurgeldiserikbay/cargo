@@ -1,7 +1,12 @@
 <template>
-  <v-select :model-value="modelValue" :label="$t('labels.selectCity')" :items="locationStore.cities" :clearable="true"
-    :item-value="'id'" :no-data-text="$t('messages.noData')" :item-title="'name'" :loading="pending"
-    @update:modelValue="$emits('update:modelValue', $event)"></v-select>
+  <v-select :model-value="modelValue" :label="$t('labels.selectCity')" :items="locationStore.cities"
+    :rules="[(v) => !!v || $t('errors.Required')]" :clearable="true" :item-value="'id'"
+    :no-data-text="$t('messages.noData')" :item-title="'name'" :loading="pending"
+    @update:modelValue="$emits('update:modelValue', $event)">
+    <template #append-inner>
+      <v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+    </template>
+  </v-select>
 </template>
 
 <script lang="ts" setup>

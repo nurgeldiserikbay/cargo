@@ -86,9 +86,9 @@ async function remove(item: ICity) {
       })
     }
     if (status.value === 'error') setError({ title: error.value?.message || '' })
-  } catch (e: any) {
-    if (e?.response?._data) {
-      setError({ title: e.response._data.error || '' })
+  } catch (error: any) {
+    if (error?.response?._data) {
+      setError({ title: error.response._data.error || '' })
     }
   }
   finally {

@@ -3,7 +3,7 @@
     <v-card class="d-flex flex-col items-center w-full max-w-600px px-5 py-5 pb-6 mb-8 rounded-lg">
       <form @submit.prevent="submit" class="w-full gap-x-3 gap-y-4 justify-center">
         <div class="text-h4 mb-7 text-center">{{ $t('titles.addProduct') }}</div>
-        <v-text-field v-bind="trackCode" :label="$t('labels.trackCode')"
+        <v-text-field v-bind="trackCode" :label="$t('labels.trackCode')" :autofocus="true"
           :error-messages="zodI18n(errors.trackCode)"></v-text-field>
         <v-text-field v-bind="description" :label="$t('labels.description')"
           :error-messages="zodI18n(errors.description)"></v-text-field>
@@ -70,9 +70,9 @@ const submit = handleSubmit(async () => {
       handleReset()
     }
     if (status.value === 'error') setError({ title: error.value?.message || '' })
-  } catch (e: any) {
-    if (e?.response?._data) {
-      setError({ title: e.response._data.error || '' })
+  } catch (error: any) {
+    if (error?.response?._data) {
+      setError({ title: error.response._data.error || '' })
     }
   }
   finally {

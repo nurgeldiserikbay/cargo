@@ -69,7 +69,7 @@ export default {
     noData: 'No data available',
     someUnexceptableError: 'Oops... An unexpected error has occurred',
     successProductRegistered: 'The product is registered',
-    loginError: 'Login error',
+    loginError: 'You entered the wrong password',
     pageNotFound: 'Page not found',
   },
   places: {
@@ -88,5 +88,6 @@ export default {
     'String must contain at most 500 character(s)': 'The string must contain no more than 500 characters',
     'String must contain at least 4 character(s)': 'The string must contain at least 4 characters',
     'String must contain at least 10 character(s)': 'The string must contain at least 10 characters',
+    'maxMass': 'The specified value exceeds the maximum allowed value',
   },
 }

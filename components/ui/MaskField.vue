@@ -1,6 +1,9 @@
 <template>
-  <v-text-field :modelValue="maskFunc.masked(modelValue || '')" :error-messages="errorMessages" label="Phone Number" :placeholder="mask"
-    @update:model-value="update" @onBlur="$emits('blur')">
+  <v-text-field :model-value="maskInc.masked(input.value)" :type="'phone'" :maxlength="mask.length"
+    :error-messages="errorMessages" :placeholder="mask" @update:model-value="update" @blur="blur">
+    <template v-if="required" #append-inner>
+      <v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+    </template>
   </v-text-field>
 </template>
 
@@ -10,17 +13,40 @@ import { Mask } from 'maska'
 const $props = withDefaults(defineProps<{
   modelValue?: string,
   errorMessages?: string,
-  mask?: string
+  mask?: string,
+  placeholder?: string,
+  required?: boolean,
 }>(), {
-  mask: '# (###) ### ## ##'
+  mask: '+7 (7##) ### ## ##',
 })
 
 const $emits = defineEmits(['update:modelValue', 'blur'])
 
-const maskFunc = new Mask({ mask: $props.mask, eager: true })
+const maskInc = new Mask({
+  mask: $props.mask,
+  eager: true,
+})
+
+const input = ref({
+  value: ''
+})
+
+const maskNums = computed(() => $props.mask.replaceAll(/\D/g, ''))
+
+onMounted(() => {
+  if ($props.modelValue) update($props.modelValue)
+})
 
 function update(value: string) {
-  $emits('update:modelValue', maskFunc.unmasked(value))
+  const trueVal = maskInc.unmasked(value)
+  input.value = {
+    value: trueVal
+  }
+}
+
+function blur() {
+  $emits('update:modelValue', maskNums.value + maskInc.unmasked(input.value.value))
+  $emits('blur')
 }
 </script>
 

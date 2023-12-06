@@ -69,7 +69,7 @@ export default {
     noData: 'Деректер жоқ',
     someUnexceptableError: 'Ой... Күтпеген қате пайда болды',
     successProductRegistered: 'Тауар тіркелген',
-    loginError: 'Кіру қатесі',
+    loginError: 'Сіз қате құпия сөзді енгіздіңіз бе',
     pageNotFound: 'Бет табылмады',
   },
   places: {
