@@ -1,7 +1,7 @@
 export const zodI18n = (str: string | undefined): string => {
-  if (!str) return ''
+	if (!str) return ''
 
-  const { t: $t } = useI18n()
+	const { t: $t } = useI18n()
 
-  return $t('errors.' + str)
+	return $t('errors.' + str)
 }

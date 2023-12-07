@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "custom"
+	"name": "nuxt-app",
+	"integrations": {
+		"capacitor": {}
+	},
+	"type": "custom"
 }

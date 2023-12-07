@@ -1,14 +1,12 @@
 <template>
-  <div class="">
-    
-  </div>
+	<div class=""></div>
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'user-layout',
-  auth: true,
-  accesses: [ROLES.ROLE_USER],
+	layout: 'user-layout',
+	auth: true,
+	accesses: [ROLES.ROLE_USER],
 })
 </script>
 

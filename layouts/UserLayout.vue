@@ -1,20 +1,18 @@
 <template>
-  <div class="user-layout min-h-full d-flex flex-col">
-    <MainHeader />
-    <slot></slot>
-    <UserFooter class="!md:hidden" />
-  </div>
+	<div class="user-layout min-h-full d-flex flex-col">
+		<MainHeader />
+		<slot></slot>
+		<UserFooter class="!md:hidden" />
+	</div>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .user-layout {
-  background: url('~/assets/img/bg-2.webp') no-repeat center;
-  background-size: cover;
-  background-color: rgba(#000, 0.3);
-  background-blend-mode: darken;
+	background: url('~/assets/img/bg-2.webp') no-repeat center;
+	background-size: cover;
+	background-color: rgba(#000, 0.3);
+	background-blend-mode: darken;
 }
 </style>
