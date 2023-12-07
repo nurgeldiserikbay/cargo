@@ -15,23 +15,18 @@
 	</v-app>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 definePageMeta({
-  auth: false,
-  layout: 'auth-layout',
-});
+	auth: false,
+	layout: 'auth-layout',
+})
 
-withDefaults(
-  defineProps<{ error?: any }>(),
-  {
-    error: null
-  }
-);
+defineProps<{ error?: any }>()
 
-const $emits = defineEmits(['clear']);
+const $emits = defineEmits(['clear'])
 
 function clear() {
-  $emits('clear');
+	$emits('clear')
 }
 </script>
 
