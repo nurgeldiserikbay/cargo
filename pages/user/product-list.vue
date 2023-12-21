@@ -1,13 +1,11 @@
 <template>
 	<v-container class="flex-grow-1 d-flex flex-col justify-start items-center">
 		<div
-			class="w-full max-w-70vw flex justify-around items-center gap-x-4 mt-15 relative before:(content-[''] absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-2 bg-white rounded-lg) mb-12"
+			class="w-full max-w-70vw flex justify-around items-center gap-x-4 mt-15 relative mb-12"
 		>
 			<v-btn
 				v-for="place in CONTENT.places"
 				:key="place.id"
-				:rounded="'rounded-circle'"
-				:icon="true"
 				size="default"
 				:active="place.type === currentType"
 				:color="
@@ -15,21 +13,9 @@
 				"
 				@click="changeType(place.type)"
 			>
-				<v-tooltip activator="parent" location="top">{{
+				<span class="mr-2 font-500">{{
 					place.type ? $t(`places.${place.type}`) : $t(`labels.shop`)
-				}}</v-tooltip>
-				<v-icon
-					v-if="place.icon && !place.iconPath"
-					:icon="`mdi mdi-${place.icon}`"
-					size="default"
-					color="white"
-				></v-icon>
-				<component
-					:is="`svgo-${place.iconPath}`"
-					v-if="!place.icon && place.iconPath"
-					class="block !w-15 !h-10 !fill-white !stroke-white"
-				>
-				</component>
+				}}</span>
 			</v-btn>
 		</div>
 

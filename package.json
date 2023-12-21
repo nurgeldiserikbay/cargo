@@ -52,7 +52,7 @@
 		"@capacitor/status-bar": "5.0.6",
 		"@pinia/nuxt": "^0.5.1",
 		"@vee-validate/zod": "^4.11.8",
-		"maska": "^2.1.10",
+		"imask": "^7.2.1",
 		"pinia": "^2.1.7",
 		"validator": "^13.11.0",
 		"vee-validate": "^4.11.8"

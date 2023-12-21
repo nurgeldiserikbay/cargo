@@ -1,12 +1,14 @@
 <template>
 	<v-text-field
-		:model-value="maskInc.masked(input.value)"
+		ref="textField"
+		:model-value="input.value"
 		:type="'phone'"
 		:maxlength="mask.length"
 		:error-messages="errorMessages"
 		:placeholder="mask"
+		:variant="withLabels ? 'filled' : 'underlined'"
 		@update:model-value="update"
-		@blur="blur"
+		@blur="onBlur"
 	>
 		<template v-if="required" #append-inner>
 			<v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
@@ -15,7 +17,13 @@
 </template>
 
 <script lang="ts" setup>
-import { Mask } from 'maska'
+// @ts-ignore
+import IMask from 'imask'
+import { VTextField } from 'vuetify/lib/components/index.mjs'
+
+const maskOptions = {
+	mask: '0 (000) 000 00 00',
+}
 
 const $props = withDefaults(
 	defineProps<{
@@ -24,46 +32,44 @@ const $props = withDefaults(
 		mask?: string
 		placeholder?: string
 		required?: boolean
+		withLabels?: boolean
 	}>(),
 	{
 		modelValue: '',
-		mask: '+7 (7##) ### ## ##',
+		mask: '# (###) ### ## ##',
 		errorMessages: '',
 		placeholder: '',
 		required: false,
+		withLabels: true,
 	},
 )
 
-const $emits = defineEmits(['update:modelValue', 'blur'])
-
-const maskInc = new Mask({
-	mask: $props.mask,
-	eager: true,
-})
+const $emits = defineEmits(['update:modelValue', 'onBlur'])
 
 const input = ref({
 	value: '',
 })
-
-const maskNums = computed(() => $props.mask.replaceAll(/\D/g, ''))
+const textField = ref<VTextField | null>(null)
 
 onMounted(() => {
 	if ($props.modelValue) update($props.modelValue)
+
+	if (textField.value?.$el) {
+		const input = textField.value?.$el?.querySelector('input')
+		if (input) IMask(input, maskOptions)
+	}
 })
 
 function update(value: string) {
-	const trueVal = maskInc.unmasked(value)
+	const trueVal = value
 	input.value = {
 		value: trueVal,
 	}
 }
 
-function blur() {
-	$emits(
-		'update:modelValue',
-		maskNums.value + maskInc.unmasked(input.value.value),
-	)
-	$emits('blur')
+function onBlur() {
+	$emits('update:modelValue', input.value.value)
+	$emits('onBlur')
 }
 </script>
 

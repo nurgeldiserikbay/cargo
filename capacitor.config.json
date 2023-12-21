@@ -1,7 +1,7 @@
 {
-	"appId": "nuxt.app",
-	"appName": "nuxt-app",
-	"webDir": "dist",
+	"appId": "com.tauekel.thelightcome",
+	"appName": "Tauekel",
+	"webDir": ".output/public",
 	"server": {
 		"androidScheme": "https"
 	}

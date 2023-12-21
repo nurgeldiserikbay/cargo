@@ -1,7 +1,7 @@
 <template>
 	<v-select
 		:model-value="modelValue"
-		:label="$t('labels.selectBranch')"
+		:label="withLabels ? $t('labels.selectBranch') : ''"
 		:items="branches"
 		:clearable="true"
 		:rules="[(v) => !!v || $t('errors.Required')]"
@@ -10,6 +10,7 @@
 		:no-data-text="$t('messages.noData')"
 		:loading="pending"
 		:errors="errors"
+		:variant="withLabels ? 'filled' : 'underlined'"
 		@update:model-value="$emits('update:modelValue', $event)"
 	>
 		<template #append-inner>
@@ -23,11 +24,20 @@ import { useBranchStore } from '~/store/branch'
 
 const branchStore = useBranchStore()
 
-const $props = defineProps<{
-	modelValue?: number
-	cityId?: number
-	errors?: string
-}>()
+const $props = withDefaults(
+	defineProps<{
+		modelValue?: number
+		cityId?: number
+		errors?: string
+		withLabels?: boolean
+	}>(),
+	{
+		modelValue: undefined,
+		cityId: undefined,
+		errors: '',
+		withLabels: true,
+	},
+)
 
 const $emits = defineEmits(['update:modelValue'])
 

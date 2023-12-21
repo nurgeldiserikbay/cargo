@@ -64,6 +64,7 @@
 					</v-text-field>
 					<v-text-field
 						v-bind="confirmPassword"
+						type="password"
 						:label="$t('labels.confirmPassword')"
 						:error-messages="zodI18n(errors.confirmPassword)"
 					>
@@ -106,7 +107,6 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
-import validator from 'validator'
 
 import type { IUserCreate } from '~/types/users'
 
@@ -131,7 +131,7 @@ const schema = toTypedSchema(
 			email: z.optional(z.string().email()),
 			password: z.string().min(4),
 			confirmPassword: z.string().min(4),
-			phoneNumber: z.string().refine((v) => validator.isMobilePhone(v)),
+			phoneNumber: z.string(),
 			warehouseId: z.number(),
 		})
 		.superRefine(({ confirmPassword, password }, ctx) => {
@@ -165,7 +165,13 @@ const submit = handleSubmit(
 	async () => {
 		try {
 			setLoading('global', true)
-			const subData = rmObjFields(values, ['confirmPassword'])
+			const subData = rmObjFields(
+				{
+					...values,
+					phoneNumber: clearToNums(values.phoneNumber || ''),
+				},
+				['confirmPassword'],
+			)
 			const { status, error } = await $api.auth.register(subData as IUserCreate)
 			if (status.value === 'success') {
 				router.push(localePath('/auth/login'))
@@ -173,8 +179,9 @@ const submit = handleSubmit(
 					title: $t('messages.successRegister'),
 				})
 			}
-			if (status.value === 'error')
-				setError({ title: error.value?.message || '' })
+			if (status.value === 'error') {
+				setError({ title: $t(`errors.${error.value?.data || ''}`) })
+			}
 		} catch (error: any) {
 			if (error?.response?._data) {
 				setError({ title: error.response._data.error || '' })

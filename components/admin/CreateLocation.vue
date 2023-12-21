@@ -121,7 +121,7 @@ const submit = handleSubmit(
 				handleReset()
 			}
 			if (status.value === 'error')
-				setError({ title: error.value?.message || '' })
+				setError({ title: $t(`errors.${error.value?.data || ''}`) })
 		} catch (error: any) {
 			if (error?.response?._data) {
 				setError({ title: error.response._data.error || '' })

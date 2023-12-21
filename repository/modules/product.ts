@@ -38,4 +38,8 @@ export class ProductModule extends HttpFactory {
 	async updateByTrackCode(trackCode: string) {
 		return await this.POST<IProduct>(`/products/${trackCode}/commit`)
 	}
+
+	async updateByTrackCodes(trackCode: string[]) {
+		return await this.POST<IProduct>('/products/commit-all', trackCode)
+	}
 }

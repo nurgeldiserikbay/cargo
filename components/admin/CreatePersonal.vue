@@ -72,7 +72,6 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
-import validator from 'validator'
 import type { IAdminUser } from '~/types/users'
 
 const { $api } = useNuxtApp()
@@ -89,7 +88,7 @@ const schema = toTypedSchema(
 		firstName: z.string().min(1).max(200),
 		lastName: z.string().min(1).max(200),
 		password: z.string().min(4),
-		phoneNumber: z.string().refine((v) => validator.isMobilePhone(v)),
+		phoneNumber: z.string(),
 		warehouseId: z.number(),
 	}),
 )
@@ -136,14 +135,14 @@ const submit = handleSubmit(
 				? await $api.admin.updateAdmin($props.selectedUser.id, {
 						firstName: values.firstName,
 						lastName: values.lastName,
-						phoneNumber: values.phoneNumber,
+						phoneNumber: clearToNums(values.phoneNumber || ''),
 						password: values.password,
 						warehouseId: values.warehouseId,
 				  })
 				: await $api.admin.createAdmin({
 						firstName: values.firstName,
 						lastName: values.lastName,
-						phoneNumber: values.phoneNumber,
+						phoneNumber: clearToNums(values.phoneNumber || ''),
 						password: values.password,
 						warehouseId: values.warehouseId,
 				  })
@@ -156,7 +155,7 @@ const submit = handleSubmit(
 				handleReset()
 			}
 			if (status.value === 'error')
-				setError({ title: error.value?.message || '' })
+				setError({ title: $t(`errors.${error.value?.data || ''}`) })
 		} catch (error: any) {
 			if (error?.response?._data) {
 				setError({ title: error.response._data.error || '' })

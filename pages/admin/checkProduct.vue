@@ -11,6 +11,7 @@
 				hide-details
 				:clearable="true"
 				:autofocus="true"
+				type="textarea"
 			></v-text-field>
 			<v-checkbox
 				v-model="autoFetch"
@@ -87,13 +88,17 @@ const submit = handleSubmit(
 	() => {},
 )
 
+function parseCodes(trackCodes: string) {
+	return trackCodes.split(' ')
+}
+
 async function fetchProduct() {
 	try {
 		if (!values.trackCode) return
 		setLoading('global', true)
-		const { status, error } = await $api.product.updateByTrackCode(
-			values.trackCode,
-		)
+
+		const trackCodes = parseCodes(values.trackCode)
+		const { status, error } = await $api.product.updateByTrackCodes(trackCodes)
 		if (status.value === 'success') {
 			setSuccess({
 				title: $t('messages.successProductRegistered'),
@@ -101,7 +106,7 @@ async function fetchProduct() {
 			handleReset()
 		}
 		if (status.value === 'error')
-			setError({ title: error.value?.message || '' })
+			setError({ title: $t(`errors.${error.value?.data || ''}`) })
 	} catch (error: any) {
 		if (error?.response?._data) {
 			setError({ title: error.response._data.error || '' })

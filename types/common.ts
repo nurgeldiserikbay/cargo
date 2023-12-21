@@ -3,6 +3,7 @@ export interface ErrorT {
 	statusCode?: number
 	statusMessage?: string
 	message?: string
+	data: string
 }
 
 export interface IAlertShort {

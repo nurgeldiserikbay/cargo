@@ -40,7 +40,6 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
-import validator from 'validator'
 
 const { setError } = useAllert()
 const localePath = useLocalePath()
@@ -55,7 +54,7 @@ definePageMeta({
 
 const schema = toTypedSchema(
 	z.object({
-		phoneNumber: z.string().refine((v) => validator.isMobilePhone(v)),
+		phoneNumber: z.string(),
 		password: z.string().min(4),
 	}),
 )
@@ -72,7 +71,13 @@ const { status, signIn } = useAuth()
 const submit = handleSubmit(async (values) => {
 	try {
 		setLoading('global', true)
-		await signIn(values, { callbackUrl: localePath('/') })
+		await signIn(
+			{
+				...values,
+				phoneNumber: clearToNums(values.phoneNumber || ''),
+			},
+			{ callbackUrl: localePath('/') },
+		)
 		if (status.value === 'unauthenticated')
 			setError({ title: status.value || '' })
 	} catch (error: any) {

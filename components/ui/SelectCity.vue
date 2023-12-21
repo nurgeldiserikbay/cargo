@@ -1,7 +1,7 @@
 <template>
 	<v-select
 		:model-value="modelValue"
-		:label="$t('labels.selectCity')"
+		:label="withLabels ? $t('labels.selectCity') : ''"
 		:items="locationStore.cities"
 		:rules="[(v) => !!v || $t('errors.Required')]"
 		:clearable="true"
@@ -9,6 +9,7 @@
 		:no-data-text="$t('messages.noData')"
 		:item-title="'name'"
 		:loading="pending"
+		:variant="withLabels ? 'filled' : 'underlined'"
 		@update:model-value="$emits('update:modelValue', $event)"
 	>
 		<template #append-inner>
@@ -22,9 +23,16 @@ import { useLocationStore } from '~/store/location'
 
 const locationStore = useLocationStore()
 
-defineProps<{
-	modelValue?: number
-}>()
+withDefaults(
+	defineProps<{
+		modelValue?: number
+		withLabels?: boolean
+	}>(),
+	{
+		modelValue: undefined,
+		withLabels: true,
+	},
+)
 
 const $emits = defineEmits(['update:modelValue'])
 

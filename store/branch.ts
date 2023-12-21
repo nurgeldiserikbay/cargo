@@ -7,7 +7,7 @@ export const useBranchStore = defineStore('branch', () => {
 	const branches = ref<IBranch[]>([])
 
 	const getBranchById = computed(
-		() => (id: number) => branches.value.find((c) => c.id === id),
+		() => (id?: number) => branches.value.find((c) => c.id === id),
 	)
 
 	async function fetchBranches() {
