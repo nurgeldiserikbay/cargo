@@ -1,19 +1,11 @@
 version: '3.9'
 services:
-  langaudio_frontend:
+  tauekel_frontend:
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        API_URL: http://localhost:7000
-        APP_URL: http://localhost:3000
-    container_name: langaudio_frontend
+        NUXT_PUBLIC_API_BASE: 'https://tauekel-cargo-80dad368bb22.herokuapp.com/api/'
+    container_name: tauekel_frontend
     ports:
-      - 3000:3000
-    # env_file:
-    #   - ./config/prod.env
-    networks:
-      - backend_langaudio_net
-networks:
-  backend_langaudio_net:
-    external: true
+      - 80:3000

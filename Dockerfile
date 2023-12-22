@@ -4,17 +4,16 @@ RUN mkdir -p /usr/src/nuxt-app
 
 WORKDIR /usr/src/nuxt-app
 
-COPY package*.json .
+COPY package.json .
+COPY yarn.lock .
 
 RUN yarn
 
 COPY . .
 
-ARG API_URL
-ENV NUXT_PUBLIC_API_BASE ${API_URL}
-
-ARG API_URL
-ENV NUXT_PUBLIC_API_BASE ${API_URL}
+ARG NUXT_PUBLIC_API_BASE
+ENV NUXT_PUBLIC_API_BASE ${NUXT_PUBLIC_API_BASE}
+ENV NODE_ENV=production
 
 RUN yarn build
 
