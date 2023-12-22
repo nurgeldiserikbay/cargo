@@ -2,7 +2,6 @@ stages:
   - build
 
 variables:
-  DOCKER_DRIVER: overlay2
   DOCKER_IMAGE_NAME: thelightcome/tauekel
 
 build:
@@ -10,8 +9,6 @@ build:
   stage: build
   only:
     - master
-  services:
-    - docker:dind
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $DOCKER_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
