@@ -3,7 +3,7 @@ stages:
 
 variables:
   DOCKER_DRIVER: overlay2
-  DOCKER_IMAGE_NAME: CI_REGISTRY_USER/tauekel
+  DOCKER_IMAGE_NAME: thelightcome/tauekel
 
 build:
   image: docker:latest
