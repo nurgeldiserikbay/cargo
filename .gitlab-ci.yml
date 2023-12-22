@@ -13,7 +13,8 @@ build:
   services:
     - docker:dind
   before_script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login $DOCKER_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+    - docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY_PASSWORD $DOCKER_REGISTRY
+    # - echo "$CI_REGISTRY_PASSWORD" | docker login $DOCKER_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
     — docker build -t "$DOCKER_IMAGE_NAME":latest .
     — docker push "$DOCKER_IMAGE_NAME":latest
