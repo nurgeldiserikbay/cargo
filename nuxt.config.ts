@@ -58,7 +58,7 @@ export default defineNuxtConfig({
 	i18n,
 	auth: {
 		// globalAppMiddleware: true,
-		baseURL: 'https://tauekel-cargo-80dad368bb22.herokuapp.com/api/',
+		baseURL: process.env.NUXT_PUBLIC_API_BASE,
 		provider: {
 			type: 'local',
 			endpoints: {
