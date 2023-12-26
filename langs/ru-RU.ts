@@ -51,7 +51,7 @@ export default {
 		autoFetch: 'Включить авторегистрацию',
 		shop: 'Новые',
 		changePassword: 'Сменить пароль',
-		yourCode: 'Личный код',
+		yourCode: 'Ваш номер',
 	},
 	commands: {
 		submit: 'Отправить',

@@ -1,10 +1,12 @@
 import HttpFactory from '../factory'
-import type { ICity, ICityCreate } from '~/types/location'
+import type { ICity, ICityCreate, LocationTypes } from '~/types/location'
 import type { IBranch } from '~/types/branch'
 
 export class LocationModule extends HttpFactory {
-	async getLocations() {
-		return await this.GET<ICity[]>('/locations')
+	async getLocations(locationType?: LocationTypes) {
+		return await this.GET<ICity[]>('/locations', {
+			locationType,
+		})
 	}
 
 	async getLocation(id: number) {

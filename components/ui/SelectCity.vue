@@ -20,23 +20,26 @@
 
 <script lang="ts" setup>
 import { useLocationStore } from '~/store/location'
+import type { LocationTypes } from '~/types/location'
 
 const locationStore = useLocationStore()
 
-withDefaults(
+const $props = withDefaults(
 	defineProps<{
 		modelValue?: number
 		withLabels?: boolean
+		locationFilter?: LocationTypes
 	}>(),
 	{
 		modelValue: undefined,
 		withLabels: true,
+		locationFilter: undefined,
 	},
 )
 
 const $emits = defineEmits(['update:modelValue'])
 
-const { pending } = await locationStore.fetchCities()
+const { pending } = await locationStore.fetchCities($props.locationFilter)
 </script>
 
 <style lang="scss" scoped></style>

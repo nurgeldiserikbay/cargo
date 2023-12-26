@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import type { ICity } from '~/types/location'
+import type { ICity, LocationTypes } from '~/types/location'
 
 export const useLocationStore = defineStore('location', () => {
 	const { $api } = useNuxtApp()
@@ -11,8 +11,8 @@ export const useLocationStore = defineStore('location', () => {
 		() => (id: number) => cities.value.find((c) => c.id === id),
 	)
 
-	async function fetchCities() {
-		const result = await $api.location.getLocations()
+	async function fetchCities(locationType?: LocationTypes) {
+		const result = await $api.location.getLocations(locationType)
 
 		cities.value = result.data.value || []
 

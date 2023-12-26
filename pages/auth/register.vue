@@ -76,7 +76,7 @@
 							></v-icon>
 						</template>
 					</v-text-field>
-					<SelectCity v-model="city" />
+					<SelectCity v-model="city" :location-filter="LOCATION_TYPES.KZ" />
 					<SelectBranch
 						v-bind="warehouseId"
 						:city-id="city"

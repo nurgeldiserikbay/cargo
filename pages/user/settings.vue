@@ -129,6 +129,7 @@
 								v-model="city"
 								class="max-w-1/2"
 								:with-labels="false"
+								:location-filter="LOCATION_TYPES.KZ"
 							/>
 						</div>
 					</template>

@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			apiBase: process.env.NUXT_PUBLIC_API_BASE,
+			API_URL: process.env.NUXT_PUBLIC_API_URL,
 		},
 	},
 	css: [
@@ -57,8 +58,8 @@ export default defineNuxtConfig({
 	},
 	i18n,
 	auth: {
-		// globalAppMiddleware: true,
-		baseURL: process.env.NUXT_PUBLIC_API_BASE,
+		globalAppMiddleware: true,
+		baseURL: '/api',
 		provider: {
 			type: 'local',
 			endpoints: {
