@@ -5,7 +5,7 @@ import type { IBranch } from '~/types/branch'
 export class LocationModule extends HttpFactory {
 	async getLocations(locationType?: LocationTypes) {
 		return await this.GET<ICity[]>('/locations', {
-			locationType,
+			query: { locationType },
 		})
 	}
 
