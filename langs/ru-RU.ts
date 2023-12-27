@@ -11,9 +11,9 @@ export default {
 	pages: {
 		login: 'Войти',
 		register: 'Регистрация',
-		user: 'Главная',
-		productList: 'Товары',
-		info: 'Филиал',
+		user: 'Товары',
+		productList: 'Отслежка',
+		info: 'Адрес',
 		calculation: 'Калькулятор',
 		locations: 'Населенные пункты',
 		branchs: 'Филиалы',
@@ -51,7 +51,8 @@ export default {
 		autoFetch: 'Включить авторегистрацию',
 		shop: 'Новые',
 		changePassword: 'Сменить пароль',
-		yourCode: 'Ваш номер',
+		yourCode: 'Ваш код',
+		dateArrive: 'Дата поступления',
 	},
 	commands: {
 		submit: 'Отправить',
@@ -65,6 +66,7 @@ export default {
 		change: 'Изменить',
 		cancel: 'Отмена',
 		save: 'Сохранить',
+		add: 'Добавить',
 	},
 	messages: {
 		successUpdateData: 'Ваши данные обновлены!',

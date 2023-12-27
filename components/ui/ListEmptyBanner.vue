@@ -1,5 +1,7 @@
 <template>
-	<div class="w-full min-h-[180px] flex justify-center items-center text-h4">
+	<div
+		class="w-full min-h-[50px] flex justify-center items-center text-md lg:text-lg px-6"
+	>
 		{{ $t('messages.noData') }}
 	</div>
 </template>

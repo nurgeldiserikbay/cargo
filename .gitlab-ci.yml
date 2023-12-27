@@ -15,6 +15,5 @@ build:
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login $DOCKER_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
-    — docker build -t tauekel .
-    — docker tag tauekel thelightcome/tauekel:0.0.1
+    — docker build -t thelightcome/tauekel:0.0.1 .
     — docker push thelightcome/tauekel:0.0.1

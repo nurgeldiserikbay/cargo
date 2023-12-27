@@ -11,10 +11,15 @@
 		:loading="pending"
 		:errors="errors"
 		:variant="withLabels ? 'filled' : 'underlined'"
-		@update:model-value="$emits('update:modelValue', $event)"
 	>
 		<template #append-inner>
 			<v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
+		</template>
+		<template #item="{ item, props }">
+			<div v-bind="props" class="w-full border-box py-2 px-3">
+				<div class="text-lg">{{ item.raw.address }}</div>
+				<div class="text-xs">{{ item.raw.address }}</div>
+			</div>
 		</template>
 	</v-select>
 </template>

@@ -1,15 +1,15 @@
 <template>
 	<v-container
-		class="flex-grow-1 d-flex flex-col justify-center items-center pt-10"
+		class="flex-grow-1 d-flex flex-col justify-start items-center pt-10"
 	>
 		<v-card
-			class="d-flex flex-col items-center w-full max-w-600px px-5 py-5 pb-6 mb-8 rounded-lg"
+			class="d-flex flex-col items-center w-full max-w-600px px-5 py-2 pb-6 mt-8 mb-8 rounded-lg"
 		>
 			<form
 				class="w-full gap-x-3 gap-y-4 justify-center"
 				@submit.prevent="submit"
 			>
-				<div class="text-h4 mb-7 text-center">
+				<div class="text-h5 mb-7 text-center">
 					{{ $t('titles.addProduct') }}
 				</div>
 				<v-text-field
@@ -25,7 +25,7 @@
 				></v-text-field>
 				<div class="col-span-2 d-flex justify-center">
 					<v-btn class="me-4" variant="elevated" type="submit">
-						{{ $t('commands.submit') }}
+						{{ $t('commands.add') }}
 					</v-btn>
 				</div>
 			</form>

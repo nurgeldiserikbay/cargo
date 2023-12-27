@@ -3,7 +3,7 @@
 		class="flex-grow-1 d-flex flex-col justify-start items-center pt-10"
 	>
 		<v-card
-			class="w-full min-h-[50vh] border-box px-8 pt-8 !pb-24 relative !overflow-visible"
+			class="w-full min-h-[50vh] border-box px-8 pt-4 !pb-16 relative !overflow-visible"
 		>
 			<template v-if="userInfo">
 				<v-row>
@@ -18,7 +18,7 @@
 							></v-icon>
 						</v-btn>
 					</v-col>
-					<v-col class="flex justify-end items-center">
+					<v-col class="hidden lg:flex justify-end items-center">
 						<img
 							src="@/assets/img/section1.png"
 							alt=""
@@ -28,7 +28,7 @@
 				</v-row>
 			</template>
 
-			<v-divider class="mt-12 mb-12"></v-divider>
+			<v-divider class="my-6 lg:my-10"></v-divider>
 
 			<template v-if="user">
 				<v-row>
@@ -45,7 +45,7 @@
 							></v-icon>
 						</v-btn>
 					</v-col>
-					<v-col class="flex justify-end">
+					<v-col class="hidden lg:flex justify-end">
 						<img
 							src="@/assets/img/section2.png"
 							alt=""

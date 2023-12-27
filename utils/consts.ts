@@ -1,3 +1,7 @@
+import IconBox from '@/assets/svg/box-svgrepo-com.svg'
+import IconTruckDeliver from '@/assets/svg/truck-deliver-svgrepo-com.svg'
+import IconSkyscraperCity from '@/assets/svg/skyscraper-city-svgrepo-com.svg'
+import IconCalculator from '@/assets/svg/calculator-svgrepo-com.svg'
 import type { TypeAlerts } from '~/types/common'
 import type { LocationTypes } from '~/types/location'
 import type { TypeRoles } from '~/types/users'
@@ -10,65 +14,32 @@ export const LOCATION_TYPES: { [key in LocationTypes]: LocationTypes } = {
 
 export const CONTENT = {
 	faq: [
-		{
-			id: 0,
-			question: 'What do you want to',
-			answer: 'What do you want to do',
-		},
-		{
-			id: 1,
-			question: 'What do you want to 1',
-			answer:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima',
-		},
-		{
-			id: 2,
-			question: 'What do you want to 2',
-			answer:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima',
-		},
-		{
-			id: 3,
-			question: 'What do you want to',
-			answer: 'What do you want to do',
-		},
-		{
-			id: 4,
-			question: 'What do you want to',
-			answer:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima',
-		},
-		{
-			id: 5,
-			question: 'What do you want to',
-			answer: 'What do you want to do',
-		},
-		{
-			id: 6,
-			question: 'What do you want to',
-			answer: 'What do you want to do',
-		},
+		// {
+		// 	id: 0,
+		// 	question: 'What do you want to',
+		// 	answer: 'What do you want to do',
+		// },
 	],
 	links: [
 		{
 			to: '/user',
 			text: 'pages.user',
-			icon: 'cart-plus',
+			icon: IconBox,
 		},
 		{
 			to: '/user/product-list',
 			text: 'pages.productList',
-			icon: 'format-list-bulleted',
+			icon: IconTruckDeliver,
 		},
 		{
 			to: '/user/info',
 			text: 'pages.info',
-			icon: 'information-variant-circle-outline',
+			icon: IconSkyscraperCity,
 		},
 		{
 			to: '/user/calculation',
 			text: 'pages.calculation',
-			icon: 'calculator-variant-outline',
+			icon: IconCalculator,
 		},
 	],
 	places: [

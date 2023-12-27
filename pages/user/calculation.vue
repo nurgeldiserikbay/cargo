@@ -5,7 +5,7 @@
 		<v-card
 			class="d-flex flex-col items-center w-full max-w-1200px pt-8 px-8 pb-10 rounded-lg"
 		>
-			<div class="text-h4 mb-6 text-left capitalize">
+			<div class="text-h5 mb-6 text-left capitalize">
 				{{ $t('pages.calculation') }}
 			</div>
 			<div class="w-full text-(lg)">
@@ -21,7 +21,7 @@
 						<span>$</span>
 					</div>
 				</div>
-				<v-divider inset class="my-8 !max-w-full !ms-0"></v-divider>
+				<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 				<div class="flex justify-between items-center gap-8">
 					<div
 						class="flex justify-start items-center gap-2 text-h6 leading-none gap-4"
@@ -38,7 +38,7 @@
 						<span> $</span>
 					</div>
 				</div>
-				<v-divider inset class="my-8 !max-w-full !ms-0"></v-divider>
+				<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 				<div
 					class="flex justify-between items-center gap-8 gap-y-4 flex-wrap lg:flex-nowrap"
 				>

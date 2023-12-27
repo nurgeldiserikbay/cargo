@@ -17,7 +17,11 @@ export default defineConfig({
 		colors: {
 			color1: '#020202',
 			color2: '#e0e0e0',
+			color10: '#ffffff',
 			main: 'red',
+		},
+		fontSize: {
+			sxs: '10px',
 		},
 	},
 	presets: [

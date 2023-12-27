@@ -1,12 +1,14 @@
 <template>
-	<v-container class="flex-grow-1 d-flex flex-col justify-start items-center">
+	<v-container
+		class="product-list flex-grow-1 d-flex flex-col justify-start items-center"
+	>
 		<div
-			class="w-full max-w-70vw flex justify-around items-center gap-x-4 mt-15 relative mb-12"
+			class="w-full md:max-w-70vw flex justify-around items-center gap-x-2 mt-15 relative mb-12"
 		>
 			<v-btn
 				v-for="place in CONTENT.places"
 				:key="place.id"
-				size="default"
+				:size="$vuetify.display.mdAndDown ? 'small' : 'default'"
 				:active="place.type === currentType"
 				:color="
 					place.type === currentType ? 'teal-accent-2' : 'light-blue-lighten-2'
@@ -24,11 +26,11 @@
 				<template #default="{ items }">
 					<template v-for="(item, i) in items" :key="i">
 						<v-expansion-panels variant="accordion">
-							<v-expansion-panel>
+							<v-expansion-panel size="small">
 								<template #title>
 									<div>
-										<div class="text-h5 mb-3">{{ item.raw.trackCode }}</div>
-										<div>{{ item.raw.description }}</div>
+										<div class="text-md mb-2">{{ item.raw.trackCode }}</div>
+										<div class="text-xs">{{ item.raw.description }}</div>
 									</div>
 								</template>
 								<template #text>
@@ -124,4 +126,12 @@ function changePage(page: number) {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(.v-expansion-panel-title) {
+	padding: 8px 15px;
+}
+
+:deep(.v-expansion-panel-text__wrapper) {
+	padding: 0 !important;
+}
+</style>

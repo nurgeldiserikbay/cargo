@@ -1,5 +1,5 @@
 <template>
-	<div class="user-layout min-h-full d-flex flex-col">
+	<div class="user-layout min-h-full box-border d-flex flex-col pb-18 lg:pb-4">
 		<MainHeader />
 		<slot></slot>
 		<UserFooter class="!md:hidden" />
