@@ -1,5 +1,22 @@
 stages:
   - build
+  - deploy
+
+variables:
+  GIT_STRATEGY: none
+  SRV: "89.219.32.148"
+  PORT: "22022"
+  PRODPATH: "efish-backend"
+  DEVPATH: "back-enbek.crocos.kz"
+  PHP: "php-fpm8"
+  DEVBRANCH: "dev"
+  PRODBRANCH: "mmmain"
+  ARTISAN: "migrate"
+
+.sshcon:
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
 
 build:
   image: docker:latest
@@ -12,4 +29,16 @@ build:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$VERSION_TAG" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker push "$CI_REGISTRY_IMAGE:$VERSION_TAG"
+
+deploy:
+  stage: deploy
+  extends: .sshcon
+  needs: []
+  tags:
+    - shell
+  rules:
+    - if: $CI_COMMIT_BRANCH == $PRODBRANCH
+  script:
+    - sshpass -p $SSH_PRIVATE_KEY ssh -o StrictHostKeyChecking=no $SSH_HOST "sudo -i sed -i 's/[0-9]\+\.[0-9]\+\.[0-9]\+/0.0.4/g' /root/environments/front/upgrade-container.sh && sudo -i /root/environments/front/upgrade-container.sh"
+
