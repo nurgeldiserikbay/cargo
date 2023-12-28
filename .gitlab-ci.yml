@@ -1,17 +1,6 @@
 stages:
   - build
-  - deploy
-
-variables:
-  GIT_STRATEGY: none
-  SRV: "89.219.32.148"
-  PORT: "22022"
-  PRODPATH: "efish-backend"
-  DEVPATH: "back-enbek.crocos.kz"
-  PHP: "php-fpm8"
-  DEVBRANCH: "dev"
-  PRODBRANCH: "mmmain"
-  ARTISAN: "migrate"
+  # - deploy
 
 .sshcon:
   before_script:
@@ -31,14 +20,14 @@ build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$VERSION_TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$VERSION_TAG"
 
-deploy:
-  stage: deploy
-  extends: .sshcon
-  needs: []
-  tags:
-    - shell
-  rules:
-    - if: $CI_COMMIT_BRANCH == $PRODBRANCH
-  script:
-    - sshpass -p $SSH_PRIVATE_KEY ssh -o StrictHostKeyChecking=no $SSH_HOST "sudo -i sed -i 's/[0-9]\+\.[0-9]\+\.[0-9]\+/0.0.4/g' /root/environments/front/upgrade-container.sh && sudo -i /root/environments/front/upgrade-container.sh"
+# deploy:
+#   stage: deploy
+#   extends: .sshcon
+#   needs: []
+#   tags:
+#     - bash
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == $PRODBRANCH
+#   script:
+#     - sshpass -p $SSH_PRIVATE_KEY ssh -o StrictHostKeyChecking=no $SSH_HOST "sudo -i sed -i 's/[0-9]\+\.[0-9]\+\.[0-9]\+/$VERSION_TAG/g' /root/environments/front/upgrade-container.sh && sudo -i /root/environments/front/upgrade-container.sh"
 
