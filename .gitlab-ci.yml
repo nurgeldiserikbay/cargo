@@ -1,19 +1,15 @@
 stages:
   - build
 
-variables:
-  DOCKER_IMAGE_NAME: tauekel
-
 build:
   image: docker:latest
   stage: build
-  interruptible: true
-  only:
-    - master
   services:
     - docker:dind
+  only:
+    - master
   before_script:
-    - echo $CI_REGISTRY_PASSWORD | docker login $DOCKER_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    — docker build -t thelightcome/tauekel:0.0.1 .
-    — docker push thelightcome/tauekel:0.0.1
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
