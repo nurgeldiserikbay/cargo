@@ -11,6 +11,7 @@
 		:loading="pending"
 		:errors="errors"
 		:variant="withLabels ? 'filled' : 'underlined'"
+		@update:model-value="$emits('update:modelValue', $event)"
 	>
 		<template #append-inner>
 			<v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>

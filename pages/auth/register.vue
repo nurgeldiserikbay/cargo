@@ -158,11 +158,13 @@ const warehouseId = defineComponentBinds('warehouseId')
 const city = ref()
 
 function onSubmit() {
+	console.log('onSubmit')
 	submit()
 }
 
 const submit = handleSubmit(
 	async () => {
+	console.log('handleSubmit')
 		try {
 			setLoading('global', true)
 			const subData = rmObjFields(
@@ -183,6 +185,7 @@ const submit = handleSubmit(
 				setError({ title: $t(`errors.${error.value?.data || ''}`) })
 			}
 		} catch (error: any) {
+			console.log(error)
 			if (error?.response?._data) {
 				setError({ title: error.response._data.error || '' })
 			}
@@ -190,7 +193,9 @@ const submit = handleSubmit(
 			setLoading('global', false)
 		}
 	},
-	() => {},
+	(error) => {
+		console.log('error', error)
+	},
 )
 </script>
 

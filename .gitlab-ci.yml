@@ -1,11 +1,11 @@
 stages:
   - build
-  - deploy
+  # - deploy
 
-.sshcon:
-  before_script:
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
+# .sshcon:
+#   before_script:
+#     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+#     - eval $(ssh-agent -s)
 
 build:
   image: docker:latest
@@ -20,13 +20,13 @@ build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$VERSION_TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$VERSION_TAG"
 
-deploy:
-  stage: deploy
-  extends: .sshcon
-  tags:
-    - deploy_prod
-  rules:
-    - if: $CI_COMMIT_BRANCH == $PRODBRANCH
-  script:
-    - sshpass -p $SSH_PRIVATE_KEY ssh -o StrictHostKeyChecking=no $SSH_HOST "sudo -i sed -i 's/[0-9]\+\.[0-9]\+\.[0-9]\+/$VERSION_TAG/g' /root/environments/front/upgrade-container.sh && sudo -i /root/environments/front/upgrade-container.sh"
+# deploy:
+#   stage: deploy
+#   extends: .sshcon
+#   tags:
+#     - deploy_prod
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == $PRODBRANCH
+#   script:
+#     - sshpass -p $SSH_PRIVATE_KEY ssh -o StrictHostKeyChecking=no $SSH_HOST "sudo -i sed -i 's/[0-9]\+\.[0-9]\+\.[0-9]\+/$VERSION_TAG/g' /root/environments/front/upgrade-container.sh && sudo -i /root/environments/front/upgrade-container.sh"
 
