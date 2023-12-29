@@ -7,7 +7,7 @@ WORKDIR /usr/src/nuxt-app
 COPY package.json .
 COPY yarn.lock .
 
-RUN yarn install --production && yarn cache clean
+RUN yarn
 
 COPY . .
 
