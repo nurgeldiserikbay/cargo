@@ -42,5 +42,6 @@ export interface IProductHistory {
 	createdDate: string
 	id: number
 	warehouseAddress: string
+	warehouseDescription: string
 	warehouseName: string
 }

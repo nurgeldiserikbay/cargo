@@ -5,13 +5,15 @@
 		:variant="'elevated'"
 		:loading="pending"
 	>
-		<v-list-item :variant="'plain'">
-			<v-row class="!ml-2 !mr-2">
+		<v-list-item :variant="'plain'" class="!min-h-auto">
+			<v-row class="!m-0">
 				<v-col
 					:align-self="'center'"
 					class="!border-r-(2px solid color1/10) !px-2 !py-0"
 				>
-					<span class="text-xs font-bold">{{ $t('labels.branchName') }}</span>
+					<span class="text-xs font-bold color-1">{{
+						$t('labels.branchName')
+					}}</span>
 				</v-col>
 				<v-col :align-self="'center'" class="flex justify-end !px-2 !py-0">
 					<span class="text-xs font-bold">{{ $t('labels.dateArrive') }}</span>
@@ -22,15 +24,16 @@
 			v-for="item in productHistory"
 			:key="item.id"
 			:variant="'plain'"
+			class="!min-h-auto"
 		>
-			<v-row class="!ml-2 !mr-2">
+			<v-row class="!m-0">
 				<v-col
 					:align-self="'center'"
 					class="!border-r-(2px solid color1/10) !p-2"
 				>
-					<span class="text-md">{{ item.warehouseName }}</span
+					<span class="text-md">{{ item.warehouseAddress }}</span
 					><br />
-					<span class="text-xs">{{ item.warehouseName }}</span>
+					<span class="text-xs">{{ item.warehouseDescription }}</span>
 				</v-col>
 				<v-col :align-self="'center'" class="flex justify-end !p-2">
 					<span class="text-xs">{{
