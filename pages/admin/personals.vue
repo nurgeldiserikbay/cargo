@@ -57,8 +57,9 @@
 									class="border !border-r-(2px solid color1)"
 								>
 									{{
-										getGetCityName(item.raw.warehouseId) +
-										getBranchName(item.raw.warehouseId)
+										`${getGetCityName(item.raw.warehouseId)} ${getBranchName(
+											item.raw.warehouseId,
+										)}`
 									}}
 								</v-col>
 								<v-col :align-self="'center'"> {{ item.raw.password }}+ </v-col>

@@ -35,7 +35,7 @@
 					</div>
 					<div class="text-h5">
 						<span>{{ rate }}</span>
-						<span> $</span>
+						<span> ₸</span>
 					</div>
 				</div>
 				<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
@@ -89,8 +89,8 @@ definePageMeta({
 	accesses: [ROLES.ROLE_USER],
 })
 
-const cost = ref(4)
-const rate = ref(465)
+const cost = ref(4.2)
+const rate = ref(470)
 const mass = ref()
 
 const getTotalPrice = computed(() => {
