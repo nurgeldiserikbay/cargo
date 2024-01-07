@@ -1,6 +1,6 @@
 import type { UseFetchOptions } from 'nuxt/app'
 import HttpFactory from '../factory'
-import type { IAdminUserCreate, IAdminUser } from '~/types/users'
+import type { IAdminUserCreate, IAdminUserList } from '~/types/users'
 
 export class AdminModule extends HttpFactory {
 	async createAdmin(userData: IAdminUserCreate) {
@@ -20,6 +20,6 @@ export class AdminModule extends HttpFactory {
 	}
 
 	async getAdmins<DataT>(params?: UseFetchOptions<DataT>) {
-		return await this.GET<IAdminUser[]>('/api/admin/users', params)
+		return await this.GET<IAdminUserList>('/admin/users', params)
 	}
 }

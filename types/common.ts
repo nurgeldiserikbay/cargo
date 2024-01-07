@@ -31,7 +31,8 @@ export interface IPagination {
 	unpaged?: boolean
 }
 
-export interface IPageMeta {
+export interface IPageMeta<T> {
+	content: T
 	empty: boolean
 	first: boolean
 	last: boolean

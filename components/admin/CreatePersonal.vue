@@ -5,27 +5,34 @@
 				<v-col>{{ $t('titles.personal') }}</v-col>
 			</v-row>
 			<v-row :align="'stretch'">
-				<v-col cols="12" md="4">
+				<v-col cols="12" md="3">
 					<v-text-field
 						v-bind="firstName"
 						:label="$t('labels.firstName')"
 						:error-messages="zodI18n(errors.firstName)"
 					></v-text-field>
 				</v-col>
-				<v-col cols="12" md="4">
+				<v-col cols="12" md="3">
 					<v-text-field
 						v-bind="lastName"
 						:label="$t('labels.lastName')"
 						:error-messages="zodI18n(errors.lastName)"
 					></v-text-field>
 				</v-col>
-				<v-col cols="12" md="4">
+				<v-col cols="12" md="3">
 					<MaskField
 						v-bind="phoneNumber"
 						:label="$t('labels.phoneNumber')"
 						:error-messages="zodI18n(errors.phoneNumber)"
 					>
 					</MaskField>
+				</v-col>
+				<v-col cols="12" md="3">
+					<v-text-field
+						v-bind="email"
+						:label="$t('labels.email')"
+						:error-messages="zodI18n(errors.email)"
+					></v-text-field>
 				</v-col>
 				<v-col cols="12" md="4">
 					<v-text-field
@@ -90,6 +97,7 @@ const schema = toTypedSchema(
 		password: z.string().min(4),
 		phoneNumber: z.string(),
 		warehouseId: z.number(),
+		email: z.string().email(),
 	}),
 )
 
@@ -109,6 +117,7 @@ const lastName = defineComponentBinds('lastName')
 const phoneNumber = defineComponentBinds('phoneNumber')
 const password = defineComponentBinds('password')
 const warehouseId = defineComponentBinds('warehouseId')
+const email = defineComponentBinds('email')
 const city = ref()
 
 watch(
@@ -127,6 +136,7 @@ const submit = handleSubmit(
 				!values.lastName ||
 				!values.phoneNumber ||
 				!values.password ||
+				!values.email ||
 				!values.warehouseId
 			)
 				return
@@ -137,15 +147,17 @@ const submit = handleSubmit(
 						lastName: values.lastName,
 						phoneNumber: clearToNums(values.phoneNumber || ''),
 						password: values.password,
+						email: values.email,
 						warehouseId: values.warehouseId,
-				  })
+					})
 				: await $api.admin.createAdmin({
 						firstName: values.firstName,
 						lastName: values.lastName,
 						phoneNumber: clearToNums(values.phoneNumber || ''),
 						password: values.password,
+						email: values.email,
 						warehouseId: values.warehouseId,
-				  })
+					})
 
 			if (status.value === 'success') {
 				$emits('added', data.value)

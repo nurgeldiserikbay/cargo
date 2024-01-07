@@ -24,7 +24,7 @@
 								{{ item.raw.name }}
 							</v-col>
 							<v-col :align-self="'center'">
-								{{ item.raw.type }}
+								{{ $t(`places.${item.raw.type}`) }}
 							</v-col>
 							<v-col class="flex justify-end gap-2">
 								<v-btn variant="plain" color="primary" :icon="true">

@@ -36,7 +36,7 @@ const $props = withDefaults(
 	}>(),
 	{
 		modelValue: '',
-		mask: '# (###) ### ## ##',
+		mask: '+7 (###) ### ## ##',
 		errorMessages: '',
 		placeholder: '',
 		required: false,

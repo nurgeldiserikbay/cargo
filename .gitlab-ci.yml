@@ -19,7 +19,6 @@ build:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$VERSION_TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$VERSION_TAG"
-
 # deploy:
 #   stage: deploy
 #   extends: .sshcon

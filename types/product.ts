@@ -36,9 +36,7 @@ export interface IProductInfoSearch extends IPagination {
 	locationType?: LocationTypes
 }
 
-export interface IProductInfoList extends IPageMeta {
-	content: IProductInfo[]
-}
+export type IProductInfoList = IPageMeta<IProductInfo[]>
 
 export interface IProductHistory {
 	createdDate: string

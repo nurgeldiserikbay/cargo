@@ -41,7 +41,15 @@
 						v-bind="email"
 						:label="$t('labels.email')"
 						:error-messages="zodI18n(errors.email)"
-					></v-text-field>
+					>
+						<template #append-inner>
+							<v-icon
+								icon="mdi mdi-asterisk"
+								size="x-small"
+								color="red"
+							></v-icon>
+						</template>
+					</v-text-field>
 					<MaskField
 						v-bind="phoneNumber"
 						:label="$t('labels.phoneNumber')"
@@ -128,7 +136,7 @@ const schema = toTypedSchema(
 		.object({
 			firstName: z.string().min(1).max(200),
 			lastName: z.string().min(1).max(200),
-			email: z.optional(z.string().email()),
+			email: z.string().email(),
 			password: z.string().min(4),
 			confirmPassword: z.string().min(4),
 			phoneNumber: z.string(),

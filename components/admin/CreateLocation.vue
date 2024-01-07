@@ -19,6 +19,8 @@
 						v-bind="type"
 						:label="$t('labels.cityType')"
 						:items="getCityTypes"
+						:item-value="'id'"
+						:item-title="'label'"
 						:error-messages="zodI18n(errors.type)"
 					></v-select>
 				</v-col>
@@ -88,7 +90,14 @@ const {
 
 const name = defineComponentBinds('name')
 const type = defineComponentBinds('type')
-const getCityTypes = computed(() => Object.values(LOCATION_TYPES))
+const getCityTypes = computed(() =>
+	Object.values(LOCATION_TYPES).map((v) => {
+		return {
+			id: v,
+			label: $t('places.' + v),
+		}
+	}),
+)
 
 watch(
 	() => $props.selectedLocation,
@@ -107,11 +116,11 @@ const submit = handleSubmit(
 				? await $api.location.updateLocation($props.selectedLocation.id, {
 						name: values.name,
 						type: values.type,
-				  })
+					})
 				: await $api.location.createLocation({
 						name: values.name,
 						type: values.type,
-				  })
+					})
 
 			if (status.value === 'success') {
 				$emits('added', data.value)

@@ -114,12 +114,12 @@ const submit = handleSubmit(
 						name: values.name,
 						address: values.address,
 						locationId: values.locationId,
-				  })
+					})
 				: await $api.branch.createBranch({
 						name: values.name,
 						address: values.address,
 						locationId: values.locationId,
-				  })
+					})
 			if (status.value === 'success') {
 				$emits('added', data.value)
 				setSuccess({

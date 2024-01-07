@@ -6,7 +6,11 @@
 			@added="addUser"
 		/>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
-		<v-data-iterator :items="list" :page="curPage" :items-per-page="perPage">
+		<v-data-iterator
+			:items="list"
+			:page="curPage + 1"
+			:items-per-page="perPage"
+		>
 			<template #default="{ items }">
 				<v-expansion-panels>
 					<v-expansion-panel v-for="(item, i) in items" :key="i">
@@ -70,8 +74,9 @@
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 		<v-pagination
 			v-if="pagesCount > 1"
-			v-model="curPage"
+			:model-value="curPage"
 			:length="pagesCount"
+			@update:model-value="changePage($event)"
 		></v-pagination>
 	</v-container>
 </template>
@@ -96,11 +101,17 @@ definePageMeta({
 	accesses: [ROLES.ROLE_ADMIN],
 })
 
+const $route = useRoute()
+const $router = useRouter()
+const localePath = useLocalePath()
 const selectedUser = ref<IAdminUser>()
-const curPage = ref(1)
-const perPage = ref(5)
+const perPage = ref(10)
+const totalCount = ref(0)
+const curPage = computed(() => {
+	return Number($route.query.page) || 1
+})
 const list = ref<IAdminUser[]>([])
-const pagesCount = computed(() => Math.ceil(list.value.length / perPage.value))
+const pagesCount = computed(() => Math.ceil(totalCount.value / perPage.value))
 const getBranch = computed(() => (id: number) => branchStore.getBranchById(id))
 const getBranchName = computed(
 	() => (id: number) => getBranch.value(id)?.name || '',
@@ -112,8 +123,36 @@ const getGetCityName = computed(() => (id: number) => {
 	return locationStore.getCityById(locationId)?.name || '' || ''
 })
 
-const { data } = await $api.admin.getAdmins()
-if (data.value) list.value = data.value
+watch(
+	() => curPage.value,
+	() => {
+		fetchUsers()
+	},
+)
+
+await fetchUsers()
+
+async function fetchUsers() {
+	try {
+		setLoading('global', true)
+		const { data } = await $api.admin.getAdmins({
+			query: {
+				size: perPage.value,
+				page: curPage.value - 1,
+			},
+		})
+		if (data.value) {
+			list.value = data.value.content
+			totalCount.value = data.value.totalElements
+		}
+	} catch (error: any) {
+		if (error?.response?._data) {
+			setError({ title: error.response._data.error || '' })
+		}
+	} finally {
+		setLoading('global', false)
+	}
+}
 
 function addUser(user: IAdminUser) {
 	if (!selectedUser.value) list.value.unshift(user)
@@ -151,6 +190,13 @@ async function toggleAdmin(item: IAdminUser) {
 	} finally {
 		setLoading('global', false)
 	}
+}
+
+function changePage(num: number) {
+	$router.push({
+		path: localePath($route.path),
+		query: { page: num },
+	})
 }
 </script>
 

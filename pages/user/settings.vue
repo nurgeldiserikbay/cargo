@@ -239,7 +239,7 @@ const schema = toTypedSchema(
 	z.object({
 		firstName: z.string().min(1).max(200),
 		lastName: z.string().min(1).max(200),
-		email: z.optional(z.string().email()),
+		email: z.string().email(),
 		password: z.string().min(4).optional(),
 		confirmPassword: z.string().min(4).optional(),
 		phoneNumber: z.string(),
