@@ -45,12 +45,20 @@
 						{{ $t('commands.clear') }}
 					</v-btn>
 				</v-col>
-				<v-col cols="12" md="8" order="3" order-md="4">
+				<v-col cols="12" md="6" order="3" order-md="4">
 					<v-textarea
 						v-bind="address"
 						:rows="1"
 						:label="$t('labels.branchAddress')"
-						:error-messages="zodI18n(errors.name)"
+						:error-messages="zodI18n(errors.address)"
+					></v-textarea>
+				</v-col>
+				<v-col cols="12" md="6" order="3" order-md="4">
+					<v-textarea
+						v-bind="description"
+						:rows="1"
+						:label="$t('labels.branchDescription')"
+						:error-messages="zodI18n(errors.description)"
 					></v-textarea>
 				</v-col>
 			</v-row>
@@ -77,6 +85,7 @@ const schema = toTypedSchema(
 	z.object({
 		name: z.string().min(1).max(500),
 		address: z.string().min(1).max(500),
+		description: z.string().min(1).max(500),
 		locationId: z.number(),
 	}),
 )
@@ -95,6 +104,7 @@ const {
 const name = defineComponentBinds('name')
 const address = defineComponentBinds('address')
 const locationId = defineComponentBinds('locationId')
+const description = defineComponentBinds('description')
 
 watch(
 	() => $props.selectedBranch,
@@ -107,17 +117,25 @@ watch(
 const submit = handleSubmit(
 	async () => {
 		try {
-			if (!values.name || !values.address || !values.locationId) return
+			if (
+				!values.name ||
+				!values.address ||
+				!values.locationId ||
+				!values.description
+			)
+				return
 			setLoading('global', true)
 			const { status, data, error } = $props.selectedBranch
 				? await $api.branch.updateBranch($props.selectedBranch.id, {
 						name: values.name,
 						address: values.address,
+						description: values.description,
 						locationId: values.locationId,
 					})
 				: await $api.branch.createBranch({
 						name: values.name,
 						address: values.address,
+						description: values.description,
 						locationId: values.locationId,
 					})
 			if (status.value === 'success') {

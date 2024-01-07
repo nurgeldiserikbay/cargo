@@ -42,6 +42,7 @@ export default {
 		cityType: 'Location of the settlement',
 		branchName: 'Name of the branch',
 		branchAddress: 'Branch address',
+		branchDescription: 'Full address',
 		city: 'City',
 		unlock: 'Unlock',
 		lock: 'Block',

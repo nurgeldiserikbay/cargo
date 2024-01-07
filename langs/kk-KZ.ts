@@ -42,6 +42,7 @@ export default {
 		cityType: 'Елді мекеннің орналасқан жері',
 		branchName: 'Филиалдың атауы',
 		branchAddress: 'Филиалдың мекенжайы',
+		branchDescription: 'Толық мекенжайы',
 		city: 'Қала',
 		unlock: 'Құлпын ашу',
 		lock: 'Бұғаттау',

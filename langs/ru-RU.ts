@@ -44,6 +44,7 @@ export default {
 		branch: 'Филиал',
 		branchName: 'Наименование филиала',
 		branchAddress: 'Адрес филиала',
+		branchDescription: 'Полный адрес',
 		address: 'Адрес',
 		city: 'Город',
 		unlock: 'Разблокировать',

@@ -18,8 +18,8 @@
 		</template>
 		<template #item="{ item, props }">
 			<div v-bind="props" class="w-full border-box py-2 px-3">
-				<div class="text-lg">{{ item.raw.name }}</div>
-				<div class="text-xs">{{ item.raw.address }}</div>
+				<div class="text-lg">{{ item.raw.address }}</div>
+				<div class="text-xs">{{ item.raw.description }}</div>
 			</div>
 		</template>
 	</v-select>
