@@ -21,7 +21,7 @@
 			</v-row>
 		</v-list-item>
 		<v-list-item
-			v-for="item in productHistory.reverse()"
+			v-for="item in [...productHistory].reverse()"
 			:key="item.id"
 			:variant="'plain'"
 			class="!min-h-auto"

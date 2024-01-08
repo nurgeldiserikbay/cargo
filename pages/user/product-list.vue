@@ -105,7 +105,7 @@ async function fetchList() {
 		if (status.value === 'success')
 			productList.value = data.value?.content || []
 	} catch (error: any) {
-		throw e
+		throw new Error(error)
 	} finally {
 		setLoading('global', false)
 	}
