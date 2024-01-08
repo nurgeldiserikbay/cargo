@@ -274,7 +274,6 @@ const warehouseId = defineComponentBinds('warehouseId')
 const city = ref()
 
 function onSubmit() {
-	console.log('values', values)
 	submit()
 }
 
@@ -316,31 +315,6 @@ const submit = handleSubmit(
 const getBranch = computed(() => (id?: number) => branchStore.getBranchById(id))
 
 await branchStore.fetchBranches()
-
-async function changePassword() {
-	try {
-		setLoading('global', true)
-		const { status, error } = await $api.user.updateUser({
-			password: values.password,
-		} as IUserCreate)
-		if (status.value === 'success') {
-			edit.value = false
-			await getSession()
-			setSuccess({
-				title: $t('messages.successUpdateData'),
-			})
-		}
-		if (status.value === 'error') {
-			setError({ title: $t(`errors.${error.value?.data || ''}`) })
-		}
-	} catch (error: any) {
-		if (error?.response?._data) {
-			setError({ title: error.response._data.error || '' })
-		}
-	} finally {
-		setLoading('global', false)
-	}
-}
 
 function togglePS() {
 	passwordChange.value = !passwordChange.value

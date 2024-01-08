@@ -6,6 +6,7 @@ export default {
 		locations: 'Населенные пункты',
 		branches: 'Филиалы',
 		personal: 'Менеджеры',
+		users: 'Пользователи',
 		checkProduct: 'Трекинг товара',
 	},
 	pages: {
@@ -25,6 +26,7 @@ export default {
 		settingsChange: 'Редактировать данные',
 	},
 	labels: {
+		user: 'Пользователь',
 		registerMsg: 'Регистрация',
 		firstName: 'Имя',
 		lastName: 'Фамилия',
@@ -54,6 +56,8 @@ export default {
 		changePassword: 'Сменить пароль',
 		yourCode: 'Ваш код',
 		dateArrive: 'Дата поступления',
+		commands: 'Команды',
+		totalCount: 'Всего',
 	},
 	commands: {
 		submit: 'Отправить',
@@ -68,6 +72,7 @@ export default {
 		cancel: 'Отмена',
 		save: 'Сохранить',
 		add: 'Добавить',
+		selectUser: 'Выберите пользователя',
 	},
 	messages: {
 		successUpdateData: 'Ваши данные обновлены!',

@@ -1,7 +1,12 @@
 <template>
 	<v-container class="!pt-10">
 		<v-row class="mb-10" :justify="'space-between'">
-			<v-col class="text-h4 text-center">{{ $t('titles.checkProduct') }}</v-col>
+			<v-col class="text-h4 text-center"
+				>{{ $t('titles.checkProduct') }}
+				<span v-if="user?.warehouseId"
+					>({{ getBranchName(user?.warehouseId) }})</span
+				></v-col
+			>
 		</v-row>
 		<v-form class="max-w-500px m-auto flex flex-col">
 			<v-text-field
@@ -40,16 +45,24 @@ import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
 
+import { useBranchStore } from '~/store/branch'
+
 definePageMeta({
 	layout: 'admin-layout',
 	auth: true,
 	accesses: [ROLES.ROLE_MANAGER],
 })
 
+const branchStore = useBranchStore()
 const { $api } = useNuxtApp()
 const { t: $t } = useI18n()
 const { setLoading } = useLoading()
 const { setError, setSuccess } = useAllert()
+const { data: user } = useAuth()
+const getBranch = computed(() => (id: number) => branchStore.getBranchById(id))
+const getBranchName = computed(
+	() => (id: number) => getBranch.value(id)?.address || '',
+)
 
 const schema = toTypedSchema(
 	z.object({
@@ -78,6 +91,10 @@ watch(
 		}, 300)
 	},
 )
+
+onMounted(async () => {
+	await branchStore.fetchBranches()
+})
 
 const submit = handleSubmit(
 	() => {

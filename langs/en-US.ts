@@ -6,6 +6,7 @@ export default {
 		locations: 'Localities',
 		branches: 'Branches',
 		personal: 'Managers',
+		users: 'Users',
 		checkProduct: 'Product tracking',
 	},
 	pages: {
@@ -24,6 +25,7 @@ export default {
 		settings: 'Settings',
 	},
 	labels: {
+		user: 'User',
 		registerMsg: 'Registration',
 		firstName: 'Name',
 		lastName: 'Surname',
@@ -48,6 +50,8 @@ export default {
 		lock: 'Block',
 		autoFetch: 'Enable auto-registration',
 		shop: 'In the shop',
+		commands: 'Commands',
+		totalCount: 'Total',
 	},
 	commands: {
 		submit: 'Send',
@@ -57,6 +61,7 @@ export default {
 		update: 'Update',
 		goBack: 'Go back',
 		toMainPage: 'To main',
+		selectUser: 'Select user',
 	},
 	messages: {
 		successRegister: 'You have registered successfully!',

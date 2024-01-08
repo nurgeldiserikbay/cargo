@@ -21,7 +21,7 @@
 			</v-row>
 		</v-list-item>
 		<v-list-item
-			v-for="item in productHistory"
+			v-for="item in productHistory.reverse()"
 			:key="item.id"
 			:variant="'plain'"
 			class="!min-h-auto"
@@ -37,7 +37,9 @@
 				</v-col>
 				<v-col :align-self="'center'" class="flex justify-end !p-2">
 					<span class="text-xs">{{
-						new Date(item.createdDate).toLocaleDateString()
+						`${new Date(item.createdDate).toLocaleDateString()} ${new Date(
+							item.createdDate,
+						).toLocaleTimeString()}`
 					}}</span>
 				</v-col>
 			</v-row>

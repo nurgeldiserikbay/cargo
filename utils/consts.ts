@@ -100,11 +100,11 @@ export const ADMIN_MENUS = [
 	//   text: 'pages.products',
 	//   roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
 	// },
-	// {
-	//   to: '/admin/users',
-	//   text: 'pages.users',
-	//   roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER]
-	// },
+	{
+		to: '/admin/users',
+		text: 'pages.users',
+		roles: [ROLES.ROLE_ADMIN],
+	},
 	{
 		to: '/admin/checkProduct',
 		text: 'pages.checkProduct',

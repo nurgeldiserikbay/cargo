@@ -6,72 +6,88 @@
 			@added="addUser"
 		/>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
-		<v-data-iterator
-			:items="list"
-			:page="curPage + 1"
-			:items-per-page="perPage"
-		>
-			<template #default="{ items }">
-				<v-expansion-panels>
-					<v-expansion-panel v-for="(item, i) in items" :key="i">
-						<template #title>
-							<v-row>
-								<v-col
-									:align-self="'center'"
-									class="border !border-r-(2px solid color1)"
-								>
-									{{ item.raw.lastName + ' ' + item.raw.firstName }}
-								</v-col>
-								<v-col class="flex justify-end gap-2">
-									<v-btn
-										variant="plain"
-										color="primary"
-										:icon="true"
-										@click.stop="select(item.raw)"
-									>
-										<v-tooltip activator="parent" location="top">{{
-											$t(`commands.select`)
-										}}</v-tooltip>
-										<v-icon icon="mdi mdi-button-pointer" size="large"></v-icon>
-									</v-btn>
-									<v-switch
-										:model-value="!item.raw.locked"
-										hide-details
-										inset
-										:label="
-											item.raw.locked ? $t('lables.unlock') : $t('labels.lock')
-										"
-										@update:model-value="toggleAdmin(item.raw)"
-									>
-									</v-switch>
-								</v-col>
-							</v-row>
-						</template>
-						<template #text>
-							<v-row>
-								<v-col :align-self="'center'">
-									{{ item.raw.phoneNumber }}
-								</v-col>
-								<v-col
-									:align-self="'center'"
-									class="border !border-r-(2px solid color1)"
-								>
-									{{
-										`${getGetCityName(item.raw.warehouseId)} ${getBranchName(
-											item.raw.warehouseId,
-										)}`
-									}}
-								</v-col>
-								<v-col :align-self="'center'"> {{ item.raw.password }}+ </v-col>
-							</v-row>
-						</template>
-					</v-expansion-panel>
-				</v-expansion-panels>
-			</template>
-			<template #no-data>
-				<ListEmptyBanner></ListEmptyBanner>
-			</template>
-		</v-data-iterator>
+		<v-table density="comfortable" :hover="true" class="table w-full mt-2">
+			<thead class="w-full">
+				<tr class="w-full">
+					<th
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						№
+					</th>
+					<th
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						{{ $t('labels.user') }}
+					</th>
+					<th
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						{{ $t('labels.email') }}
+					</th>
+					<th
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						{{ $t('labels.phoneNumber') }}
+					</th>
+					<th
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						{{ $t('labels.branch') }}
+					</th>
+					<th class="px-2 py-1 border-b-(1 black solid)">
+						{{ $t('labels.commands') }}
+					</th>
+				</tr>
+			</thead>
+			<tbody class="w-full">
+				<tr
+					v-for="(item, itemInd) in list"
+					:key="item.id"
+					class="w-full"
+					:class="{ 'bg-gray-300': itemInd % 2 === 0 }"
+				>
+					<td class="border-r-(1 black solid) px-2 py-1">{{ item.id }}</td>
+					<td class="border-r-(1 black solid) px-2 py-1">
+						{{ `${item.lastName} ${item.firstName}` }}
+					</td>
+					<td class="border-r-(1 black solid) px-2 py-1">{{ item.email }}</td>
+					<td class="border-r-(1 black solid) px-2 py-1">
+						{{ item.phoneNumber }}
+					</td>
+					<td class="border-r-(1 black solid) px-2 py-1">
+						<div>
+							{{
+								`${getCityName(item.warehouseId)} - ${getBranchName(
+									item.warehouseId,
+								)}`
+							}}
+						</div>
+						<div>{{ getBranch(item.warehouseId)?.description }}</div>
+					</td>
+					<td class="px-2 py-1">
+						<v-btn
+							variant="plain"
+							color="primary"
+							:icon="true"
+							@click.stop="select(item)"
+						>
+							<v-tooltip activator="parent" location="top">{{
+								$t(`commands.select`)
+							}}</v-tooltip>
+							<v-icon icon="mdi mdi-button-pointer" size="small"></v-icon>
+						</v-btn>
+						<v-switch
+							:model-value="!item.locked"
+							hide-details
+							inset
+							:label="item.locked ? $t('lables.unlock') : $t('labels.lock')"
+							@update:model-value="toggleAdmin(item)"
+						>
+						</v-switch>
+					</td>
+				</tr>
+			</tbody>
+		</v-table>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 		<v-pagination
 			v-if="pagesCount > 1"
@@ -115,9 +131,9 @@ const list = ref<IAdminUser[]>([])
 const pagesCount = computed(() => Math.ceil(totalCount.value / perPage.value))
 const getBranch = computed(() => (id: number) => branchStore.getBranchById(id))
 const getBranchName = computed(
-	() => (id: number) => getBranch.value(id)?.name || '',
+	() => (id: number) => getBranch.value(id)?.address || '',
 )
-const getGetCityName = computed(() => (id: number) => {
+const getCityName = computed(() => (id: number) => {
 	const locationId = getBranch.value(id)?.locationId
 
 	if (locationId === undefined) return ''

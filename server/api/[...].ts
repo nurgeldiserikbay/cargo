@@ -1,4 +1,4 @@
-import { createError, appendHeader } from 'h3'
+import { appendHeader } from 'h3'
 
 export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig()

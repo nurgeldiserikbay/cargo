@@ -9,7 +9,7 @@ import {
 	transformerVariantGroup,
 } from 'unocss'
 import type { Theme } from 'unocss/preset-uno'
-import presetTheme from 'unocss-preset-theme'
+import { presetTheme } from 'unocss-preset-theme'
 
 export default defineConfig({
 	shortcuts: [],

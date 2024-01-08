@@ -6,6 +6,7 @@ export default {
 		locations: 'Елді мекендер',
 		branches: 'Филиалдар',
 		personal: 'Менеджерлер',
+		users: 'Пайдаланушылар',
 		checkProduct: 'Тауарды бақылау',
 	},
 	pages: {
@@ -24,6 +25,7 @@ export default {
 		settings: 'Параметрлер',
 	},
 	labels: {
+		user: 'Пайдаланушы',
 		registerMsg: 'Тіркеу',
 		firstName: 'Аты',
 		lastName: 'Тегі',
@@ -48,6 +50,8 @@ export default {
 		lock: 'Бұғаттау',
 		autoFetch: 'АВТО тіркеуді қосыңыз',
 		shop: 'Дүкенде',
+		commands: 'Командалар',
+		totalCount: 'Барлығы',
 	},
 	commands: {
 		submit: 'Жіберу',
@@ -57,6 +61,7 @@ export default {
 		update: 'Жаңарту',
 		goBack: 'Артқа қайту',
 		toMainPage: 'Басты бет',
+		selectUser: 'Пайдаланушыны таңдаңыз',
 	},
 	messages: {
 		successRegister: 'Сіз сәтті тіркеуден өттіңіз!',
