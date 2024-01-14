@@ -22,12 +22,13 @@ export type ValueType<T> = T extends Promise<infer U> ? U : T
 export interface IPagination {
 	offset?: number
 	paged?: boolean
-	pageNumber?: number
-	pageSize?: number
+	page?: number
+	size?: number
 	sort?: {
 		sorted?: true
 		unsorted?: true
 	}
+	totalElements?: number
 	unpaged?: boolean
 }
 
@@ -40,8 +41,8 @@ export interface IPageMeta<T> {
 	numberOfElements: number
 	pageable: {
 		offset: number
-		pageNumber: number
-		pageSize: number
+		page: number
+		size: number
 		paged: boolean
 		sort: {
 			empty: boolean

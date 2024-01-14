@@ -79,9 +79,7 @@ const curPage = computed(() => {
 })
 const perPage = ref(5)
 const productList = ref<IProductInfo[]>([])
-const pagesCount = computed(() =>
-	Math.ceil(productList.value.length / perPage.value),
-)
+const pagesCount = ref(0)
 
 await fetchList()
 
@@ -97,13 +95,15 @@ async function fetchList() {
 		setLoading('global', true)
 		const opt: IProductInfoSearch = {
 			paged: true,
-			pageNumber: curPage.value,
-			pageSize: perPage.value,
+			page: curPage.value - 1,
+			size: perPage.value,
 		}
 		if (currentType.value) opt.locationType = currentType.value as LocationTypes
 		const { status, data } = await $api.product.getAllProducts(opt)
-		if (status.value === 'success')
+		if (status.value === 'success') {
 			productList.value = data.value?.content || []
+			pagesCount.value = data.value?.totalPages || 0
+		}
 	} catch (error: any) {
 		throw new Error(error)
 	} finally {
