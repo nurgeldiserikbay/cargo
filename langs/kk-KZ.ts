@@ -52,6 +52,7 @@ export default {
 		shop: 'Дүкенде',
 		commands: 'Командалар',
 		totalCount: 'Барлығы',
+		search: 'Іздеу',
 	},
 	commands: {
 		submit: 'Жіберу',

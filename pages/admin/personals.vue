@@ -40,6 +40,44 @@
 				</tr>
 			</thead>
 			<tbody class="w-full">
+				<tr class="w-full">
+					<td
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						<v-text-field
+							v-model="search.id"
+							:placeholder="$t('labels.search')"
+						></v-text-field>
+					</td>
+					<td
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						<v-text-field
+							v-model="search.firstNameLike"
+							:placeholder="$t('labels.search')"
+						></v-text-field>
+					</td>
+					<td
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						<v-text-field
+							v-model="search.emailLike"
+							:placeholder="$t('labels.search')"
+						></v-text-field>
+					</td>
+					<td
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					>
+						<v-text-field
+							v-model="search.phoneNumberLike"
+							:placeholder="$t('labels.search')"
+						></v-text-field>
+					</td>
+					<td
+						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+					></td>
+					<td class="px-2 py-1 border-b-(1 black solid)"></td>
+				</tr>
 				<tr
 					v-for="(item, itemInd) in list"
 					:key="item.id"
@@ -127,6 +165,13 @@ const totalCount = ref(0)
 const curPage = computed(() => {
 	return Number($route.query.page) || 1
 })
+const search = reactive({
+	id: '',
+	emailLike: '',
+	firstNameLike: '',
+	phoneNumberLike: '',
+})
+let fetchId: ReturnType<typeof setTimeout> | null = null
 const list = ref<IAdminUser[]>([])
 const pagesCount = computed(() => Math.ceil(totalCount.value / perPage.value))
 const getBranch = computed(() => (id: number) => branchStore.getBranchById(id))
@@ -147,16 +192,35 @@ watch(
 	},
 )
 
+watch(
+	() => search,
+	() => {
+		if (fetchId) {
+			clearTimeout(fetchId)
+			fetchId = null
+		}
+		fetchId = setTimeout(() => {
+			fetchUsers()
+		}, 500)
+	},
+	{ deep: true },
+)
+
 await fetchUsers()
 
 async function fetchUsers() {
 	try {
 		setLoading('global', true)
 		const { data } = await $api.admin.getAdmins({
-			query: {
+			query: clearObjFields({
 				size: perPage.value,
 				page: curPage.value - 1,
-			},
+				role: [ROLES.ROLE_MANAGER, ROLES.ROLE_ADMIN],
+				id: search.id,
+				emailLike: search.emailLike,
+				firstNameLike: search.firstNameLike,
+				phoneNumberLike: search.phoneNumberLike,
+			}),
 		})
 		if (data.value) {
 			list.value = data.value.content

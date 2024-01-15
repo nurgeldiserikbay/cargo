@@ -52,6 +52,7 @@ export default {
 		shop: 'In the shop',
 		commands: 'Commands',
 		totalCount: 'Total',
+		search: 'Search',
 	},
 	commands: {
 		submit: 'Send',

@@ -58,6 +58,7 @@ export default {
 		dateArrive: 'Дата поступления',
 		commands: 'Команды',
 		totalCount: 'Всего',
+		search: 'Поиск',
 	},
 	commands: {
 		submit: 'Отправить',
