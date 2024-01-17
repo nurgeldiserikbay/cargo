@@ -30,7 +30,24 @@
 				</div>
 			</form>
 		</v-card>
+
 		<v-card
+			class="d-flex flex-col items-center w-full max-w-600px px-4 py-2 mt-4 mb-8 rounded-lg"
+		>
+			<a
+				href="https://chat.whatsapp.com/EcYjywdBwvU0vB9Yu5LPO3"
+				target="_blank"
+				class="w-full flex justify-start items-center gap-3 text-color1 text-left no-underline"
+			>
+				<svgo-whatsapp
+					class="w-10 h-10 fill-none"
+					:filled="true"
+				></svgo-whatsapp>
+				<span>{{ $t('our_whatsapp') }}</span>
+			</a>
+		</v-card>
+
+		<!-- <v-card
 			v-if="getFaq.length"
 			class="d-flex flex-col items-start w-full max-w-980p px-5 py-5 pb-6 mb-12 rounded-lg"
 		>
@@ -44,7 +61,7 @@
 				>
 				</v-expansion-panel>
 			</v-expansion-panels>
-		</v-card>
+		</v-card> -->
 	</v-container>
 </template>
 
@@ -79,7 +96,7 @@ const { errors, values, handleSubmit, defineComponentBinds, handleReset } =
 const trackCode = defineComponentBinds('trackCode')
 const description = defineComponentBinds('description')
 
-const getFaq = computed(() => CONTENT.faq)
+// const getFaq = computed(() => CONTENT.faq)
 
 const submit = handleSubmit(
 	async () => {

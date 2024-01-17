@@ -1,5 +1,6 @@
 export default {
 	welcome: 'Привет',
+	our_whatsapp: 'Наша группа в WhatsApp',
 	titles: {
 		faq: 'FAQ',
 		addProduct: 'Добавление товара',
