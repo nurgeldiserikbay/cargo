@@ -40,6 +40,7 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
+import validator from 'validator'
 
 const { setError } = useAllert()
 const localePath = useLocalePath()
@@ -54,7 +55,11 @@ definePageMeta({
 
 const schema = toTypedSchema(
 	z.object({
-		phoneNumber: z.string(),
+		phoneNumber: z
+			.string()
+			.refine((str) =>
+				validator.isMobilePhone(str.replace(/\D/g, ''), 'kk-KZ'),
+			),
 		password: z.string().min(4),
 	}),
 )

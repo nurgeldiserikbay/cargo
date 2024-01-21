@@ -131,6 +131,7 @@
 			v-if="pagesCount > 1"
 			:model-value="curPage"
 			:length="pagesCount"
+			:size="'x-small'"
 			@update:model-value="changePage($event)"
 		></v-pagination>
 	</v-container>
@@ -215,8 +216,8 @@ async function fetchUsers() {
 			query: clearObjFields({
 				size: perPage.value,
 				page: curPage.value - 1,
-				role: [ROLES.ROLE_MANAGER, ROLES.ROLE_ADMIN],
-				id: search.id,
+				authorityEqual: ROLES.ROLE_MANAGER,
+				codeEqual: search.id,
 				emailLike: search.emailLike,
 				firstNameLike: search.firstNameLike,
 				phoneNumberLike: search.phoneNumberLike,

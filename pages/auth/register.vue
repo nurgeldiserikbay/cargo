@@ -115,6 +115,7 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
+import validator from 'validator'
 
 import type { IUserCreate } from '~/types/users'
 
@@ -139,7 +140,11 @@ const schema = toTypedSchema(
 			email: z.string().email(),
 			password: z.string().min(4),
 			confirmPassword: z.string().min(4),
-			phoneNumber: z.string(),
+			phoneNumber: z
+				.string()
+				.refine((str) =>
+					validator.isMobilePhone(str.replace(/\D/g, ''), 'kk-KZ'),
+				),
 			warehouseId: z.number(),
 		})
 		.superRefine(({ confirmPassword, password }, ctx) => {

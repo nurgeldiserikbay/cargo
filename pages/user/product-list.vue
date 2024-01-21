@@ -25,11 +25,14 @@
 			<v-data-iterator :items="productList">
 				<template #default="{ items }">
 					<template v-for="(item, i) in items" :key="i">
-						<v-expansion-panels variant="accordion">
+						<v-expansion-panels variant="accordion" class="condensed">
 							<v-expansion-panel size="small">
 								<template #title>
-									<div>
-										<div class="text-md mb-2">{{ item.raw.trackCode }}</div>
+									<div class="flex gap-x-2">
+										<div class="text-md basis-50">
+											<span>{{ (curPage - 1) * perPage + i + 1 }})</span>
+											{{ item.raw.trackCode }}
+										</div>
 										<div class="text-xs">{{ item.raw.description }}</div>
 									</div>
 								</template>
@@ -49,6 +52,7 @@
 				:model-value="curPage"
 				:length="pagesCount"
 				class="mt-4 mb-5"
+				:size="'x-small'"
 				@update:model-value="changePage"
 			></v-pagination>
 		</v-card>
@@ -77,7 +81,7 @@ const currentType = computed(() => {
 const curPage = computed(() => {
 	return Number($route.query.page || 1)
 })
-const perPage = ref(5)
+const perPage = ref(10)
 const productList = ref<IProductInfo[]>([])
 const pagesCount = ref(0)
 
@@ -128,10 +132,18 @@ function changePage(page: number) {
 
 <style lang="scss" scoped>
 :deep(.v-expansion-panel-title) {
-	padding: 8px 15px;
+	padding: 6px 10px;
+	min-height: 32px;
 }
 
 :deep(.v-expansion-panel-text__wrapper) {
 	padding: 0 !important;
+}
+
+:deep(
+		.v-expansion-panel--active
+			> .v-expansion-panel-title:not(.v-expansion-panel-title--static)
+	) {
+	min-height: 32px;
 }
 </style>

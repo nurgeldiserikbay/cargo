@@ -79,6 +79,7 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
+import validator from 'validator'
 import type { IAdminUser } from '~/types/users'
 
 const { $api } = useNuxtApp()
@@ -95,7 +96,11 @@ const schema = toTypedSchema(
 		firstName: z.string().min(1).max(200),
 		lastName: z.string().min(1).max(200),
 		password: z.string().min(4),
-		phoneNumber: z.string(),
+		phoneNumber: z
+			.string()
+			.refine((str) =>
+				validator.isMobilePhone(str.replace(/\D/g, ''), 'kk-KZ'),
+			),
 		warehouseId: z.number(),
 		email: z.string().email(),
 	}),

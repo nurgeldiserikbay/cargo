@@ -59,6 +59,7 @@
 			v-if="pagesCount > 1"
 			v-model="curPage"
 			:length="pagesCount"
+			:size="'x-small'"
 		></v-pagination>
 	</v-container>
 </template>
