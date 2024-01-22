@@ -13,8 +13,17 @@
 				:color="
 					place.type === currentType ? 'teal-accent-2' : 'light-blue-lighten-2'
 				"
+				class="relative"
 				@click="changeType(place.type)"
 			>
+				<div
+					v-if="productsCount && productsCount[place.type]"
+					class="absolute left-0 top-0 z-1 px-2 py-0 rounded-xl text-sm transform -translate-x-1/2 -translate-y-1/2 bg-yellow-200"
+				>
+					{{
+						productsCount[place.type] > 100 ? '+99' : productsCount[place.type]
+					}}
+				</div>
 				<span class="mr-2 font-500">{{
 					place.type ? $t(`places.${place.type}`) : $t(`labels.shop`)
 				}}</span>
@@ -22,7 +31,7 @@
 		</div>
 
 		<v-card class="w-full">
-			<v-data-iterator :items="productList">
+			<v-data-iterator :items="productList" :items-per-page="perPage">
 				<template #default="{ items }">
 					<template v-for="(item, i) in items" :key="i">
 						<v-expansion-panels variant="accordion" class="condensed">
@@ -61,7 +70,11 @@
 
 <script lang="ts" setup>
 import type { LocationTypes } from '~/types/location'
-import type { IProductInfo, IProductInfoSearch } from '~/types/product'
+import type {
+	IProductInfo,
+	IProductInfoSearch,
+	IProductsCount,
+} from '~/types/product'
 
 definePageMeta({
 	layout: 'user-layout',
@@ -84,6 +97,7 @@ const curPage = computed(() => {
 const perPage = ref(10)
 const productList = ref<IProductInfo[]>([])
 const pagesCount = ref(0)
+const productsCount = ref<null | IProductsCount>(null)
 
 await fetchList()
 
@@ -108,6 +122,9 @@ async function fetchList() {
 			productList.value = data.value?.content || []
 			pagesCount.value = data.value?.totalPages || 0
 		}
+
+		const { data: d } = await $api.product.getProductsCount()
+		if (d) productsCount.value = d.value
 	} catch (error: any) {
 		throw new Error(error)
 	} finally {

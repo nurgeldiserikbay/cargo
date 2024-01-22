@@ -6,6 +6,7 @@ import type {
 	IProductInfoList,
 	IProductInfoSearch,
 	IProductOwner,
+	IProductsCount,
 } from '~/types/product'
 
 export class ProductModule extends HttpFactory {
@@ -41,5 +42,9 @@ export class ProductModule extends HttpFactory {
 
 	async updateByTrackCodes(trackCode: string[]) {
 		return await this.POST<IProduct>('/products/commit-all', trackCode)
+	}
+
+	async getProductsCount() {
+		return await this.GET<IProductsCount>('/products/count-all')
 	}
 }

@@ -10,6 +10,7 @@ export const LOCATION_TYPES: { [key in LocationTypes]: LocationTypes } = {
 	BORDER: 'BORDER',
 	CHINA: 'CHINA',
 	KZ: 'KZ',
+	NULL: 'NULL',
 }
 
 export const CONTENT = {
@@ -45,7 +46,7 @@ export const CONTENT = {
 	places: [
 		{
 			id: 0,
-			type: '',
+			type: LOCATION_TYPES.NULL,
 			icon: 'store-clock',
 		},
 		{

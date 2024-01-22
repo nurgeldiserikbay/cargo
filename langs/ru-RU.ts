@@ -96,6 +96,7 @@ export default {
 		CHINA: 'Китай',
 		BORDER: 'Город',
 		KZ: 'Филиал',
+		NULL: 'Новые',
 	},
 	errors: {
 		Required: 'Это поле является обязательным',

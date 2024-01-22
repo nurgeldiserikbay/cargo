@@ -1,4 +1,4 @@
-export type LocationTypes = 'BORDER' | 'CHINA' | 'KZ'
+export type LocationTypes = 'BORDER' | 'CHINA' | 'KZ' | 'NULL'
 
 export interface ICityCreate {
 	name: string

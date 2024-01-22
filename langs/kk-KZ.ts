@@ -84,6 +84,7 @@ export default {
 		CHINA: 'Қытайда',
 		BORDER: 'Шекарада',
 		KZ: 'Қазақстанда',
+		NULL: 'Дүкенде',
 	},
 	errors: {
 		Required: 'Бұл өріс міндетті болып табылады',

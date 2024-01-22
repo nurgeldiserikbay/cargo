@@ -84,6 +84,7 @@ export default {
 		CHINA: 'In China',
 		BORDER: 'On the border',
 		KZ: 'In Kazakhstan',
+		NULL: 'In the shop',
 	},
 	errors: {
 		Required: 'This field is required',

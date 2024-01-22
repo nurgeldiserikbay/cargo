@@ -45,3 +45,5 @@ export interface IProductHistory {
 	warehouseDescription: string
 	warehouseName: string
 }
+
+export type IProductsCount = { [key in LocationTypes]: number }

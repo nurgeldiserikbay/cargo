@@ -15,6 +15,11 @@
 		<template #append-inner>
 			<v-icon icon="mdi mdi-asterisk" size="x-small" color="red"></v-icon>
 		</template>
+		<template #item="{ item, props }">
+			<div v-bind="props" class="w-full border-box py-1 px-3">
+				<div class="text-sm">{{ item.raw.name }}</div>
+			</div>
+		</template>
 	</v-select>
 </template>
 
