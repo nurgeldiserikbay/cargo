@@ -8,6 +8,7 @@ export default {
 		branches: 'Филиалдар',
 		personal: 'Менеджерлер',
 		users: 'Пайдаланушылар',
+		products: 'Тауарлар',
 		checkProduct: 'Тауарды бақылау',
 	},
 	pages: {
@@ -24,6 +25,7 @@ export default {
 		users: 'Пайдаланушылар',
 		checkProduct: 'Тауарды бақылау',
 		settings: 'Параметрлер',
+		archive: 'Мұрағат',
 	},
 	labels: {
 		user: 'Пайдаланушы',
@@ -64,6 +66,8 @@ export default {
 		goBack: 'Артқа қайту',
 		toMainPage: 'Басты бет',
 		selectUser: 'Пайдаланушыны таңдаңыз',
+		archive: 'Мұрағатқа',
+		backArchive: 'Мұрағаттан қайтару',
 	},
 	messages: {
 		successRegister: 'Сіз сәтті тіркеуден өттіңіз!',

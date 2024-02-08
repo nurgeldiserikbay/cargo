@@ -8,6 +8,7 @@ export default {
 		branches: 'Branches',
 		personal: 'Managers',
 		users: 'Users',
+		products: 'Products',
 		checkProduct: 'Product tracking',
 	},
 	pages: {
@@ -24,6 +25,7 @@ export default {
 		users: 'Users',
 		checkProduct: 'Product tracking',
 		settings: 'Settings',
+		archive: 'Archive',
 	},
 	labels: {
 		user: 'User',
@@ -64,6 +66,8 @@ export default {
 		goBack: 'Go back',
 		toMainPage: 'To main',
 		selectUser: 'Select user',
+		archive: 'To the archive',
+		backArchive: 'Return from archive',
 	},
 	messages: {
 		successRegister: 'You have registered successfully!',

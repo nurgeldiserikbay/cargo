@@ -34,6 +34,7 @@ export interface IProductInfo {
 
 export interface IProductInfoSearch extends IPagination {
 	locationType?: LocationTypes
+	state?: string
 }
 
 export type IProductInfoList = IPageMeta<IProductInfo[]>

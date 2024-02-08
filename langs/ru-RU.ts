@@ -8,6 +8,7 @@ export default {
 		branches: 'Филиалы',
 		personal: 'Менеджеры',
 		users: 'Пользователи',
+		products: 'Продукты',
 		checkProduct: 'Трекинг товара',
 	},
 	pages: {
@@ -25,6 +26,7 @@ export default {
 		checkProduct: 'Трекинг товара',
 		settings: 'Кабинет',
 		settingsChange: 'Редактировать данные',
+		archive: 'Архив',
 	},
 	labels: {
 		user: 'Пользователь',
@@ -75,6 +77,8 @@ export default {
 		save: 'Сохранить',
 		add: 'Добавить',
 		selectUser: 'Выберите пользователя',
+		archive: 'В архив',
+		backArchive: 'Вернуть из архив',
 	},
 	messages: {
 		successUpdateData: 'Ваши данные обновлены!',

@@ -91,12 +91,14 @@ const {
 const name = defineComponentBinds('name')
 const type = defineComponentBinds('type')
 const getCityTypes = computed(() =>
-	Object.values(LOCATION_TYPES).map((v) => {
-		return {
-			id: v,
-			label: $t('places.' + v),
-		}
-	}),
+	Object.values(LOCATION_TYPES)
+		.filter((t) => t !== 'NULL')
+		.map((v) => {
+			return {
+				id: v,
+				label: $t('places.' + v),
+			}
+		}),
 )
 
 watch(

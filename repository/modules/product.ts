@@ -47,4 +47,12 @@ export class ProductModule extends HttpFactory {
 	async getProductsCount() {
 		return await this.GET<IProductsCount>('/products/count-all')
 	}
+
+	async sendToArchive(productId: number) {
+		return await this.PUT('/products/archive-many', [productId])
+	}
+
+	async sendFromArchive(productId: number) {
+		return await this.PUT('/products/activate-many', [productId])
+	}
 }
