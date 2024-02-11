@@ -26,6 +26,9 @@
 							<v-col :align-self="'center'">
 								{{ $t(`places.${item.raw.type}`) }}
 							</v-col>
+							<v-col :align-self="'center'">
+								{{ item.raw.code }}
+							</v-col>
 							<v-col class="flex justify-end gap-2">
 								<v-btn variant="plain" color="primary" :icon="true">
 									<v-tooltip activator="parent" location="top">{{

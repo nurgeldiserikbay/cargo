@@ -10,13 +10,15 @@ export default {
 		users: 'Пользователи',
 		products: 'Продукты',
 		checkProduct: 'Трекинг товара',
+		contacts: 'Контакты',
 	},
 	pages: {
 		login: 'Войти',
 		register: 'Регистрация',
 		user: 'Товары',
 		productList: 'Отслежка',
-		info: 'Адрес',
+		address: 'Адрес',
+		info: 'Инфо',
 		calculation: 'Калькулятор',
 		locations: 'Населенные пункты',
 		branchs: 'Филиалы',
@@ -27,6 +29,8 @@ export default {
 		settings: 'Кабинет',
 		settingsChange: 'Редактировать данные',
 		archive: 'Архив',
+		lessons: 'Уроки',
+		contacts: 'Контакты',
 	},
 	labels: {
 		user: 'Пользователь',
@@ -62,6 +66,7 @@ export default {
 		commands: 'Команды',
 		totalCount: 'Всего',
 		search: 'Поиск',
+		code: 'Код населенного пункта',
 	},
 	commands: {
 		submit: 'Отправить',
@@ -79,6 +84,7 @@ export default {
 		selectUser: 'Выберите пользователя',
 		archive: 'В архив',
 		backArchive: 'Вернуть из архив',
+		backTo: 'Назад',
 	},
 	messages: {
 		successUpdateData: 'Ваши данные обновлены!',

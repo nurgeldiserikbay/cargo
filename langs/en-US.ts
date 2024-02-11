@@ -10,13 +10,15 @@ export default {
 		users: 'Users',
 		products: 'Products',
 		checkProduct: 'Product tracking',
+		contacts: 'Contacts',
 	},
 	pages: {
 		login: 'Sign in',
 		register: 'Sigh up',
 		user: 'Main',
 		productList: 'Products',
-		info: 'Branch',
+		address: 'Address',
+		info: 'Info',
 		calculation: 'Calculator',
 		locations: 'Localities',
 		branchs: 'Branches',
@@ -26,6 +28,8 @@ export default {
 		checkProduct: 'Product tracking',
 		settings: 'Settings',
 		archive: 'Archive',
+		lessons: 'Lessons',
+		contacts: 'Contacts',
 	},
 	labels: {
 		user: 'User',
@@ -56,6 +60,7 @@ export default {
 		commands: 'Commands',
 		totalCount: 'Total',
 		search: 'Search',
+		code: 'Locality code',
 	},
 	commands: {
 		submit: 'Send',
@@ -68,6 +73,7 @@ export default {
 		selectUser: 'Select user',
 		archive: 'To the archive',
 		backArchive: 'Return from archive',
+		backTo: 'Back',
 	},
 	messages: {
 		successRegister: 'You have registered successfully!',

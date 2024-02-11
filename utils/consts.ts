@@ -1,7 +1,7 @@
 import IconBox from '@/assets/svg/box-svgrepo-com.svg'
 import IconTruckDeliver from '@/assets/svg/truck-deliver-svgrepo-com.svg'
 import IconSkyscraperCity from '@/assets/svg/skyscraper-city-svgrepo-com.svg'
-import IconCalculator from '@/assets/svg/calculator-svgrepo-com.svg'
+import IconAddressBook from '@/assets/svg/address-book.svg'
 import type { TypeAlerts } from '~/types/common'
 import type { LocationTypes } from '~/types/location'
 import type { TypeRoles } from '~/types/users'
@@ -33,14 +33,28 @@ export const CONTENT = {
 			icon: IconTruckDeliver,
 		},
 		{
-			to: '/user/info',
-			text: 'pages.info',
+			to: '/user/address',
+			text: 'pages.address',
 			icon: IconSkyscraperCity,
 		},
 		{
-			to: '/user/calculation',
-			text: 'pages.calculation',
-			icon: IconCalculator,
+			to: '/user/info',
+			text: 'pages.info',
+			icon: IconAddressBook,
+		},
+	],
+	infoList: [
+		{
+			to: '/user/info/contacts',
+			text: 'pages.contacts',
+		},
+		// {
+		// 	to: '/user/info/calculation',
+		// 	text: 'pages.calculation',
+		// },
+		{
+			to: '/user/info/lessons',
+			text: 'pages.lessons',
 		},
 	],
 	places: [
@@ -64,6 +78,38 @@ export const CONTENT = {
 			type: LOCATION_TYPES.KZ,
 			icon: 'home-account',
 		},
+	],
+	lessons: [
+		// {
+		// 	id: 1,
+		// 	title: 'lessons1',
+		// 	src: 'https://www.youtube.com/embed/J9E8hFJhAw4?si=W3aE5dqkrPPTTgIu',
+		// },
+		// {
+		// 	id: 2,
+		// 	title: 'lessons2',
+		// 	src: 'https://www.youtube.com/embed/ZfiJHHiGlB8?si=nzBkhez1h2l6ISZ3',
+		// },
+		// {
+		// 	id: 3,
+		// 	title: 'lessons3',
+		// 	src: 'https://www.youtube.com/embed/J9E8hFJhAw4?si=W3aE5dqkrPPTTgIu',
+		// },
+		// {
+		// 	id: 4,
+		// 	title: 'lessons4',
+		// 	src: 'https://www.youtube.com/embed/ZfiJHHiGlB8?si=nzBkhez1h2l6ISZ3',
+		// },
+		// {
+		// 	id: 5,
+		// 	title: 'lessons5',
+		// 	src: 'https://www.youtube.com/embed/J9E8hFJhAw4?si=W3aE5dqkrPPTTgIu',
+		// },
+		// {
+		// 	id: 6,
+		// 	title: 'lessons6',
+		// 	src: 'https://www.youtube.com/embed/ZfiJHHiGlB8?si=nzBkhez1h2l6ISZ3',
+		// },
 	],
 }
 

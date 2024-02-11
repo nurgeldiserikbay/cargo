@@ -11,6 +11,6 @@ export class UserModule extends HttpFactory {
 	}
 
 	async getUserPageInfo() {
-		return await this.GET<string>('/account/code')
+		return await this.GET<string>('v2/account/code')
 	}
 }

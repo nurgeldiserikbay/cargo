@@ -33,8 +33,8 @@
 		<v-card class="w-full">
 			<v-data-iterator :items="productList" :items-per-page="perPage">
 				<template #default="{ items }">
-					<template v-for="(item, i) in items" :key="i">
-						<v-expansion-panels variant="accordion" class="condensed">
+					<v-expansion-panels variant="accordion" class="condensed">
+						<template v-for="(item, i) in items" :key="i">
 							<v-expansion-panel size="small">
 								<template #title>
 									<div class="flex gap-x-2 grow-1">
@@ -48,8 +48,7 @@
 										<v-btn
 											v-if="currentType === LOCATION_TYPES.KZ"
 											:size="'small'"
-											variant="text"
-											:color="'#f5f5f4'"
+											color="secondary"
 											class="relative !color-color1"
 											@click.stop.prevent="sendToArchive(item.raw.id)"
 										>
@@ -61,8 +60,8 @@
 									<ProdictHistory :id="item.raw.id"></ProdictHistory>
 								</template>
 							</v-expansion-panel>
-						</v-expansion-panels>
-					</template>
+						</template>
+					</v-expansion-panels>
 				</template>
 				<template #no-data>
 					<ListEmptyBanner></ListEmptyBanner>

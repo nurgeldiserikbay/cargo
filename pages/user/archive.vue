@@ -22,8 +22,7 @@
 										</div>
 										<v-btn
 											:size="'small'"
-											variant="text"
-											:color="'#f5f5f4'"
+											color="secondary"
 											class="relative !color-color1"
 											@click.stop.prevent="sendFromArchive(item.raw.id)"
 										>

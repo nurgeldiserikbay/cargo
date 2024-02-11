@@ -25,6 +25,15 @@
 					></v-select>
 				</v-col>
 
+				<v-col cols="12" md="4">
+					<v-text-field
+						v-bind="code"
+						:label="$t('labels.code')"
+						:error-messages="zodI18n(errors.code)"
+						hide-details
+					></v-text-field>
+				</v-col>
+
 				<v-col cols="12" md="4" class="flex center gap-5">
 					<v-btn
 						variant="elevated"
@@ -69,6 +78,7 @@ const { setError, setSuccess } = useAllert()
 const schema = toTypedSchema(
 	z.object({
 		name: z.string().min(1).max(500),
+		code: z.string().min(1).max(500),
 		type: z.enum([
 			LOCATION_TYPES.BORDER,
 			LOCATION_TYPES.CHINA,
@@ -90,6 +100,7 @@ const {
 
 const name = defineComponentBinds('name')
 const type = defineComponentBinds('type')
+const code = defineComponentBinds('code')
 const getCityTypes = computed(() =>
 	Object.values(LOCATION_TYPES)
 		.filter((t) => t !== 'NULL')
@@ -112,15 +123,17 @@ watch(
 const submit = handleSubmit(
 	async () => {
 		try {
-			if (!values.name || !values.type) return
+			if (!values.name || !values.type || !values.code) return
 			setLoading('global', true)
 			const { status, data, error } = $props.selectedLocation
 				? await $api.location.updateLocation($props.selectedLocation.id, {
 						name: values.name,
+						code: values.code,
 						type: values.type,
 					})
 				: await $api.location.createLocation({
 						name: values.name,
+						code: values.code,
 						type: values.type,
 					})
 

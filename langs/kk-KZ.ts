@@ -10,13 +10,15 @@ export default {
 		users: 'Пайдаланушылар',
 		products: 'Тауарлар',
 		checkProduct: 'Тауарды бақылау',
+		contacts: 'Контактілер',
 	},
 	pages: {
 		login: 'Кіру',
 		register: 'Регистрациядан өту',
 		user: 'Басты бет',
 		productList: 'Өнімдер',
-		info: 'Филиал',
+		address: 'Адрес',
+		info: 'Инфо',
 		calculation: 'Калькулятор',
 		locations: 'Елді мекендер',
 		branchs: 'Филиалдар',
@@ -26,6 +28,8 @@ export default {
 		checkProduct: 'Тауарды бақылау',
 		settings: 'Параметрлер',
 		archive: 'Мұрағат',
+		lessons: 'Сабақтар',
+		contacts: 'Контактілер',
 	},
 	labels: {
 		user: 'Пайдаланушы',
@@ -56,6 +60,7 @@ export default {
 		commands: 'Командалар',
 		totalCount: 'Барлығы',
 		search: 'Іздеу',
+		code: 'Жергілікті жер коды',
 	},
 	commands: {
 		submit: 'Жіберу',
@@ -68,6 +73,7 @@ export default {
 		selectUser: 'Пайдаланушыны таңдаңыз',
 		archive: 'Мұрағатқа',
 		backArchive: 'Мұрағаттан қайтару',
+		backTo: 'Артқа',
 	},
 	messages: {
 		successRegister: 'Сіз сәтті тіркеуден өттіңіз!',
