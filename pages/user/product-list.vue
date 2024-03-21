@@ -54,6 +54,18 @@
 										>
 											{{ $t(`commands.archive`) }}
 										</v-btn>
+										<v-btn
+											v-if="
+												currentType === LOCATION_TYPES.NULL ||
+												currentType === ''
+											"
+											:size="'small'"
+											color="error"
+											class="relative !color-color1"
+											@click.stop.prevent="deleteProduct(item.raw.id)"
+										>
+											{{ $t(`commands.delete`) }}
+										</v-btn>
 									</div>
 								</template>
 								<template #text>
@@ -148,6 +160,20 @@ async function sendToArchive(productId: number) {
 	try {
 		setLoading('global', true)
 		const { status } = await $api.product.sendToArchive(productId)
+		if (status.value === 'success') {
+			fetchList()
+		}
+	} catch (error: any) {
+		throw new Error(error)
+	} finally {
+		setLoading('global', false)
+	}
+}
+
+async function deleteProduct(productId: number) {
+	try {
+		setLoading('global', true)
+		const { status } = await $api.product.deleteProduct(productId)
 		if (status.value === 'success') {
 			fetchList()
 		}

@@ -28,6 +28,10 @@ export class ProductModule extends HttpFactory {
 		return await this.GET<IProduct>(`/products/${id}`)
 	}
 
+	async deleteProduct(id: number) {
+		return await this.DELETE<IProduct>(`/products/${id}`)
+	}
+
 	async getProductHistory(id: number) {
 		return await this.GET<IProductHistory[]>(`/products/${id}/histories`)
 	}

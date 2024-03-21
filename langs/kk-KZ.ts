@@ -72,6 +72,7 @@ export default {
 		toMainPage: 'Басты бет',
 		selectUser: 'Пайдаланушыны таңдаңыз',
 		archive: 'Мұрағатқа',
+		delete: 'Өшіру',
 		backArchive: 'Мұрағаттан қайтару',
 		backTo: 'Артқа',
 	},

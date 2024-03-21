@@ -83,6 +83,7 @@ export default {
 		add: 'Добавить',
 		selectUser: 'Выберите пользователя',
 		archive: 'В архив',
+		delete: 'Удалить',
 		backArchive: 'Вернуть из архив',
 		backTo: 'Назад',
 	},

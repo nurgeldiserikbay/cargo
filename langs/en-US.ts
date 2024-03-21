@@ -72,6 +72,7 @@ export default {
 		toMainPage: 'To main',
 		selectUser: 'Select user',
 		archive: 'To the archive',
+		delete: 'Delete',
 		backArchive: 'Return from archive',
 		backTo: 'Back',
 	},
