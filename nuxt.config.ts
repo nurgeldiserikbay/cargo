@@ -12,6 +12,9 @@ export default defineNuxtConfig({
 			API_URL: process.env.NUXT_PUBLIC_API_URL,
 		},
 	},
+	app: {
+		baseURL: './',
+	},
 	css: [
 		'~/assets/style/main.scss',
 		'@mdi/font/css/materialdesignicons.min.css',

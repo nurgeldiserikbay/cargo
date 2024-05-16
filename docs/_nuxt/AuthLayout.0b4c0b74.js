@@ -1,0 +1,1 @@
+import{M as c,o as a,p as o,f as s,a5 as _,a7 as n}from"./entry.48edf355.js";const d={},r={class:"auth-layout min-h-full d-flex flex-col"};function u(e,l){const t=n;return a(),o("div",r,[s(t,{"is-auth":!0}),_(e.$slots,"default",{},void 0,!0)])}const i=c(d,[["render",u],["__scopeId","data-v-dccc66c0"]]);export{i as default};
