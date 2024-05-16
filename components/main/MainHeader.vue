@@ -4,6 +4,7 @@
 			class="d-flex flex-row-reverse justify-between items-center py-0"
 		>
 			<div class="d-flex items-center gap-4">
+				<PromoCode />
 				<LangSwitcher></LangSwitcher>
 				<UserMenu v-if="!isAuth"></UserMenu>
 			</div>

@@ -14,12 +14,11 @@
 						:error-messages="zodI18n(errors.phoneNumber)"
 					>
 					</MaskField>
-					<v-text-field
+					<PasswordField
 						v-bind="password"
-						type="password"
 						:label="$t('labels.password')"
 						:error-messages="zodI18n(errors.password)"
-					></v-text-field>
+					/>
 					<div class="d-flex justify-center">
 						<v-btn variant="elevated" type="submit">
 							{{ $t('pages.login') }}

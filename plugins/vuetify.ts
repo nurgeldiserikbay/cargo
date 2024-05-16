@@ -37,6 +37,8 @@ import {
 	VCheckbox,
 	VForm,
 	VField,
+	VChip,
+	VSwitch,
 } from 'vuetify/lib/components/index.mjs'
 
 export default defineNuxtPlugin((app) => {
@@ -84,6 +86,8 @@ export default defineNuxtPlugin((app) => {
 			VCheckbox,
 			VForm,
 			VField,
+			VChip,
+			VSwitch,
 		},
 	})
 

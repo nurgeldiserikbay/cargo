@@ -1,5 +1,10 @@
 import HttpFactory from '../factory'
-import type { IUser, IUserCreate } from '~/types/users'
+import type {
+	IReferralsList,
+	IReferralsSearch,
+	IUser,
+	IUserCreate,
+} from '~/types/users'
 
 export class UserModule extends HttpFactory {
 	async getUser() {
@@ -12,5 +17,11 @@ export class UserModule extends HttpFactory {
 
 	async getUserPageInfo() {
 		return await this.GET<string>('v2/account/code')
+	}
+
+	async getReferrals(opt: IReferralsSearch) {
+		return await this.GET<IReferralsList>(`/account/${opt.id}/referrals`, {
+			query: opt,
+		})
 	}
 }

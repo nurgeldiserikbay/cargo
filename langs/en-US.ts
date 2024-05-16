@@ -30,8 +30,12 @@ export default {
 		archive: 'Archive',
 		lessons: 'Lessons',
 		contacts: 'Contacts',
+		referrals: 'Referrals',
 	},
 	labels: {
+		referrals: 'Referrals',
+		referer: 'Referer',
+		promoCode: 'Promoсode',
 		user: 'User',
 		registerMsg: 'Registration',
 		firstName: 'Name',
@@ -39,6 +43,7 @@ export default {
 		email: 'E-mail',
 		phoneNumber: 'Phone number',
 		password: 'Password',
+		userId: 'User ID',
 		confirmPassword: 'Repeat password',
 		selectCity: 'Locality',
 		selectBranch: 'Pick-up point',
@@ -75,6 +80,7 @@ export default {
 		delete: 'Delete',
 		backArchive: 'Return from archive',
 		backTo: 'Back',
+		view: 'View',
 	},
 	messages: {
 		successRegister: 'You have registered successfully!',

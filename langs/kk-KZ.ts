@@ -30,8 +30,12 @@ export default {
 		archive: 'Мұрағат',
 		lessons: 'Сабақтар',
 		contacts: 'Контактілер',
+		referrals: 'Жолдамалар',
 	},
 	labels: {
+		referrals: 'Жолдамалар',
+		referer: 'Реферер',
+		promoCode: 'Промокод',
 		user: 'Пайдаланушы',
 		registerMsg: 'Тіркеу',
 		firstName: 'Аты',
@@ -39,6 +43,7 @@ export default {
 		email: 'E-mail',
 		phoneNumber: 'Телефон нөмірі',
 		password: 'Құпия сөз',
+		userId: 'Пайдаланушының ID',
 		confirmPassword: 'Құпия сөзді қайталау',
 		selectCity: 'Елді мекен',
 		selectBranch: 'Қабылдау пункті',
@@ -75,6 +80,7 @@ export default {
 		delete: 'Өшіру',
 		backArchive: 'Мұрағаттан қайтару',
 		backTo: 'Артқа',
+		view: 'Көрсету',
 	},
 	messages: {
 		successRegister: 'Сіз сәтті тіркеуден өттіңіз!',

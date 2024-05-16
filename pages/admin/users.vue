@@ -106,7 +106,7 @@
 						</div>
 						<div>{{ getBranch(item.warehouseId)?.description }}</div>
 					</td>
-					<td class="px-2 py-1">
+					<td class="px-2 py-1 flex">
 						<v-btn
 							variant="plain"
 							color="primary"
@@ -117,6 +117,17 @@
 								$t(`commands.select`)
 							}}</v-tooltip>
 							<v-icon icon="mdi mdi-button-pointer" size="small"></v-icon>
+						</v-btn>
+						<v-btn
+							variant="plain"
+							color="red"
+							:icon="true"
+							@click.stop="remove(item)"
+						>
+							<v-tooltip activator="parent" location="top">{{
+								$t(`commands.delete`)
+							}}</v-tooltip>
+							<v-icon icon="mdi mdi-delete" size="small"></v-icon>
 						</v-btn>
 					</td>
 				</tr>
@@ -245,6 +256,19 @@ function addUser(user: IAdminUser) {
 
 function select(item: IAdminUser) {
 	selectedUser.value = item
+}
+
+async function remove(item: IAdminUser) {
+	try {
+		setLoading('global', true)
+		await $api.admin.removeAdmin(item.id)
+	} catch (error: any) {
+		if (error?.response?._data) {
+			setError({ title: error.response._data.error || '' })
+		}
+	} finally {
+		setLoading('global', false)
+	}
 }
 
 function clear() {

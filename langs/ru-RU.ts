@@ -31,8 +31,12 @@ export default {
 		archive: 'Архив',
 		lessons: 'Уроки',
 		contacts: 'Контакты',
+		referrals: 'Рефералы',
 	},
 	labels: {
+		referrals: 'Рефералы',
+		referer: 'Реферер',
+		promoCode: 'Промокод',
 		user: 'Пользователь',
 		registerMsg: 'Регистрация',
 		firstName: 'Имя',
@@ -40,6 +44,7 @@ export default {
 		email: 'E-mail',
 		phoneNumber: 'Номер телефона',
 		password: 'Пароль',
+		userId: 'ID пользователя',
 		confirmPassword: 'Повтор пароля',
 		selectCity: 'Город',
 		selectBranch: 'Пункт выдачи',
@@ -86,6 +91,7 @@ export default {
 		delete: 'Удалить',
 		backArchive: 'Вернуть из архив',
 		backTo: 'Назад',
+		view: 'Показать',
 	},
 	messages: {
 		successUpdateData: 'Ваши данные обновлены!',

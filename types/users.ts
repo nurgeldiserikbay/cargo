@@ -1,4 +1,4 @@
-import type { IPageMeta } from './common'
+import type { IPageMeta, IPagination } from './common'
 
 export type TypeRoles = 'ROLE_USER' | 'ROLE_MANAGER' | 'ROLE_ADMIN'
 
@@ -9,6 +9,8 @@ export interface IUserCreate {
 	phoneNumber: string
 	password: string
 	warehouseId: number
+	promoCode: string
+	refererId?: string
 }
 
 export interface IUser extends IUserCreate {
@@ -25,3 +27,15 @@ export interface IAdminUser extends IUser {
 }
 
 export type IAdminUserList = IPageMeta<IAdminUser[]>
+
+export interface IReferralsSearch extends IPagination {
+	id: number | string
+}
+
+export interface IReferrals {
+	id: number
+	firstName: string
+	lastName: string
+}
+
+export type IReferralsList = IPageMeta<IReferrals[]>

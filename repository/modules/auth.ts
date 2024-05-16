@@ -3,6 +3,10 @@ import type { IUserCreate } from '~/types/users'
 
 export class AuthModule extends HttpFactory {
 	async register(userData: IUserCreate) {
-		return await this.POST('/register', userData)
+		return await this.POST('/register', userData, {
+			query: userData?.promoCode
+				? { refererPromoCode: userData.promoCode }
+				: {},
+		})
 	}
 }

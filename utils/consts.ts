@@ -153,6 +153,11 @@ export const ADMIN_MENUS = [
 		roles: [ROLES.ROLE_ADMIN],
 	},
 	{
+		to: '/admin/referrals',
+		text: 'pages.referrals',
+		roles: [ROLES.ROLE_ADMIN],
+	},
+	{
 		to: '/admin/checkProduct',
 		text: 'pages.checkProduct',
 		roles: [ROLES.ROLE_MANAGER],

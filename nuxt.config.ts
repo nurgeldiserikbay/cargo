@@ -1,5 +1,6 @@
 // import { transformAssetUrls } from 'vite-plugin-vuetify'
 
+import path from 'path'
 import i18n from './langs'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -56,6 +57,11 @@ export default defineNuxtConfig({
 		preference: 'light',
 		classSuffix: '',
 	},
+	nitro: {
+		output: {
+			publicDir: path.join(__dirname, 'docs'),
+		},
+	},
 	i18n,
 	auth: {
 		globalAppMiddleware: true,
@@ -81,6 +87,8 @@ export default defineNuxtConfig({
 				password: 'string',
 				warehouseId: 'number',
 				authorities: '("ROLE_USER" | "ROLE_MANAGER" | "ROLE_ADMIN")[]',
+				refererId: 'string',
+				promoCode: 'string',
 			},
 		},
 	},

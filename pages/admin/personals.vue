@@ -102,7 +102,7 @@
 						</div>
 						<div>{{ getBranch(item.warehouseId)?.description }}</div>
 					</td>
-					<td class="px-2 py-1">
+					<td class="px-2 py-1 flex">
 						<v-btn
 							variant="plain"
 							color="primary"
@@ -114,14 +114,22 @@
 							}}</v-tooltip>
 							<v-icon icon="mdi mdi-button-pointer" size="small"></v-icon>
 						</v-btn>
-						<v-switch
-							:model-value="!item.locked"
-							hide-details
-							inset
-							:label="item.locked ? $t('lables.unlock') : $t('labels.lock')"
-							@update:model-value="toggleAdmin(item)"
-						>
-						</v-switch>
+						<v-tooltip color="black" location="top">
+							<template #activator="{ props }">
+								<div v-bind="props">
+									<v-switch
+										:model-value="!item.locked"
+										hide-details
+										size="small"
+										@update:model-value="toggleAdmin(item)"
+									>
+									</v-switch>
+								</div>
+							</template>
+							<div>
+								{{ item.locked ? $t('lables.unlock') : $t('labels.lock') }}
+							</div>
+						</v-tooltip>
 					</td>
 				</tr>
 			</tbody>

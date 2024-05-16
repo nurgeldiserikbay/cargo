@@ -56,40 +56,28 @@
 						:required="true"
 						:error-messages="zodI18n(errors.phoneNumber)"
 					/>
-					<v-text-field
+					<PasswordField
 						v-bind="password"
-						type="password"
 						:label="$t('labels.password')"
 						:error-messages="zodI18n(errors.password)"
-					>
-						<template #append-inner>
-							<v-icon
-								icon="mdi mdi-asterisk"
-								size="x-small"
-								color="red"
-							></v-icon>
-						</template>
-					</v-text-field>
-					<v-text-field
+					/>
+					<PasswordField
 						v-bind="confirmPassword"
-						type="password"
 						:label="$t('labels.confirmPassword')"
 						:error-messages="zodI18n(errors.confirmPassword)"
-					>
-						<template #append-inner>
-							<v-icon
-								icon="mdi mdi-asterisk"
-								size="x-small"
-								color="red"
-							></v-icon>
-						</template>
-					</v-text-field>
+					/>
 					<SelectCity v-model="city" :location-filter="LOCATION_TYPES.KZ" />
 					<SelectBranch
 						v-bind="warehouseId"
 						:city-id="city"
 						:errors="zodI18n(errors.warehouseId)"
 					/>
+					<v-text-field
+						v-bind="promoCode"
+						:label="$t('labels.promoCode')"
+						:error-messages="zodI18n(errors.promoCode)"
+					>
+					</v-text-field>
 					<div class="d-flex justify-center md:(col-span-2)">
 						<v-btn
 							class="me-4"
@@ -146,6 +134,7 @@ const schema = toTypedSchema(
 					validator.isMobilePhone(str.replace(/\D/g, ''), 'kk-KZ'),
 				),
 			warehouseId: z.number(),
+			promoCode: z.string().min(1).max(200).optional(),
 		})
 		.superRefine(({ confirmPassword, password }, ctx) => {
 			if (confirmPassword !== password) {
@@ -169,6 +158,7 @@ const password = defineComponentBinds('password')
 const confirmPassword = defineComponentBinds('confirmPassword')
 const warehouseId = defineComponentBinds('warehouseId')
 const city = ref()
+const promoCode = defineComponentBinds('promoCode')
 
 function onSubmit() {
 	submit()
