@@ -1,6 +1,6 @@
 <template>
 	<NuxtLinkLocale :to="localePath('/')" class="d-inline-block">
-		<NuxtImg src="/logotype.svg" class="d-block" :height="height" />
+		<img :src="'/assets/img/logotype.svg'" class="d-block" :height="height" />
 	</NuxtLinkLocale>
 </template>
 
