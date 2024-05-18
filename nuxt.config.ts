@@ -62,6 +62,7 @@ export default defineNuxtConfig({
 	},
 	nitro: {
 		output: {
+			baseUrl: '',
 			publicDir: path.join(__dirname, './docs'),
 		},
 	},
