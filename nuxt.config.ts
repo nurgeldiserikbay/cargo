@@ -12,9 +12,10 @@ export default defineNuxtConfig({
 			API_URL: process.env.NUXT_PUBLIC_API_URL,
 		},
 	},
+	image: { dir: 'assets/img' },
 	app: {
-    baseURL: '/cargo/', // baseURL: '/<repository>/'
-    buildAssetsDir: 'assets',
+		baseURL: '/cargo/',
+		buildAssetsDir: 'assets',
 	},
 	css: [
 		'~/assets/style/main.scss',
