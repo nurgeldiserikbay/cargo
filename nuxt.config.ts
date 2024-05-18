@@ -13,10 +13,13 @@ export default defineNuxtConfig({
 		},
 	},
 	image: { dir: 'assets/img' },
-	// app: {
-	// 	baseURL: '/cargo/',
-	// 	buildAssetsDir: 'assets',
-	// },
+	app:
+		process.env.ENV_GITHUB === 'true'
+			? {
+					baseURL: '/cargo/',
+					buildAssetsDir: 'assets',
+				}
+			: {},
 	css: [
 		'~/assets/style/main.scss',
 		'@mdi/font/css/materialdesignicons.min.css',
@@ -70,7 +73,8 @@ export default defineNuxtConfig({
 	i18n,
 	auth: {
 		globalAppMiddleware: true,
-		baseURL: '/api',
+		baseURL:
+			process.env.ENV_GITHUB === 'true' ? 'https://ipost.kz/api' : '/api',
 		provider: {
 			type: 'local',
 			endpoints: {

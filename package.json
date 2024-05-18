@@ -6,7 +6,7 @@
 		"build": "nuxt build",
 		"start": "node .output/server/index.mjs",
 		"dev": "nuxt dev",
-		"generate": "nuxt generate",
+		"generate": "nuxt generate ENV_GITHUB=true",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"ionic:build": "npm run build",
