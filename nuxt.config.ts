@@ -13,10 +13,10 @@ export default defineNuxtConfig({
 		},
 	},
 	image: { dir: 'assets/img' },
-	app: {
-		baseURL: '/cargo/',
-		buildAssetsDir: 'assets',
-	},
+	// app: {
+	// 	baseURL: '/cargo/',
+	// 	buildAssetsDir: 'assets',
+	// },
 	css: [
 		'~/assets/style/main.scss',
 		'@mdi/font/css/materialdesignicons.min.css',

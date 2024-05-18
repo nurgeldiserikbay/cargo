@@ -8,7 +8,10 @@
 			class="!px-2"
 			@click="goToPage(link.to)"
 		>
-			<component :is="link.icon" class="w-8 h-8 object-contain"></component>
+			<component
+				:is="link.icon"
+				class="w-8 h-8 object-contain fill-inherit"
+			></component>
 			<span
 				class="block px-2 mt-2 rounded-xl text-[color1 center] text-sxs font-600 uppercase break-words"
 				>{{ $t(link.text) }}</span

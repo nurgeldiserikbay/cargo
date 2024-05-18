@@ -1,6 +1,6 @@
 <template>
 	<v-chip
-		v-if="user?.promoCode"
+		v-if="token && user?.promoCode"
 		class="chip"
 		variant="elevated"
 		rounded="lg"
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-const { data: user } = useAuth()
+const { data: user, token } = useAuth()
 
 function copyText() {
 	if (!user.value?.promoCode) return
