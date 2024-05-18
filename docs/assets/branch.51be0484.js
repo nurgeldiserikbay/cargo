@@ -1,1 +1,0 @@
-import{Q as c,k as o,l as u,j as h}from"./entry.63658071.js";const d=c("branch",()=>{const{$api:t}=h(),e=o([]),n=u(()=>a=>e.value.find(s=>s.id===a));async function r(){const a=await t.branch.getBranchs();return e.value=a.data.value||[],a}return{branches:e,fetchBranches:r,getBranchById:n}});export{d as u};
