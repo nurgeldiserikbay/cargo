@@ -1,4 +1,4 @@
-import type { IPageMeta, IPagination } from './common'
+import type { IPageMeta, IPagination, LevelsType } from './common'
 
 export type TypeRoles = 'ROLE_USER' | 'ROLE_MANAGER' | 'ROLE_ADMIN'
 
@@ -36,6 +36,9 @@ export interface IReferrals {
 	id: number
 	firstName: string
 	lastName: string
+	active: boolean
+	level: LevelsType
+	referals: number
 }
 
 export type IReferralsList = IPageMeta<IReferrals[]>

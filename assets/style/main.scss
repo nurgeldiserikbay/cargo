@@ -12,9 +12,18 @@
   background-color: #1867C0 !important;
   border-radius: 20px !important;
   width: 6px !important;
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5) !important;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5) !important;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
   min-height: 50px;
+}
+
+.hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

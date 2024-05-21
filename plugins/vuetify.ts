@@ -49,7 +49,7 @@ export default defineNuxtPlugin((app) => {
 		icons: {
 			defaultSet: 'mdi',
 		},
-		ssr: true,
+		ssr: false,
 		components: {
 			VLayout,
 			VApp,

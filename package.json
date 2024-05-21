@@ -55,7 +55,8 @@
 		"imask": "^7.2.1",
 		"pinia": "^2.1.7",
 		"validator": "^13.11.0",
-		"vee-validate": "^4.11.8"
+		"vee-validate": "^4.11.8",
+		"vue-dragscroll": "^4.0.5"
 	},
 	"version": "0.0.0"
 }

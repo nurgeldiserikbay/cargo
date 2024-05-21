@@ -6,6 +6,7 @@ import i18n from './langs'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	ssr: false,
+	inlineSSRStyles: false,
 	runtimeConfig: {
 		public: {
 			apiBase: process.env.NUXT_PUBLIC_API_BASE,
@@ -32,17 +33,9 @@ export default defineNuxtConfig({
 		},
 	],
 	build: {
-		transpile: ['vuetify'],
+		transpile: ['vuetify', 'tslib'],
 	},
 	modules: [
-		// async (options, nuxt) => {
-		//   nuxt.hooks.hook('vite:extendConfig', (config) => {
-		//     // @ts-expect-error
-		//     config.plugins.push(
-		//       vuetify({ autoImport: true })
-		//     )
-		//   })
-		// },
 		'@unocss/nuxt',
 		'nuxt-svgo',
 		'@nuxtjs/color-mode',

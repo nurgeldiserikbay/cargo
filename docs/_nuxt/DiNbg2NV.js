@@ -1,0 +1,1 @@
+import{S as n,k as c,l as u,j as r}from"./Btt9-x6i.js";const d=n("location",()=>{const{$api:a}=r(),e=c([]),s=u(()=>o=>e.value.find(t=>t.id===o));async function i(o){const t=await a.location.getLocations(o);return e.value=t.data.value||[],t}return{cities:e,fetchCities:i,getCityById:s}});export{d as u};

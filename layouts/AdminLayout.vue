@@ -40,7 +40,7 @@
 			</v-navigation-drawer>
 
 			<v-main>
-				<slot></slot>
+				<div><slot></slot></div>
 			</v-main>
 		</v-layout>
 	</v-card>

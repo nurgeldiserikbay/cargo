@@ -47,6 +47,21 @@ class HttpFactory {
 	): HttpFactoryResult<DataT, ErrorT> {
 		return await this.CALL<DataT>('DELETE', url, null, extras)
 	}
+
+	async fakeApi<DataT>(data: DataT): HttpFactoryResult<DataT, ErrorT> {
+		return await new Promise((resolve) => {
+			setTimeout(() => {
+				resolve({
+					status: {
+						value: 'success',
+					},
+					data: {
+						value: data,
+					},
+				})
+			}, 3000)
+		})
+	}
 }
 
 export default HttpFactory

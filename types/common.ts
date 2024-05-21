@@ -60,3 +60,5 @@ export interface IPageMeta<T> {
 	totalElements: number
 	totalPages: number
 }
+
+export type LevelsType = 'bronze' | 'silver' | 'gold' | 'platinum' | 'diamond'

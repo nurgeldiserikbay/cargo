@@ -20,8 +20,10 @@ export class UserModule extends HttpFactory {
 	}
 
 	async getReferrals(opt: IReferralsSearch) {
-		return await this.GET<IReferralsList>(`/account/${opt.id}/referrals`, {
-			query: opt,
-		})
+		console.log(opt)
+		return await this.fakeApi({ content: TEST_REFERALS })
+		// return await this.GET<IReferralsList>(`/account/${opt.id}/referrals`, {
+		// 	query: opt,
+		// })
 	}
 }

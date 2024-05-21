@@ -1,7 +1,19 @@
 <template>
 	<v-container>
 		<v-row class="text-h6 text-left" :justify="'space-between'">
-			<v-col>{{ $t('titles.locations') }}</v-col>
+			<v-col>{{ $t('titles.products') }}</v-col>
+		</v-row>
+		<v-row class="filters" :justify="'space-between'">
+			<v-col cols="12" md="4">
+				<v-select
+					:value="search.locationType"
+					:label="$t('labels.cityType')"
+					:items="getCityTypes"
+					:item-value="'id'"
+					:item-title="'label'"
+					@update:model-value="search.locationType = $event"
+				></v-select>
+			</v-col>
 		</v-row>
 		<v-table density="comfortable" :hover="true" class="table w-full mt-2">
 			<thead class="w-full">
@@ -34,44 +46,6 @@
 				</tr>
 			</thead>
 			<tbody class="w-full">
-				<tr class="w-full">
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.id"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.firstNameLike"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.emailLike"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.phoneNumberLike"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					></td>
-					<td class="px-2 py-1 border-b-(1 black solid)"></td>
-				</tr>
 				<tr
 					v-for="(item, itemInd) in list"
 					:key="item.id"
@@ -141,10 +115,7 @@ const curPage = computed(() => {
 })
 const list = ref<IAdminUser[]>([])
 const search = reactive({
-	id: '',
-	emailLike: '',
-	firstNameLike: '',
-	phoneNumberLike: '',
+	locationType: null,
 })
 let fetchId: ReturnType<typeof setTimeout> | null = null
 const pagesCount = computed(() => Math.ceil(totalCount.value / perPage.value))
@@ -158,6 +129,16 @@ const getCityName = computed(() => (id: number) => {
 	if (locationId === undefined) return ''
 	return locationStore.getCityById(locationId)?.name || '' || ''
 })
+const getCityTypes = computed(() =>
+	Object.values(LOCATION_TYPES)
+		.filter((t) => t !== 'NULL')
+		.map((v) => {
+			return {
+				id: v,
+				label: $t('places.' + v),
+			}
+		}),
+)
 
 watch(
 	() => curPage.value,
@@ -190,11 +171,12 @@ onMounted(async () => {
 async function fetchProducts() {
 	try {
 		setLoading('global', true)
-		const opt: IProductInfoSearch = {
+		const opt: IProductInfoSearch = clearObjFields({
 			paged: true,
 			page: curPage.value - 1,
 			size: perPage.value,
-		}
+			locationType: search.locationType,
+		})
 		const { status, data } = await $api.product.getAllProducts(opt)
 		if (status.value === 'success') {
 			list.value = data.value?.content || []

@@ -2,7 +2,7 @@ import IconBox from '@/assets/svg/box-svgrepo-com.svg'
 import IconTruckDeliver from '@/assets/svg/truck-deliver-svgrepo-com.svg'
 import IconSkyscraperCity from '@/assets/svg/skyscraper-city-svgrepo-com.svg'
 import IconAddressBook from '@/assets/svg/address-book.svg'
-import type { TypeAlerts } from '~/types/common'
+import type { TypeAlerts, LevelsType } from '~/types/common'
 import type { LocationTypes } from '~/types/location'
 import type { TypeRoles } from '~/types/users'
 
@@ -163,3 +163,11 @@ export const ADMIN_MENUS = [
 		roles: [ROLES.ROLE_MANAGER],
 	},
 ]
+
+export const LEVELS_TYPE: { [key in LevelsType]: LevelsType } = {
+	bronze: 'bronze',
+	silver: 'silver',
+	gold: 'gold',
+	platinum: 'platinum',
+	diamond: 'diamond',
+}
