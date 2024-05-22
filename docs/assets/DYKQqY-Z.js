@@ -1,0 +1,1 @@
+import{J as t,o as c,p as o,f as s,a8 as n,aa as r}from"./FzsbPqMm.js";const d={},_={class:"auth-layout min-h-full d-flex flex-col"};function l(e,f){const a=r;return c(),o("div",_,[s(a,{"is-auth":!0}),n(e.$slots,"default",{},void 0,!0)])}const i=t(d,[["render",l],["__scopeId","data-v-dccc66c0"]]);export{i as default};

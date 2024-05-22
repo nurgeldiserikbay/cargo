@@ -1,7 +1,10 @@
 <template>
 	<div class="relative rounded-full flex justify-center items-center">
 		<div class="bg">
-			<img :src="`/assets/img/${levelType}.png`" alt="" />
+			<img
+				:src="`${runtimeConfig.assets}/assets/img/${levelType}.png`"
+				alt=""
+			/>
 		</div>
 		<div
 			v-if="count"
@@ -18,6 +21,8 @@
 
 <script lang="ts" setup>
 import type { LevelsType } from '~/types/common'
+
+const runtimeConfig = useRuntimeConfig()
 
 const $props = withDefaults(
 	defineProps<{
