@@ -2,7 +2,7 @@
 	<div class="relative rounded-full flex justify-center items-center">
 		<div class="bg">
 			<img
-				:src="`${runtimeConfig.assets}/assets/img/${levelType}.png`"
+				:src="`${runtimeConfig.public.assets}/assets/img/${levelType}.png`"
 				alt=""
 			/>
 		</div>

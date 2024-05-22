@@ -8,8 +8,8 @@ export default defineNuxtConfig({
 	ssr: false,
 	inlineSSRStyles: false,
 	runtimeConfig: {
-		assets: process.env.ENV_GITHUB === 'true' ? '/cargo' : '',
 		public: {
+			assets: process.env.ENV_GITHUB === 'true' ? '/cargo' : '',
 			apiBase: process.env.NUXT_PUBLIC_API_BASE,
 			API_URL: process.env.NUXT_PUBLIC_API_URL,
 		},
