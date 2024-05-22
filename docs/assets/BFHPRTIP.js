@@ -1,1 +1,0 @@
-import{J as a,o as c,p as o,f as s,a7 as n,a9 as r}from"./DMomLn08.js";const d={},_={class:"auth-layout min-h-full d-flex flex-col"};function l(e,f){const t=r;return c(),o("div",_,[s(t,{"is-auth":!0}),n(e.$slots,"default",{},void 0,!0)])}const i=a(d,[["render",l],["__scopeId","data-v-dccc66c0"]]);export{i as default};
