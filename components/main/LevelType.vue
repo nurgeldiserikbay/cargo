@@ -43,6 +43,7 @@ const getCounts = computed(() => {
 	background: linear-gradient(145deg, #7cdad7, #32706c);
 	border-radius: 50%;
 	box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	border: 4px solid rgb(107, 33, 168);
 
 	img {
 		height: 65%;

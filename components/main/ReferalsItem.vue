@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col items-center">
-		<div v-if="user" class="mb-5 px-5 py-2 bg-light-300 rounded-lg">
+		<div v-if="user" class="mb-4 px-5 pt-2 rounded-lg">
 			<ReferalItem :user="user" :active="true" />
 		</div>
 		<div class="flex-grow-1 w-full">
@@ -8,15 +8,26 @@
 				v-for="(referralRow, referralRowInd) in referrals"
 				:key="referralRowInd"
 				v-dragscroll
-				class="pb-3 overflow-y-hidden w-full hidden-scroll select-none"
+				class="pb-2 overflow-y-hidden w-full hidden-scroll select-none"
 			>
-				<div class="px-5 py-2 bg-light-300 rounded-lg flex gap-3 w-min">
+				<div class="relative px-5 py-2 pt-4 rounded-lg flex gap-3 w-min">
+					<div
+						class="absolute top-0 left-[45px] right-[45px] rounded-t-[20px] border-4 border-solid border-purple-800 h-4 border-b-0"
+					>
+						<div
+							v-for="line in referralRow.list.length - 2"
+							:key="line"
+							class="absolute top-0 -left-[4px] w-1 bg-purple-800 h-4"
+							:style="{ transform: `translateX(${line * 62}px)` }"
+						></div>
+					</div>
 					<ReferalItem
 						v-for="referral in referralRow.list"
 						:key="referral.id"
 						:user="referral"
 						:active="isReferalActive(referralRowInd, referral.id)"
-						@click="fetchList(referralRowInd + 1, referral)"
+						class="cursor-pointer"
+						@dblclick="fetchList(referralRowInd + 1, referral)"
 					/>
 				</div>
 			</div>
