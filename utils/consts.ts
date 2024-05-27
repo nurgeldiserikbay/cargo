@@ -160,7 +160,7 @@ export const ADMIN_MENUS = [
 	{
 		to: '/admin/checkProduct',
 		text: 'pages.checkProduct',
-		roles: [ROLES.ROLE_MANAGER],
+		roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER],
 	},
 ]
 
