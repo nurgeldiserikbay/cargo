@@ -30,7 +30,7 @@ const $props = withDefaults(
 		active?: boolean
 		count?: number
 	}>(),
-	{ levelType: LEVELS_TYPE.bronze, active: false, count: 0 },
+	{ levelType: LEVELS_TYPE.BRONZE, active: false, count: 0 },
 )
 
 const getCounts = computed(() => {

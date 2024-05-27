@@ -142,11 +142,11 @@ export const ADMIN_MENUS = [
 		text: 'pages.personals',
 		roles: [ROLES.ROLE_ADMIN],
 	},
-	{
-		to: '/admin/products',
-		text: 'pages.products',
-		roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER],
-	},
+	// {
+	// 	to: '/admin/products',
+	// 	text: 'pages.products',
+	// 	roles: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER],
+	// },
 	{
 		to: '/admin/users',
 		text: 'pages.users',
@@ -165,9 +165,9 @@ export const ADMIN_MENUS = [
 ]
 
 export const LEVELS_TYPE: { [key in LevelsType]: LevelsType } = {
-	bronze: 'bronze',
-	silver: 'silver',
-	gold: 'gold',
-	platinum: 'platinum',
-	diamond: 'diamond',
+	BRONZE: 'BRONZE',
+	SILVER: 'SILVER',
+	GOLD: 'GOLD',
+	PLATINUM: 'PLATINUM',
+	DIAMOND: 'DIAMOND',
 }

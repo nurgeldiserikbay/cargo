@@ -33,6 +33,7 @@ export default {
 		referrals: 'Жолдамалар',
 	},
 	labels: {
+		fullName: 'Аты-жөні',
 		referrals: 'Жолдамалар',
 		referer: 'Реферер',
 		promoCode: 'Промокод',

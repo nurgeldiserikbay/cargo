@@ -34,6 +34,7 @@ export default {
 		referrals: 'Рефералы',
 	},
 	labels: {
+		fullName: 'ФИО',
 		referrals: 'Рефералы',
 		referer: 'Реферер',
 		promoCode: 'Промокод',

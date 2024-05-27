@@ -26,16 +26,70 @@
 				hide-details
 				class="mb-5 self-end"
 			></v-checkbox>
-			<v-btn
-				variant="elevated"
-				type="submit"
-				color="secondary"
-				size="x-large"
-				class="m-auto"
-				@click.prevent="submit"
-			>
-				{{ $t('commands.submit') }}
-			</v-btn>
+			<v-row>
+				<v-btn
+					variant="elevated"
+					type="submit"
+					color="secondary"
+					size="x-large"
+					class="m-auto"
+					@click.prevent="getProduct"
+				>
+					{{ $t('labels.search') }}
+				</v-btn>
+				<v-btn
+					variant="elevated"
+					type="submit"
+					color="primary"
+					size="x-large"
+					class="m-auto"
+					@click.prevent="submit"
+				>
+					{{ $t('commands.submit') }}
+				</v-btn>
+			</v-row>
+			<v-card v-if="searchedValue" class="mt-8 px-4 py-2">
+				<v-row>
+					<v-col class="border-r-(1 solid #000) border-b-(1 solid #000)">{{
+						$t('labels.description')
+					}}</v-col>
+					<v-col class="border-b-(1 solid #000)">{{
+						`${searchedValue.productDescription}`
+					}}</v-col>
+				</v-row>
+				<v-row>
+					<v-col class="border-r-(1 solid #000) border-b-(1 solid #000)">{{
+						$t('labels.city')
+					}}</v-col>
+					<v-col class="border-b-(1 solid #000)">{{
+						searchedValue.locationName
+					}}</v-col>
+				</v-row>
+				<v-row>
+					<v-col class="border-r-(1 solid #000) border-b-(1 solid #000)">{{
+						$t('labels.branch')
+					}}</v-col>
+					<v-col class="border-b-(1 solid #000)">{{
+						searchedValue.warehouseName
+					}}</v-col>
+				</v-row>
+				<v-row>
+					<v-col class="border-r-(1 solid #000) border-b-(1 solid #000)">{{
+						$t('labels.fullName')
+					}}</v-col>
+					<v-col class="border-b-(1 solid #000)">{{
+						`${searchedValue.lastName} ${searchedValue.firstName}`
+					}}</v-col>
+				</v-row>
+				<v-row>
+					<v-col class="border-r-(1 solid #000) border-b-(1 solid #000)">{{
+						$t('labels.phoneNumber')
+					}}</v-col>
+					<v-col class="border-b-(1 solid #000)">{{
+						searchedValue.phoneNumber
+					}}</v-col>
+				</v-row>
+			</v-card>
 		</v-form>
 	</v-container>
 </template>
@@ -46,6 +100,7 @@ import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
 
 import { useBranchStore } from '~/store/branch'
+import type { IProductOwner } from '~/types/product'
 
 definePageMeta({
 	layout: 'admin-layout',
@@ -77,6 +132,7 @@ const { errors, values, handleSubmit, defineComponentBinds, handleReset } =
 
 const trackCode = defineComponentBinds('trackCode')
 const autoFetch = ref(false)
+const searchedValue = ref<IProductOwner | null>(null)
 let timerId: ReturnType<typeof setTimeout> | null = null
 
 watch(
@@ -107,6 +163,29 @@ const submit = handleSubmit(
 
 function parseCodes(trackCodes: string) {
 	return trackCodes.split(' ')
+}
+
+async function getProduct() {
+	try {
+		if (!values.trackCode) return
+		setLoading('global', true)
+
+		const { status, error, data } = await $api.product.getProductOwnerById(
+			values.trackCode,
+		)
+		if (status.value === 'success') {
+			searchedValue.value = data.value
+			handleReset()
+		}
+		if (status.value === 'error')
+			setError({ title: $t(`errors.${error.value?.data || ''}`) })
+	} catch (error: any) {
+		if (error?.response?._data) {
+			setError({ title: error.response._data.error || '' })
+		}
+	} finally {
+		setLoading('global', false)
+	}
 }
 
 async function fetchProduct() {

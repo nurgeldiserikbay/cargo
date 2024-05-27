@@ -33,6 +33,7 @@ export default {
 		referrals: 'Referrals',
 	},
 	labels: {
+		fullName: 'Full Name',
 		referrals: 'Referrals',
 		referer: 'Referer',
 		promoCode: 'Promoсode',

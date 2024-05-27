@@ -11,7 +11,7 @@ import type {
 
 export class ProductModule extends HttpFactory {
 	async getProductOwnerById(trackCode: string) {
-		return await this.GET<IProductOwner>('/products', { trackCode })
+		return await this.GET<IProductOwner>('/products', { query: { trackCode } })
 	}
 
 	async addProduct(product: IProductCreate) {
