@@ -105,7 +105,7 @@ import type { IProductOwner } from '~/types/product'
 definePageMeta({
 	layout: 'admin-layout',
 	auth: true,
-	accesses: [ROLES.ROLE_MANAGER],
+	accesses: [ROLES.ROLE_ADMIN, ROLES.ROLE_MANAGER],
 })
 
 const branchStore = useBranchStore()
