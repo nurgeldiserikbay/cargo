@@ -34,6 +34,12 @@ export default {
 		referrals: 'Рефералы',
 	},
 	labels: {
+		filter: 'Фильтр',
+		all: 'Все',
+		yes: 'Да',
+		no: 'Нет',
+		level: 'Уровень',
+		active: 'Активный',
 		fullName: 'ФИО',
 		referrals: 'Рефералы',
 		referer: 'Реферер',

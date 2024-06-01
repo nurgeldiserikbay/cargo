@@ -15,6 +15,8 @@ export interface IUserCreate {
 
 export interface IUser extends IUserCreate {
 	id: number
+	active: boolean
+	level: LevelsType
 	authorities: TypeRoles[]
 }
 

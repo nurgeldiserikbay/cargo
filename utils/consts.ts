@@ -170,4 +170,5 @@ export const LEVELS_TYPE: { [key in LevelsType]: LevelsType } = {
 	GOLD: 'GOLD',
 	PLATINUM: 'PLATINUM',
 	DIAMOND: 'DIAMOND',
+	NONE: 'NONE',
 }

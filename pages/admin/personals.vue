@@ -6,134 +6,143 @@
 			@added="addUser"
 		/>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
-		<v-table density="comfortable" :hover="true" class="table w-full mt-2">
-			<thead class="w-full">
-				<tr class="w-full">
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						№
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.user') }}
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.email') }}
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.phoneNumber') }}
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.branch') }}
-					</th>
-					<th class="px-2 py-1 border-b-(1 black solid)">
-						{{ $t('labels.commands') }}
-					</th>
-				</tr>
-			</thead>
-			<tbody class="w-full">
-				<tr class="w-full">
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.id"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.firstNameLike"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.emailLike"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						<v-text-field
-							v-model="search.phoneNumberLike"
-							:placeholder="$t('labels.search')"
-						></v-text-field>
-					</td>
-					<td
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					></td>
-					<td class="px-2 py-1 border-b-(1 black solid)"></td>
-				</tr>
-				<tr
-					v-for="(item, itemInd) in list"
-					:key="item.id"
-					class="w-full"
-					:class="{ 'bg-gray-300': itemInd % 2 === 0 }"
-				>
-					<td class="border-r-(1 black solid) px-2 py-1">{{ item.id }}</td>
-					<td class="border-r-(1 black solid) px-2 py-1">
-						{{ `${item.lastName} ${item.firstName}` }}
-					</td>
-					<td class="border-r-(1 black solid) px-2 py-1">{{ item.email }}</td>
-					<td class="border-r-(1 black solid) px-2 py-1">
-						{{ item.phoneNumber }}
-					</td>
-					<td class="border-r-(1 black solid) px-2 py-1">
-						<div>
-							{{
-								`${getCityName(item.warehouseId)} - ${getBranchName(
-									item.warehouseId,
-								)}`
-							}}
-						</div>
-						<div>{{ getBranch(item.warehouseId)?.description }}</div>
-					</td>
-					<td class="px-2 py-1 flex">
-						<v-btn
-							variant="plain"
-							color="primary"
-							:icon="true"
-							@click.stop="select(item)"
+		<div
+			v-dragscroll
+			class="overflow-y-hidden w-full hidden-scroll select-none"
+		>
+			<v-table
+				density="comfortable"
+				:hover="true"
+				class="table w-full mt-2 min-w-[800px]"
+			>
+				<thead class="w-full">
+					<tr class="w-full">
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
 						>
-							<v-tooltip activator="parent" location="top">{{
-								$t(`commands.select`)
-							}}</v-tooltip>
-							<v-icon icon="mdi mdi-button-pointer" size="small"></v-icon>
-						</v-btn>
-						<v-tooltip color="black" location="top">
-							<template #activator="{ props }">
-								<div v-bind="props">
-									<v-switch
-										:model-value="!item.locked"
-										hide-details
-										size="small"
-										@update:model-value="toggleAdmin(item)"
-									>
-									</v-switch>
-								</div>
-							</template>
+							№
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.user') }}
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.email') }}
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.phoneNumber') }}
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.branch') }}
+						</th>
+						<th class="px-2 py-1 border-b-(1 black solid)">
+							{{ $t('labels.commands') }}
+						</th>
+					</tr>
+				</thead>
+				<tbody class="w-full">
+					<tr class="w-full">
+						<td
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							<v-text-field
+								v-model="search.id"
+								:placeholder="$t('labels.search')"
+							></v-text-field>
+						</td>
+						<td
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							<v-text-field
+								v-model="search.firstNameLike"
+								:placeholder="$t('labels.search')"
+							></v-text-field>
+						</td>
+						<td
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							<v-text-field
+								v-model="search.emailLike"
+								:placeholder="$t('labels.search')"
+							></v-text-field>
+						</td>
+						<td
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							<v-text-field
+								v-model="search.phoneNumberLike"
+								:placeholder="$t('labels.search')"
+							></v-text-field>
+						</td>
+						<td
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						></td>
+						<td class="px-2 py-1 border-b-(1 black solid)"></td>
+					</tr>
+					<tr
+						v-for="(item, itemInd) in list"
+						:key="item.id"
+						class="w-full"
+						:class="{ 'bg-gray-300': itemInd % 2 === 0 }"
+					>
+						<td class="border-r-(1 black solid) px-2 py-1">{{ item.id }}</td>
+						<td class="border-r-(1 black solid) px-2 py-1">
+							{{ `${item.lastName} ${item.firstName}` }}
+						</td>
+						<td class="border-r-(1 black solid) px-2 py-1">{{ item.email }}</td>
+						<td class="border-r-(1 black solid) px-2 py-1">
+							{{ item.phoneNumber }}
+						</td>
+						<td class="border-r-(1 black solid) px-2 py-1">
 							<div>
-								{{ item.locked ? $t('lables.unlock') : $t('labels.lock') }}
+								{{
+									`${getCityName(item.warehouseId)} - ${getBranchName(
+										item.warehouseId,
+									)}`
+								}}
 							</div>
-						</v-tooltip>
-					</td>
-				</tr>
-			</tbody>
-		</v-table>
+							<div>{{ getBranch(item.warehouseId)?.description }}</div>
+						</td>
+						<td class="px-2 py-1 flex">
+							<v-btn
+								variant="plain"
+								color="primary"
+								:icon="true"
+								@click.stop="select(item)"
+							>
+								<v-tooltip activator="parent" location="top">{{
+									$t(`commands.select`)
+								}}</v-tooltip>
+								<v-icon icon="mdi mdi-button-pointer" size="small"></v-icon>
+							</v-btn>
+							<v-tooltip color="black" location="top">
+								<template #activator="{ props }">
+									<div v-bind="props">
+										<v-switch
+											:model-value="!item.locked"
+											hide-details
+											size="small"
+											@update:model-value="toggleAdmin(item)"
+										>
+										</v-switch>
+									</div>
+								</template>
+								<div>
+									{{ item.locked ? $t('lables.unlock') : $t('labels.lock') }}
+								</div>
+							</v-tooltip>
+						</td>
+					</tr>
+				</tbody>
+			</v-table>
+		</div>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 		<v-pagination
 			v-if="pagesCount > 1"

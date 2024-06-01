@@ -89,9 +89,13 @@ export default defineNuxtConfig({
 				phoneNumber: 'string',
 				password: 'string',
 				warehouseId: 'number',
+				level:
+					'("BRONZE" | "SILVER" | "GOLD" | "PLATINUM" | "DIAMOND" | "NONE")',
+				active: 'boolean',
 				authorities: '("ROLE_USER" | "ROLE_MANAGER" | "ROLE_ADMIN")[]',
 				refererId: 'string',
 				promoCode: 'string',
+				referals: 'number',
 			},
 		},
 	},

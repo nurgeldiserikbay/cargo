@@ -59,7 +59,7 @@ class HttpFactory {
 						value: data,
 					},
 				})
-			}, 3000)
+			}, 1000)
 		})
 	}
 }

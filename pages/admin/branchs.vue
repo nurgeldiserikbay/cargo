@@ -6,56 +6,66 @@
 			@added="addBranch"
 		/>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
-		<v-data-iterator :items="list" :page="curPage" :items-per-page="perPage">
-			<template #default="{ items }">
-				<v-list :variant="'elevated'">
-					<v-list-item
-						v-for="(item, i) in items"
-						:key="i"
-						:variant="'elevated'"
-						class="mb-4 cursor-pointer"
-						@click="select(item.raw)"
-					>
-						<v-row>
-							<v-col
-								cols="6"
-								:align-self="'center'"
-								class="border !border-r-(!2px solid color1)"
-							>
-								<div>{{ item.raw.name }}</div>
-								<div>{{ item.raw.address }}</div>
-							</v-col>
-							<v-col :align-self="'center'">
-								{{ getCityName(item.raw.locationId) }}
-							</v-col>
-							<v-col class="flex justify-end gap-2">
-								<v-btn variant="plain" color="primary" :icon="true">
-									<v-tooltip activator="parent" branch="top">{{
-										$t(`commands.select`)
-									}}</v-tooltip>
-									<v-icon icon="mdi mdi-button-pointer" size="large"></v-icon>
-								</v-btn>
-								<v-btn
-									variant="plain"
-									color="error"
-									:icon="true"
-									class="cursor-pointer"
-									@click.stop="remove(item.raw)"
+		<div
+			v-dragscroll
+			class="overflow-y-hidden w-full hidden-scroll select-none"
+		>
+			<v-data-iterator
+				:items="list"
+				:page="curPage"
+				:items-per-page="perPage"
+				class="min-w-[600px]"
+			>
+				<template #default="{ items }">
+					<v-list :variant="'elevated'">
+						<v-list-item
+							v-for="(item, i) in items"
+							:key="i"
+							:variant="'elevated'"
+							class="mb-4 cursor-pointer"
+							@click="select(item.raw)"
+						>
+							<v-row>
+								<v-col
+									cols="6"
+									:align-self="'center'"
+									class="border !border-r-(!2px solid color1)"
 								>
-									<v-tooltip activator="parent" branch="top">{{
-										$t(`commands.clear`)
-									}}</v-tooltip>
-									<v-icon icon="mdi mdi-delete" size="large"></v-icon>
-								</v-btn>
-							</v-col>
-						</v-row>
-					</v-list-item>
-				</v-list>
-			</template>
-			<template #no-data>
-				<ListEmptyBanner></ListEmptyBanner>
-			</template>
-		</v-data-iterator>
+									<div>{{ item.raw.name }}</div>
+									<div>{{ item.raw.address }}</div>
+								</v-col>
+								<v-col :align-self="'center'">
+									{{ getCityName(item.raw.locationId) }}
+								</v-col>
+								<v-col class="flex justify-end gap-2">
+									<v-btn variant="plain" color="primary" :icon="true">
+										<v-tooltip activator="parent" branch="top">{{
+											$t(`commands.select`)
+										}}</v-tooltip>
+										<v-icon icon="mdi mdi-button-pointer" size="large"></v-icon>
+									</v-btn>
+									<v-btn
+										variant="plain"
+										color="error"
+										:icon="true"
+										class="cursor-pointer"
+										@click.stop="remove(item.raw)"
+									>
+										<v-tooltip activator="parent" branch="top">{{
+											$t(`commands.clear`)
+										}}</v-tooltip>
+										<v-icon icon="mdi mdi-delete" size="large"></v-icon>
+									</v-btn>
+								</v-col>
+							</v-row>
+						</v-list-item>
+					</v-list>
+				</template>
+				<template #no-data>
+					<ListEmptyBanner></ListEmptyBanner>
+				</template>
+			</v-data-iterator>
+		</div>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 		<v-pagination
 			v-if="pagesCount > 1"

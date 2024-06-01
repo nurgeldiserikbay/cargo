@@ -1,7 +1,17 @@
 <template>
 	<v-menu :offset="10">
 		<template #activator="{ props }">
+			<LevelType
+				v-if="user && user.level"
+				v-bind="props"
+				:level-type="user.level"
+				:active="user.active"
+				:small="true"
+				class="z-10 w-10 h-10 cursor-pointer"
+				:count="user.referals || 0"
+			/>
 			<v-btn
+				v-else
 				color="secondary"
 				v-bind="props"
 				:icon="true"
@@ -59,6 +69,7 @@
 </template>
 
 <script lang="ts" setup>
+const { data: user } = useAuth()
 const { logout } = useAppAuth()
 </script>
 

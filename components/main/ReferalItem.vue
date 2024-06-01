@@ -3,18 +3,19 @@
 		class="flex flex-col items-center text-center"
 		:class="{ arrow: active }"
 	>
-		<div class="relative mb-1">
+		<div class="relative rounded-full mb-1">
 			<LevelType
 				:level-type="user.level"
 				:active="user.active"
-				:count="user.referals"
+				class="z-10"
+				:count="user.referals || 0"
 			/>
-			<div
-				class="absolute w-1 h-1 bg-purple-800 left-1/2 transform -translate-x-1/2"
-			></div>
 		</div>
 		<div
-			class="text-[10px] whitespace-pre-line bg-purple-800 px-2 py-1 rounded-md font-700 text-light"
+			class="text-[10px] whitespace-pre-line font-700 text-gray-800 text-xs py-1 px-2 bg-gray-200 rounded-md"
+			:class="{
+				'bg-green-500 text-white': active,
+			}"
 		>
 			{{ `ID: ${user.id}` }}
 		</div>
@@ -33,19 +34,4 @@ withDefaults(
 )
 </script>
 
-<style lang="scss" scoped>
-.arrow {
-	position: relative;
-
-	&:after {
-		content: '';
-		position: absolute;
-		top: 100%;
-		left: 50%;
-		width: 5px;
-		height: 16px;
-		margin-left: -2.5px;
-		background: rgb(107, 33, 168);
-	}
-}
-</style>
+<style lang="scss" scoped></style>

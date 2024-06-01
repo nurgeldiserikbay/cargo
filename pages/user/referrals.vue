@@ -1,8 +1,8 @@
 <template>
 	<v-container
-		class="product-list flex-grow-1 d-flex flex-col justify-start items-center"
+		class="product-list flex-grow-1 d-flex flex-col justify-start items-center max-h-full overflow-hidden min-h-full bg-container"
 	>
-		<div class="w-full">
+		<div class="w-full max-h-full">
 			<ReferalsItem v-if="getUser" :user="getUser" />
 		</div>
 	</v-container>
@@ -30,4 +30,9 @@ const getUser = computed<IReferrals | null>(() => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.bg-container {
+	background-color: #d7d7d7;
+	background-image: linear-gradient(147deg, #d7d7d7 -30%, #353535 80%);
+}
+</style>

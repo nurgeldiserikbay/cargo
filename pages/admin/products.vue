@@ -15,64 +15,73 @@
 				></v-select>
 			</v-col>
 		</v-row>
-		<v-table density="comfortable" :hover="true" class="table w-full mt-2">
-			<thead class="w-full">
-				<tr class="w-full">
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+		<div
+			v-dragscroll
+			class="overflow-y-hidden w-full hidden-scroll select-none"
+		>
+			<v-table
+				density="comfortable"
+				:hover="true"
+				class="table w-full mt-2 min-w-[700px]"
+			>
+				<thead class="w-full">
+					<tr class="w-full">
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							№
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.user') }}
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.email') }}
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.phoneNumber') }}
+						</th>
+						<th
+							class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
+						>
+							{{ $t('labels.branch') }}
+						</th>
+					</tr>
+				</thead>
+				<tbody class="w-full">
+					<tr
+						v-for="(item, itemInd) in list"
+						:key="item.id"
+						class="w-full"
+						:class="{ 'bg-gray-300': itemInd % 2 === 0 }"
 					>
-						№
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.user') }}
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.email') }}
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.phoneNumber') }}
-					</th>
-					<th
-						class="border-r-(1 black solid) px-2 py-1 border-b-(1 black solid)"
-					>
-						{{ $t('labels.branch') }}
-					</th>
-				</tr>
-			</thead>
-			<tbody class="w-full">
-				<tr
-					v-for="(item, itemInd) in list"
-					:key="item.id"
-					class="w-full"
-					:class="{ 'bg-gray-300': itemInd % 2 === 0 }"
-				>
-					<td class="border-r-(1 black solid) px-2 py-1">{{ item.id }}</td>
-					<td class="border-r-(1 black solid) px-2 py-1">
-						{{ `${item.lastName} ${item.firstName}` }}
-					</td>
-					<td class="border-r-(1 black solid) px-2 py-1">{{ item.email }}</td>
-					<td class="border-r-(1 black solid) px-2 py-1">
-						{{ item.phoneNumber }}
-					</td>
-					<td class="border-r-(1 black solid) px-2 py-1">
-						<div>
-							{{
-								`${getCityName(item.warehouseId)} - ${getBranchName(
-									item.warehouseId,
-								)}`
-							}}
-						</div>
-						<div>{{ getBranch(item.warehouseId)?.description }}</div>
-					</td>
-				</tr>
-			</tbody>
-		</v-table>
+						<td class="border-r-(1 black solid) px-2 py-1">{{ item.id }}</td>
+						<td class="border-r-(1 black solid) px-2 py-1">
+							{{ `${item.lastName} ${item.firstName}` }}
+						</td>
+						<td class="border-r-(1 black solid) px-2 py-1">{{ item.email }}</td>
+						<td class="border-r-(1 black solid) px-2 py-1">
+							{{ item.phoneNumber }}
+						</td>
+						<td class="border-r-(1 black solid) px-2 py-1">
+							<div>
+								{{
+									`${getCityName(item.warehouseId)} - ${getBranchName(
+										item.warehouseId,
+									)}`
+								}}
+							</div>
+							<div>{{ getBranch(item.warehouseId)?.description }}</div>
+						</td>
+					</tr>
+				</tbody>
+			</v-table>
+		</div>
 		<v-divider inset class="my-4 !max-w-full !ms-0"></v-divider>
 		<v-pagination
 			v-if="pagesCount > 1"
