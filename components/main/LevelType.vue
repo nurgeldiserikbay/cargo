@@ -2,7 +2,7 @@
 	<div class="relative rounded-full flex justify-center items-center">
 		<div class="flex items-center justify-center">
 			<img
-				:src="`${runtimeConfig.public.assets}/assets/img/${levelType}.png`"
+				:src="`${runtimeConfig.public.assets}/assets/img/${levelType.toLowerCase()}.png`"
 				alt=""
 				class="object-contain select-none drag-none pointer-events-none"
 				:class="{ 'w-[60px] h-[60px]': small, 'w-[120px] h-[120px]': !small }"
