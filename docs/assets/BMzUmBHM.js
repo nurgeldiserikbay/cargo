@@ -1,0 +1,1 @@
+import{k as t,q as a}from"./BT9LgsZd.js";import{o as s,m as c,Q as n,aq as r}from"./9z15omkZ.js";const l={},_={class:"auth-layout bg-backColor min-h-full d-flex flex-col"};function f(e,d){const o=a;return s(),c("div",_,[n(o),r(e.$slots,"default")])}const u=t(l,[["render",f]]);export{u as default};

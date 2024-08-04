@@ -1,1 +1,0 @@
-import{d as r,E as l,G as p,r as i,o as m,c as u,e as _,g as k,t as f}from"./DBCDSuVQ.js";const b=r({__name:"BackTo",props:{to:{}},setup(e){const o=l(),s=p(),t=e;function a(){t.to?o.push(s(t.to)):o.back()}return(c,d)=>{const n=i("v-btn");return m(),u(n,{size:"small",onClick:a},{default:_(()=>[k(f(c.$t("commands.backTo")),1)]),_:1})}}});export{b as _};

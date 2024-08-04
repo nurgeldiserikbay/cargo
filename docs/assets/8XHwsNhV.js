@@ -1,0 +1,1 @@
+import{k as e}from"./BT9LgsZd.js";import{o as s,m as n,ab as o}from"./9z15omkZ.js";const c={},r={class:"w-full min-h-[50px] flex justify-center items-center text-md lg:text-lg px-6"};function a(t,_){return s(),n("div",r,o(t.$t("messages.noData")),1)}const l=e(c,[["render",a]]);export{l as _};
