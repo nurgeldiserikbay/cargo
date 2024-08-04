@@ -1,5 +1,39 @@
 export default {
 	welcome: 'Сәлем',
+	levels: {
+		BRONZE: {
+			name: 'Қола',
+		},
+		SILVER: {
+			name: 'Күміс',
+		},
+		GOLD: {
+			name: 'Алтын',
+		},
+		PLATINUM: {
+			name: 'Платина',
+		},
+		DIAMOND: {
+			name: 'Гауһар',
+		},
+		NONE: {
+			name: 'Жаңадан бастаушы',
+		},
+	},
+	data: {
+		main: {
+			bannerTitle: 'iPost.kz сайтына <span>қош келдіңіз</span>',
+			bannerText: 'Қытайдан тауарларды жылдам және қолжетімді жеткіземіз',
+			steps: {
+				'1': 'Мұнда тіркелу арқылы сіз шетелдік мекенжайларды аласыз',
+				'2': 'Алынған мекенжайларды енгізіп, фирмалық дүкендерден сатып аласыз',
+				'3': 'Жеке кабинетте күтілетін сәлемдемені қосасыз',
+				'4': 'Сәлемдемеңізді филиалдан 7-14 күн ішінде аласыз',
+			},
+			address:
+				'Қалқаман-2 шағын ауданы, Қарақулова көш., 40 үй, 4 этаж. 050006 \n Алматы, Қазақстан',
+		},
+	},
 	our_whatsapp: 'Біздің WhatsApp тобымыз',
 	titles: {
 		faq: 'FAQ',
@@ -11,13 +45,17 @@ export default {
 		products: 'Тауарлар',
 		checkProduct: 'Тауарды бақылау',
 		contacts: 'Контактілер',
+		ourBranches: 'Біздің филиалдар',
+		tariffs: 'Тариф',
+		how_is_work: 'Бұл қалай жұмыс істейді',
 	},
 	pages: {
 		login: 'Кіру',
-		register: 'Регистрациядан өту',
-		user: 'Басты бет',
-		productList: 'Өнімдер',
-		address: 'Адрес',
+		register: 'Регистрация',
+		user: 'Тауарлар',
+		profile: 'Менің профилім',
+		productList: 'Менің тауарларым',
+		address: 'Менің мекен-жайым',
 		info: 'Инфо',
 		calculation: 'Калькулятор',
 		locations: 'Елді мекендер',
@@ -27,12 +65,22 @@ export default {
 		users: 'Пайдаланушылар',
 		checkProduct: 'Тауарды бақылау',
 		settings: 'Параметрлер',
+		settingsChange: 'Деректерді өңдеу',
 		archive: 'Мұрағат',
 		lessons: 'Сабақтар',
 		contacts: 'Контактілер',
 		referrals: 'Жолдамалар',
 	},
 	labels: {
+		writeWhatapp: 'WhatsApp-қа жазу',
+		viewInstagram: 'Барлық жаңалықтар Instagram-да',
+		writeTelegram: 'Көмек керек болса, Telegram-ға жазыңыз',
+		getAddress: 'Мекенжай алу',
+		list_of_cancel_products: 'Тыйым салынған тауарлар тізімі',
+		days: '{0} күн',
+		timeDeliver: 'Жеткізу уақыты',
+		cost_to_mass: '{0}тг / 1 кг',
+		cost_and_mass: 'Баға/салмақ',
 		filter: 'Фильтр',
 		all: 'Барлығы',
 		yes: 'Иа',
@@ -65,11 +113,15 @@ export default {
 		branchName: 'Филиалдың атауы',
 		branchAddress: 'Филиалдың мекенжайы',
 		branchDescription: 'Толық мекенжайы',
+		address: 'Мекенжай',
 		city: 'Қала',
 		unlock: 'Құлпын ашу',
 		lock: 'Бұғаттау',
 		autoFetch: 'АВТО тіркеуді қосыңыз',
-		shop: 'Дүкенде',
+		shop: 'Жаңа',
+		changePassword: 'Құпиясөзді өзгерту',
+		yourCode: 'Сіздің кодыңыз',
+		dateArrive: 'Келген күні',
 		commands: 'Командалар',
 		totalCount: 'Барлығы',
 		search: 'Іздеу',
@@ -83,6 +135,11 @@ export default {
 		update: 'Жаңарту',
 		goBack: 'Артқа қайту',
 		toMainPage: 'Басты бет',
+		copy: 'Көшіру',
+		change: 'Өзгерту',
+		cancel: 'Бас тарту',
+		save: 'Сақтау',
+		add: 'Қосу',
 		selectUser: 'Пайдаланушыны таңдаңыз',
 		archive: 'Мұрағатқа',
 		delete: 'Өшіру',
@@ -91,6 +148,7 @@ export default {
 		view: 'Көрсету',
 	},
 	messages: {
+		successUpdateData: 'Мәліметтеріңіз жаңартылды!',
 		successRegister: 'Сіз сәтті тіркеуден өттіңіз!',
 		successProductAdd: 'Өнім сәтті қосылды!',
 		successLocationCreate: 'Елді мекен сәтті қосылды!',
@@ -128,5 +186,9 @@ export default {
 			'Өріс мәні кемінде 4 таңба болуы керек',
 		'String must contain at least 10 character(s)':
 			'Өріс мәні кемінде 10 таңба болуы керек',
+		'String must contain at least 1 character(s)':
+			'Өріс мәні кемінде 1 таңба болуы керек',
+		maxMass: 'Көрсетілген мән максималды рұқсат етілген мәннен асады',
+		'Phone number is already in use!': 'Көрсетілген нөмір бос емес!',
 	},
 }

@@ -5,7 +5,7 @@
 				:src="`${runtimeConfig.public.assets}/assets/img/${levelType.toLowerCase()}.png`"
 				alt=""
 				class="object-contain select-none drag-none pointer-events-none"
-				:class="{ 'w-[60px] h-[60px]': small, 'w-[120px] h-[120px]': !small }"
+				:class="{ 'w-[30px] h-[30px]': small, 'w-[60px] h-[60px]': !small }"
 			/>
 		</div>
 		<div
@@ -18,7 +18,7 @@
 			class="absolute rounded-full"
 			:class="{
 				'bottom-1/100 -right-1/10': small,
-				'bottom-1/10 right-1/10': !small,
+				'bottom-1 right-0': !small,
 			}"
 		>
 			<img
@@ -26,14 +26,14 @@
 				:src="`${runtimeConfig.public.assets}/assets/img/active.png`"
 				alt=""
 				class="block"
-				:class="{ 'w-5 h-5': small, 'w-7 h-7': !small }"
+				:class="{ 'w-3 h-3': small, 'w-4 h-4': !small }"
 			/>
 			<img
 				v-else
 				:src="`${runtimeConfig.public.assets}/assets/img/none-active.png`"
 				alt=""
 				class="block"
-				:class="{ 'w-5 h-5': small, 'w-7 h-7': !small }"
+				:class="{ 'w-3 h-3': small, 'w-4 h-4': !small }"
 			/>
 		</div>
 	</div>

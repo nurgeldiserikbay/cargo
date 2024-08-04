@@ -1,5 +1,39 @@
 export default {
 	welcome: 'Привет',
+	levels: {
+		BRONZE: {
+			name: 'Бронза',
+		},
+		SILVER: {
+			name: 'Серебро',
+		},
+		GOLD: {
+			name: 'Золото',
+		},
+		PLATINUM: {
+			name: 'Платина',
+		},
+		DIAMOND: {
+			name: 'Бриллиант',
+		},
+		NONE: {
+			name: 'Новичок',
+		},
+	},
+	data: {
+		main: {
+			bannerTitle: 'Добро пожаловать на <span>iPost.kz</span>',
+			bannerText: 'Быстро и доступно доставим товары из Китая',
+			steps: {
+				1: 'Регистрируясь тут, вы получаете свои зарубежные адреса',
+				2: 'Покупаете в фирменных магазинах введя полученные адреса',
+				3: 'В личном кабинете добавляете ожидаемую посылку',
+				4: 'Получаете свою посылку в филиале в течении 7-14 дней',
+			},
+			address:
+				'Қалқаман-2 шағын ауданы, Қарақулова көш., 40 үй, 4 этаж. 050006 \n Алматы, Казахстан',
+		},
+	},
 	our_whatsapp: 'Наша группа в WhatsApp',
 	titles: {
 		faq: 'FAQ',
@@ -11,13 +45,17 @@ export default {
 		products: 'Продукты',
 		checkProduct: 'Трекинг товара',
 		contacts: 'Контакты',
+		ourBranches: 'Наши филиалы',
+		tariffs: 'Тариф',
+		how_is_work: 'Как это работает',
 	},
 	pages: {
 		login: 'Войти',
 		register: 'Регистрация',
 		user: 'Товары',
-		productList: 'Отслежка',
-		address: 'Адрес',
+		profile: 'Мой профиль',
+		productList: 'Мои товары',
+		address: 'Мой адрес',
 		info: 'Инфо',
 		calculation: 'Калькулятор',
 		locations: 'Населенные пункты',
@@ -34,6 +72,15 @@ export default {
 		referrals: 'Рефералы',
 	},
 	labels: {
+		writeWhatapp: 'Написать в WhatsApp',
+		viewInstagram: 'Все новости в Instagram',
+		writeTelegram: 'Нужна помощь, пишите в Telegram',
+		getAddress: 'Получить адрес',
+		list_of_cancel_products: 'Перечень запрещенных товаров',
+		days: '{0} дней',
+		timeDeliver: 'Время доставки',
+		cost_to_mass: '{0}тг / 1 кг',
+		cost_and_mass: 'Цена/вес',
 		filter: 'Фильтр',
 		all: 'Все',
 		yes: 'Да',

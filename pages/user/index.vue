@@ -30,38 +30,6 @@
 				</div>
 			</form>
 		</v-card>
-
-		<v-card
-			class="d-flex flex-col items-center w-full max-w-600px px-4 py-2 mt-4 mb-8 rounded-lg"
-		>
-			<a
-				href="https://chat.whatsapp.com/EcYjywdBwvU0vB9Yu5LPO3"
-				target="_blank"
-				class="w-full flex justify-start items-center gap-3 text-color1 text-left no-underline"
-			>
-				<svgo-whatsapp
-					class="w-10 h-10 fill-none"
-					:filled="true"
-				></svgo-whatsapp>
-				<span>{{ $t('our_whatsapp') }}</span>
-			</a>
-		</v-card>
-
-		<!-- <v-card
-			v-if="getFaq.length"
-			class="d-flex flex-col items-start w-full max-w-980p px-5 py-5 pb-6 mb-12 rounded-lg"
-		>
-			<div class="text-h3 mb-5 text-left">{{ $t('titles.faq') }}</div>
-			<v-expansion-panels>
-				<v-expansion-panel
-					v-for="faq in getFaq"
-					:key="faq.id"
-					:title="faq.question"
-					:text="faq.answer"
-				>
-				</v-expansion-panel>
-			</v-expansion-panels>
-		</v-card> -->
 	</v-container>
 </template>
 

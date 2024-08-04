@@ -1,8 +1,12 @@
 export default {
 	legacy: false,
+	compilation: {
+		strictMessage: false,
+	},
+	warnHtmlMessage: false,
 	locale: 'en',
 	langDir: 'langs',
-	lazy: true,
+	lazy: false,
 	strategy: 'prefix_except_default',
 	locales: [
 		{

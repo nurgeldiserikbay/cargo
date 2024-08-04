@@ -37,6 +37,7 @@ export default defineNuxtConfig({
 		transpile: ['vuetify', 'tslib'],
 	},
 	modules: [
+		'nuxt-swiper',
 		'@unocss/nuxt',
 		'nuxt-svgo',
 		'@nuxtjs/color-mode',

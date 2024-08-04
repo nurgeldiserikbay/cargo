@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="flex flex-col items-center text-center"
+		class="flex flex-col items-center text-center bg-light py-2 px-3 rounded-md min-w-30 shadow-lg"
 		:class="{ arrow: active }"
 	>
 		<div class="relative rounded-full mb-1">
@@ -12,12 +12,12 @@
 			/>
 		</div>
 		<div
-			class="text-[10px] whitespace-pre-line font-700 text-gray-800 text-xs py-1 px-2 bg-gray-200 rounded-md"
+			class="text-[10px] whitespace-pre-line font-700 text-gray-800 text-xs py-1 px-2 bg-backColor rounded-md grow-1"
 			:class="{
 				'bg-green-500 text-white': active,
 			}"
 		>
-			{{ `ID: ${user.id}` }}
+			{{ `${user.lastName} ${user.firstName} \n ID: ${user.id}` }}
 		</div>
 	</div>
 </template>

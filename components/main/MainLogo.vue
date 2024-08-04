@@ -1,5 +1,5 @@
 <template>
-	<NuxtLinkLocale :to="localePath('/')" class="d-inline-block">
+	<NuxtLinkLocale :to="localePath('/')" class="d-inline-block !my-0">
 		<img
 			src="@/assets/img/logotype.png"
 			alt=""
@@ -17,7 +17,7 @@ withDefaults(
 		height?: number
 	}>(),
 	{
-		height: 60,
+		height: 40,
 	},
 )
 </script>

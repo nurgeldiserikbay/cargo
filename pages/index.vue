@@ -1,13 +1,24 @@
 <template>
-	<div class=""></div>
+	<div>
+		<MainBanner />
+		<MainBranches />
+		<MainTariffes />
+		<MainSteps />
+		<MainContacts />
+	</div>
 </template>
 
 <script lang="ts" setup>
+import MainBanner from '@/modules/main/MainBanner.vue'
+import MainBranches from '@/modules/main/MainBranches.vue'
+import MainTariffes from '@/modules/main/MainTariffes.vue'
+import MainSteps from '@/modules/main/MainSteps.vue'
+import MainContacts from '@/modules/main/MainContacts.vue'
+
 definePageMeta({
-	auth: true,
-	unauthenticatedOnly: true,
-	layout: 'auth-layout',
-	accesses: ['redirect'],
+	auth: false,
+	unauthenticatedOnly: false,
+	layout: 'user-layout',
 })
 </script>
 

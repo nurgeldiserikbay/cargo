@@ -1,6 +1,6 @@
 <template>
 	<v-container
-		class="product-list flex-grow-1 d-flex flex-col justify-start items-center max-h-full overflow-hidden min-h-full bg-container"
+		class="product-list flex-grow-1 d-flex flex-col justify-start items-center max-h-full overflow-hidden min-h-full"
 	>
 		<div class="w-full max-h-full">
 			<ReferalsItem v-if="getUser" :user="getUser" />

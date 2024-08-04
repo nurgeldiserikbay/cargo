@@ -15,6 +15,11 @@ export default defineConfig({
 	shortcuts: [],
 	theme: {
 		colors: {
+			blankColor: '#FFFFFF',
+			backColor: '#F1F2F6',
+			cprimary: '#355EEE',
+			ctertiary: '#737677',
+			light: '#ffffff',
 			color1: '#020202',
 			color2: '#e0e0e0',
 			color10: '#ffffff',

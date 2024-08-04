@@ -1,15 +1,18 @@
 <template>
-	<v-chip
+	<div
 		v-if="token && user?.promoCode"
-		class="chip"
-		variant="elevated"
-		rounded="lg"
-		append-icon="mdi mdi-pencil-box-multiple-outline"
-		color="yellow"
+		:title="$t('labels.yourCode')"
+		class="cursor-pointer text-(xs center gray/80) leading-none"
 		@click="copyText"
 	>
-		<span>{{ user?.promoCode }}</span>
-	</v-chip>
+		<div class="mb-1">
+			<span>{{ $t('labels.yourCode') }}</span>
+		</div>
+		<div class="text-dark">
+			<i class="mdi mdi-pencil-box-multiple-outline mr-1"></i>
+			<span>{{ user?.promoCode }}</span>
+		</div>
+	</div>
 </template>
 
 <script lang="ts" setup>

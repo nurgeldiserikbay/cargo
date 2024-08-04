@@ -1,9 +1,13 @@
 <template>
 	<v-menu :offset="10">
 		<template #activator="{ props }">
-			<v-btn :color="color" v-bind="props" :size="'small'" :shadow="false">
+			<button
+				v-bind="props"
+				class="cursor-pointer uppercase text-ctertiary text-xs"
+			>
 				<span>{{ locale }}</span>
-			</v-btn>
+				<IconArrowDown class="d-inline-block w-3 h-3 ml-1" />
+			</button>
 		</template>
 		<v-list>
 			<v-list-item
@@ -26,6 +30,8 @@
 
 <script lang="ts" setup>
 import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
+
+import IconArrowDown from '@/assets/svg/arrow-down.svg'
 
 defineProps<{
 	color?: string
